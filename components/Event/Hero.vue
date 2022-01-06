@@ -62,7 +62,6 @@ export default {}
   margin-top: -5px;
   margin-left: 10px;
 }
-.button{}
 .btnyellow {
   color: rgb(230, 220, 205);
 }

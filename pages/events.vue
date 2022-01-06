@@ -1,15 +1,11 @@
 <template>
   <div>
-    <hero />
+    <EventHero />
   </div>
 </template>
 
 <script>
-import hero from '~/components/Event/hero.vue'
 export default {
-  name:"event",
-  components:{
-    hero
-  }
+  name:"event"
 }
 </script>
