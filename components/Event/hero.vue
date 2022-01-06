@@ -46,13 +46,14 @@ export default {}
   height: 90%;
   width: 80%;
   position: absolute;
+  border-radius: 6px;
   background: url('/assets/img/armario.jpg') no-repeat;
   background-size: cover;
 }
 .card {
   background-color: rgba(115, 123, 118, 0.8);
   margin-top: 20%;
-  height: 400px;
+  height: 450px;
   width: 350px!important;
 }
 .bar {
