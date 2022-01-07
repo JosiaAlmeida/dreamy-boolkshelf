@@ -2,7 +2,7 @@
   <div class="col-12">
     <VueSlickCarousel
       :autoplay="true"
-      :rows="2"
+      :rows="4"
       :slidesToShow="4"
       :arrows="false"
       :dots="true"
@@ -11,8 +11,9 @@
       :variableWidth="true"
     >
       <div class="p-3" v-for="i in 20" :key="i">
-        <div :style="RotateRandom(Math.floor(Math.random() * -15) + 15)" class="paint m-4">
-          <h1>Dream {{ i }}</h1>
+        <div :style="RotateRandom(Math.floor(Math.random() * -30) + 15)" class="paint m-4">
+          <!-- <h1>Dream {{ i }}</h1> -->
+          <!-- <img src="/assets/img/armario.jpg" class="img-fluid img" alt=""> -->
         </div>
       </div>
     </VueSlickCarousel>
@@ -39,10 +40,25 @@ export default {
 <style scoped>
 .paint {
   border: 20px solid #333333;
-  height: 300px;
+  height: 300px!important;
   width: 200px !important;
   -ms-transform: var(--rotate); /* IE 9 */
   -webkit-transform: var(--rotate); /* Safari */
   transform: var(--rotate);
+  position: inherit;
+}
+.paint::before{
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: url('/assets/img/armario.jpg')no-repeat;
+  z-index: -1;
+  background-size: cover;
+}
+.img{
+  height: 100%;
 }
 </style>
