@@ -71,7 +71,8 @@ p {
   padding: 1%;
 }
 .Link {
-  color: #000;
+  color: #28493C;
+  font-weight: 600;
   font-size: 20px;
   margin-left: -1%;
   border-bottom: 1px solid #000;

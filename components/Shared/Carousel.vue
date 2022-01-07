@@ -11,13 +11,13 @@
       :adaptiveHeight="true"
     >
       <div v-for="(item, i) in carouselData" :key="i">
-        <nuxt-link :to="'event/'+i">
+        <nuxt-link class="Link" :to="'event/'+i">
         <div
           class="cardContainer d-flex align-items-end p-4"
           :style="imageProps(item.img)"
         >
           <div class="w-75">
-            <h6>{{item.title}}</h6>
+            <h5>{{item.title}}</h5>
             <small class="text-small-grey"> {{item.date}} </small>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default {
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0) 0%,
-    rgba(43, 55, 45, 0.9) 90%
+    rgba(105, 115, 111, 0.9) 90%
   );
   position: relative;
   color: #fff;
@@ -74,5 +74,8 @@ export default {
 }
 .text-small-grey {
   color: #dce6e1;
+}
+.Link:hover{
+  text-decoration: none;
 }
 </style>
