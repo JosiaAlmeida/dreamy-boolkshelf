@@ -37,6 +37,9 @@ export default {}
 </script>
 
 <style scoped>
+p{
+  font-size: 0.8rem;
+}
 .row {
   padding: 4%;
 }
@@ -82,7 +85,7 @@ export default {}
   border: 1px solid #cbcfcd;
   width: 50px;
   margin-top: -5px;
-  margin-left: 10px;
+  margin-left: 6px;
 }
 .btnyellow {
   color: rgb(230, 220, 205);
@@ -99,6 +102,9 @@ export default {}
 }
 
 @media only screen and (max-width: 600px) {
+p{
+  font-size: 1rem;
+}
   .row {
     padding: 0%;
   }
@@ -139,6 +145,9 @@ export default {}
   .card-body {
     margin-top: auto;
   }
+  .text-white-title{
+    font-size: 1.5rem;
+  }
   .text-white-title,
   .btnyellow {
     color: #636e6a !important;
@@ -149,6 +158,7 @@ export default {}
     visibility: hidden;
   }
   .text-white {
+    margin-top: -20px!important;
     color: #000 !important;
   }
   .bar {
