@@ -10,8 +10,8 @@
       :adaptiveHeight="true"
       :variableWidth="true"
     >
-      <div class="p-3" v-for="i in 8" :key="i">
-        <div class="paint">
+      <div class="p-3" v-for="i in 20" :key="i">
+        <div :style="RotateRandom(Math.floor(Math.random() * -15) + 15)" class="paint m-4">
           <h1>Dream {{ i }}</h1>
         </div>
       </div>
@@ -26,6 +26,13 @@ import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
   components: { VueSlickCarousel },
+  methods:{
+    RotateRandom(v){
+      return {'--rotate': `rotate(${v}deg)`}
+    }
+  },
+  computed: {
+  }
 }
 </script>
 
@@ -34,8 +41,8 @@ export default {
   border: 20px solid #333333;
   height: 300px;
   width: 200px !important;
-  -ms-transform: rotate(-15deg); /* IE 9 */
-  -webkit-transform: rotate(-15deg); /* Safari */
-  transform: rotate(-15deg);
+  -ms-transform: var(--rotate); /* IE 9 */
+  -webkit-transform: var(--rotate); /* Safari */
+  transform: var(--rotate);
 }
 </style>
