@@ -10,10 +10,8 @@
       :adaptiveHeight="true"
       :variableWidth="true"
     >
-      <div class="p-3" v-for="i in 20" :key="i">
-        <div :style="RotateRandom(Math.floor(Math.random() * -30) + 15)" class="paint m-4">
-          <!-- <h1>Dream {{ i }}</h1> -->
-          <!-- <img src="/assets/img/armario.jpg" class="img-fluid img" alt=""> -->
+      <div class="p-4" v-for="i in 20" :key="i">
+        <div :style="RotateRandom(Math.floor(Math.random() * -20) + 15)" class="paint ml-5 mr-5 mb-4">
         </div>
       </div>
     </VueSlickCarousel>
@@ -40,8 +38,8 @@ export default {
 <style scoped>
 .paint {
   border: 20px solid #333333;
-  height: 300px!important;
-  width: 200px !important;
+  height: 340px!important;
+  width: 230px !important;
   -ms-transform: var(--rotate); /* IE 9 */
   -webkit-transform: var(--rotate); /* Safari */
   transform: var(--rotate);
