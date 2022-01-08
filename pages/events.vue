@@ -7,7 +7,7 @@
         <SharedCarousel :carouselData="images" />
       </div>
     </div>
-    <SharedFooter />
+    <!-- <SharedFooter /> -->
   </div>
 </template>
 
@@ -86,6 +86,46 @@ export default {
           title:'Feira dos livos gigantesca no consulado português em Angola',
           date:'09 Agosto 21',
           img:'/assets/img/armario.jpg',
+        },
+        {
+          title:'Feira dos livos gigantesca no consulado português em Angola',
+          date:'09 Agosto 21',
+          img:'/assets/img/armariofundo.jpg',
+        },
+        {
+          title:'Feira dos livos gigantesca no consulado português em Angola',
+          date:'09 Agosto 21',
+          img:'/assets/img/armariofundo.jpg',
+        },
+        {
+          title:'Feira dos livos gigantesca no consulado português em Angola',
+          date:'09 Agosto 21',
+          img:'/assets/img/armariofundo.jpg',
+        },
+        {
+          title:'Feira dos livos gigantesca no consulado português em Angola',
+          date:'09 Agosto 21',
+          img:'/assets/img/armariofundo.jpg',
+        },
+        {
+          title:'Feira dos livos gigantesca no consulado português em Angola',
+          date:'09 Agosto 21',
+          img:'/assets/img/armariofundo.jpg',
+        },
+        {
+          title:'Feira dos livos gigantesca no consulado português em Angola',
+          date:'09 Agosto 21',
+          img:'/assets/img/armariofundo.jpg',
+        },
+        {
+          title:'Feira dos livos gigantesca no consulado português em Angola',
+          date:'09 Agosto 21',
+          img:'/assets/img/armariofundo.jpg',
+        },
+        {
+          title:'Feira dos livos gigantesca no consulado português em Angola',
+          date:'09 Agosto 21',
+          img:'/assets/img/armariofundo.jpg',
         },
         {
           title:'Feira dos livos gigantesca no consulado português em Angola',

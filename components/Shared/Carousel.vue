@@ -1,28 +1,22 @@
 <template>
   <div class="col-md-11 col-sm-12 mt-3">
-    <VueSlickCarousel
-      :responsive="['col-sm-12', 'col-md-4']"
-      :autoplay="true"
-      :rows="5"
-      :slidesToShow="3"
-      :arrows="false"
-      :dots="true"
-      :infinite="false"
-      :adaptiveHeight="true"
-    >
-      <div v-for="(item, i) in carouselData" :key="i">
-        <nuxt-link class="Link" :to="'event/'+i">
-        <div
-          class="cardContainer d-flex align-items-end p-4"
-          :style="imageProps(item.img)"
-        >
-          <div class="w-75">
-            <h5>{{item.title}}</h5>
-            <small class="text-small-grey"> {{item.date}} </small>
+    <VueSlickCarousel class="slick-default" v-bind="options">
+      <div class="mb-4" v-for="(item, i) in carouselData" :key="i">
+        <nuxt-link class="Link" :to="'event/' + i">
+          <div
+            class="cardContainer d-flex align-items-end p-4"
+            :style="imageProps(item.img)"
+          >
+            <div class="w-75">
+              <h5>{{ item.title }}</h5>
+              <small class="text-small-grey"> {{ item.date }} </small>
+            </div>
           </div>
-        </div>
         </nuxt-link>
       </div>
+      <!-- <template #customPaging class="mt-5">
+        <div class="custom-dot"></div>
+      </template> -->
     </VueSlickCarousel>
   </div>
 </template>
@@ -34,15 +28,41 @@ import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
   components: { VueSlickCarousel },
-  props:{
-    ['carouselData']: Array
+  data() {
+    return {
+      options: {
+        slidesToShow: 3,
+        infinite: true,
+        speed: 500,
+        slidesToScroll: 3,
+        dots: true,
+        prevArrow: false,
+        nextArrow: false,
+        arrows: false,
+        rows: 3,
+        responsive: [
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              initialSlide: 1,
+              vertical: true,
+              verticalSwiping: true,
+            },
+          },
+        ],
+      },
+    }
   },
-  mounted () {
-    console.log(this.$root._route.path)
+  props: {
+    ['carouselData']: Array,
+  },
+  mounted() {
     this.saveRoute()
   },
   methods: {
-    saveRoute(){
+    saveRoute() {
       localStorage.setItem('routeEventCarousel', this.$root._route.path)
     },
     imageProps(img) {
@@ -54,6 +74,40 @@ export default {
 </script>
 
 <style scoped>
+.slick-default > .slick-dots {
+  display: flex !important;
+  list-style: none;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.slick-default > li {
+  list-style-type: none;
+  margin-right: 0.5rem;
+}
+.slick-dots > li {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 40px;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer;
+  border: 1px solid blue!important;
+}
+.slick-default > li > .custom-dot {
+  height: 0.7em;
+  width: 0.7em;
+  border-radius: 0.7em;
+  border: 1px solid #00a9e0;
+  display: flex;
+}
+.slick-default > .slick-action ul {
+  list-style-type: none;
+}
+.slick-default > .slick-action ul > li > .slick-active .custom-dot {
+  background-color: #00a9e0;
+  border: none;
+}
 .cardContainer {
   width: 97%;
   height: 300px;
@@ -82,7 +136,7 @@ export default {
 .text-small-grey {
   color: #dce6e1;
 }
-.Link:hover{
+.Link:hover {
   text-decoration: none;
 }
 </style>

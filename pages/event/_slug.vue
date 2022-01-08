@@ -50,7 +50,6 @@ export default {
   created(){
     if(localStorage.getItem('routeEventCarousel'))
       this.routes = localStorage.getItem('routeEventCarousel')
-    console.log(this.routes)
   },
 }
 </script>

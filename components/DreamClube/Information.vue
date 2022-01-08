@@ -1,0 +1,33 @@
+<template>
+  <div class="container-fluid background">
+    <div class="row">
+      <div class="col-12 p-5 d-flex align-items-end align-content-end text-white">
+      <h1 class="w-50">Estamos a criar algo especial para ti, até já!</h1>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.background{
+  height: 100vh;
+  background-color: rgba(64, 75, 60, 0.7);
+  position: relative;
+  align-items:flex-end;
+  text-align:end;
+}
+.background::before{
+  content: '';
+  top: 0;
+  left: 0;
+  height:100%;
+  width: 100%;
+  position: absolute;
+  background: url('/assets/img/armario.jpg')no-repeat center center;
+  background-size: cover;
+  z-index:-1;
+}
+.col-12{
+  height: 100vh;
+}
+</style>
