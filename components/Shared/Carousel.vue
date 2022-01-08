@@ -37,7 +37,14 @@ export default {
   props:{
     ['carouselData']: Array
   },
+  mounted () {
+    console.log(this.$root._route.path)
+    this.saveRoute()
+  },
   methods: {
+    saveRoute(){
+      localStorage.setItem('routeEventCarousel', this.$root._route.path)
+    },
     imageProps(img) {
       return { '--backgroundimage': `url(${img})` }
     },

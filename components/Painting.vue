@@ -35,6 +35,7 @@ export default {
   -webkit-transform: var(--rotate); /* Safari */
   transform: var(--rotate);
   position: inherit;
+  cursor: pointer;
 }
 .paint::before{
   content: '';

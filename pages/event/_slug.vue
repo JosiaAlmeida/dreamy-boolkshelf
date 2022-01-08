@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 LinkContent mt-4 mb-4">
-        <nuxt-link to="/events" class="Link">Fechar</nuxt-link>
+        <nuxt-link :to="routes" class="Link">Fechar</nuxt-link>
       </div>
       <div class="mt-2 col-md-7 img col-sm-12">
         <!-- <img src="/assets/img/armario.jpg" alt="" class="img-fluid" /> -->
@@ -41,6 +41,16 @@ export default {
   async asyncData({ params }) {
     const slug = params.slug // When calling /abc the slug will be "abc"
     return { slug }
+  },
+  data(){
+    return {
+      routes: null
+    }
+  },
+  created(){
+    if(localStorage.getItem('routeEventCarousel'))
+      this.routes = localStorage.getItem('routeEventCarousel')
+    console.log(this.routes)
   },
 }
 </script>
