@@ -1,12 +1,12 @@
 <template>
   <SharedModal :showPaint="showPaint" v-if="showPaint" @close="!showPaint">
-      <VueSlickCarousel v-bind="options">
-        <div class="d-flex" v-for="i in 6" :key="i">
-          <div>
-            <img src="/assets/img/armario.jpg" class="img-fluid" alt="" />
-          </div>
+    <VueSlickCarousel v-bind="options">
+      <div class="d-flex" v-for="i in 6" :key="i">
+        <div>
+          <img src="/assets/img/armario.jpg" class="img-fluid" alt="" />
         </div>
-      </VueSlickCarousel>
+      </div>
+    </VueSlickCarousel>
   </SharedModal>
 </template>
 

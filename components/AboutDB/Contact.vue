@@ -1,10 +1,19 @@
 <template>
-  <div class="container-fluid background">
-    <div class="row">
-      <div class="col-1"></div>
-      <div class="col-11 p-5 d-flex alignText align-items-center">
-        <div class="w-50 text-danger">
-          <p>
+  <div class="container-fluid">
+    <div class="row reverse">
+      <div class="background">
+        <div class="row">
+          <div class="col-12">
+            <p class="visible-mobile">
+              O Dreamy Booshelf é um espaço para amantes de livros e
+              fotografias.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-11 d-flex alignText align-items-center">
+        <div class="width-text">
+          <p class="visible-width-100">
             O Dreamy Booshelf é um espaço para amantes de livros e fotografias.
           </p>
           <p>
@@ -21,6 +30,7 @@
           </p>
         </div>
       </div>
+      <div class="col-1"></div>
     </div>
   </div>
 </template>
@@ -30,11 +40,18 @@ export default {}
 </script>
 
 <style scoped>
+.reverse {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.visible-mobile {
+  visibility: hidden;
+}
 .background {
-  height: 100vh;
-  position: relative;
-  align-items: flex-end;
-  text-align: end;
+  display: flex;
+  align-items: center;
+  padding: 4%;
+  z-index: -1;
 }
 .background::before {
   content: '';
@@ -43,11 +60,52 @@ export default {}
   height: 100%;
   width: 100%;
   position: absolute;
-  background: url('/assets/img/armario.jpg') no-repeat center center;
+  background: url('/assets/img/womenPaint.jpg') no-repeat center center;
   background-size: cover;
-  z-index: -1;
 }
 .alignText {
   height: 100vh;
+  padding: 5%;
+}
+.width-text {
+  width: 50%;
+}
+@media only screen and (max-width: 600px) {
+  .reverse {
+    display: inline-block;
+    flex-direction: column;
+  }
+  .background {
+    display: flex;
+    align-items: flex-end;
+    padding: 4%;
+    z-index: 1;
+    position: relative;
+    width: 100%;
+    height: 50vh;
+  }
+  .width-text {
+    width: 100%;
+    text-align: left;
+  }
+  .alignText {
+    widows: 100%;
+    justify-content: center !important;
+    padding: 3%;
+  }
+  .top {
+    margin-top: -5% !important;
+  }
+  .container-text-mobile {
+    padding: 5%;
+  }
+  .visible-mobile {
+    visibility: visible;
+    width: 75%;
+    padding: 5%;
+  }
+  .visible-width-100 {
+    visibility: hidden;
+  }
 }
 </style>

@@ -4,5 +4,3 @@
     <Footer />
   </main>
 </template>
-
-

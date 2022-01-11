@@ -20,10 +20,10 @@
                   the bulk of the card's content.
                 </p>
               </div>
-                <div class="button">
-                  <button class="btn btnyellow">Ver noticía</button>
-                  <div class="bar ml-3"></div>
-                </div>
+              <div class="button">
+                <button class="btn btnyellow">Ver noticía</button>
+                <div class="bar ml-3"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@ export default {}
 </script>
 
 <style scoped>
-p{
+p {
   font-size: 0.8rem;
 }
 .row {
@@ -74,10 +74,10 @@ p{
 .card-text {
   margin-top: 5%;
 }
-.button{
+.button {
   display: block;
-  justify-content: left!important;
-  align-items: flex-start!important;
+  justify-content: left !important;
+  align-items: flex-start !important;
   left: 0;
   width: 100%;
 }
@@ -89,7 +89,7 @@ p{
 }
 .btnyellow {
   color: rgb(230, 220, 205);
-  text-align: start!important;
+  text-align: start !important;
   margin-left: -13px;
 }
 .text-small-grey {
@@ -102,15 +102,15 @@ p{
 }
 
 @media only screen and (max-width: 600px) {
-p{
-  font-size: 1rem;
-}
+  p {
+    font-size: 1rem;
+  }
   .row {
     padding: 0%;
   }
-  .col-12{
-    padding-left: 0%!important;
-    padding-right: 0%!important;
+  .col-12 {
+    padding-left: 0% !important;
+    padding-right: 0% !important;
   }
   .reverse {
     display: inline-block !important;
@@ -145,7 +145,7 @@ p{
   .card-body {
     margin-top: auto;
   }
-  .text-white-title{
+  .text-white-title {
     font-size: 1.5rem;
   }
   .text-white-title,
@@ -153,12 +153,12 @@ p{
     color: #636e6a !important;
   }
 
-  .text-small-grey{
+  .text-small-grey {
     overflow: hidden !important;
     visibility: hidden;
   }
   .text-white {
-    margin-top: -20px!important;
+    margin-top: -20px !important;
     color: #000 !important;
   }
   .bar {
