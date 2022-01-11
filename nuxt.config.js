@@ -24,7 +24,21 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: [
+    ['@nuxtjs/fontawesome', {
+      component: 'fa',
+      suffix: true,
+      freeIcons: { // if you have bought the Pro packages
+        // list the icons you want to add, not listed icons will be tree-shaked
+        solid: [
+          'faHome',
+          'faHeart'
+        ],
+        // include all icons. But dont do this.
+        regular: true
+      }
+    }]
+  ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -41,5 +55,5 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {}
 }
