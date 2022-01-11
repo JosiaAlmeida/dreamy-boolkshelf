@@ -8,21 +8,21 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
-                  >Sobre DB</a
-                >
+                <a class="nav-link active" aria-current="page" href="#">{{
+                  $t('menu.aboutBd')
+                }}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">A estante dos sonhos</a>
+                <a class="nav-link" href="#">{{ $t('menu.dreamS') }}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Sala de artes</a>
+                <a class="nav-link" href="#">{{ $t('menu.artRoom') }}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">CLube dos sonhos</a>
+                <a class="nav-link" href="#">{{ $t('menu.dreamyClub') }}</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">Eventos</a>
+                <a href="#" class="nav-link">{{ $t('menu.events') }}</a>
               </li>
               <li class="nav-item ml-auto">
                 <div class="nav-right-content">
@@ -31,9 +31,9 @@
                     <a href="#"> <i class="fab fa-instagram"></i></a>
                   </div>
                   <div class="lang-option">
-                    <a href="#">PT</a>
+                    <!--<nux-link :to="changeLocale('pt')">PT</nux-link>
                     <span>|</span>
-                    <a href="#">EN</a>
+                    <nuxt-link :to="changeLocale('en')">EN</nuxt-link>-->
                   </div>
                 </div>
               </li>
@@ -44,6 +44,18 @@
     </nav>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {}
+  },
+  methods: {
+    changeLocale(lang) {
+      this.$router.replace(this.switchLocalePath(lang))
+    },
+  },
+}
+</script>
 <style scoped>
 .nav-bar {
   background-image: url('/assets/img/armario.jpg');
@@ -70,8 +82,9 @@
 }
 .navbar-nav {
   width: 100;
-  column-gap: 8rem;
+  column-gap: 3rem;
   justify-content: space-around;
+  align-items: center;
 }
 .nav-right-content {
   display: flex;
@@ -85,5 +98,16 @@
 .lang-option {
   display: flex;
   column-gap: 1rem;
+}
+.nav-item .nav-link {
+  color: #fff;
+  font-size: 25px;
+}
+.social-media a {
+  font-size: 2rem;
+  color: antiquewhite;
+}
+.lang-option a {
+  color: antiquewhite;
 }
 </style>
