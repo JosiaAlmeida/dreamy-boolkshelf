@@ -1,5 +1,6 @@
 <template>
   <SharedNavbar/>
+  
 </template>
 
 <script>
