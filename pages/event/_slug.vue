@@ -30,7 +30,7 @@
       </div>
       <div class="col-md-7 mt-5 mb-5 d-flex justify-content-between">
         <small class="text-small-grey">10 de Agosto 2021</small>
-        <small class="text-small-grey">Partilhar</small>
+        <small class="text-small-grey">Partilhar </small>
       </div>
     </div>
   </div>
@@ -42,13 +42,13 @@ export default {
     const slug = params.slug // When calling /abc the slug will be "abc"
     return { slug }
   },
-  data(){
+  data() {
     return {
-      routes: null
+      routes: null,
     }
   },
-  created(){
-    if(localStorage.getItem('routeEventCarousel'))
+  created() {
+    if (localStorage.getItem('routeEventCarousel'))
       this.routes = localStorage.getItem('routeEventCarousel')
   },
 }
@@ -80,7 +80,7 @@ p {
   padding: 1%;
 }
 .Link {
-  color: #28493C;
+  color: #28493c;
   font-weight: 600;
   font-size: 20px;
   margin-left: -1%;
