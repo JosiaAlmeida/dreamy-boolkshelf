@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-12 text-white background p-5">
         <div>
-          <h1 class="pl-5 pr-5">Dreamy Bookshelf</h1>
-          <p class="pl-5 pr-5 w-75">
+          <h1 class="text-padding">Dreamy Bookshelf</h1>
+          <p class="text-padding w-75">
             Sonhe, visualize e monte connosco a estante dos teus sonhos
           </p>
         </div>
@@ -39,5 +39,18 @@ export default {}
   height: 100vh;
   display: flex;
   align-items: center;
+}
+.text-padding {
+  padding: 0% 5% 0% 5%;
+}
+@media only screen and (max-width: 600px) {
+  .col-12 {
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+  }
+  .text-padding {
+    padding: 0%;
+  }
 }
 </style>
