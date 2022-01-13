@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <RoomartTitleDescription />
-        <Painting />
+        <SharedPainting />
         <RoomartShowPaint :showPaint="showPaint" />
       </div>
     </div>
@@ -11,9 +11,9 @@
 </template>
 <script>
 export default {
-  data () {
-    return{
-      showPaint: false
+  data() {
+    return {
+      showPaint: false,
     }
   },
 }

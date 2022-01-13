@@ -1,7 +1,7 @@
 <template>
   <div class="col-12">
     <div class="row d-flex justify-content-center">
-      <div class="col-5 text-center mt-5">
+      <div class="col-md-5 col-sm-12 text-center mt-5">
         <h3 class="text-title">Sala de artes</h3>
         <p>
           Descubra, desfrute e se inspire com os cenários estéticos e
@@ -13,7 +13,7 @@
 </template>
 
 <style scoped>
-.text-title{
+.text-title {
   color: #636e6a;
   font-weight: bold;
 }

@@ -13,7 +13,7 @@
 <style scoped>
 .background {
   height: 100vh;
-  background-color: rgba(64, 75, 60, 0.5);
+  background-color: rgba(94, 106, 91, 0.5);
   position: relative;
   align-items: flex-end;
   text-align: end;

@@ -1,11 +1,9 @@
 <template>
   <div>
-    <DreamClubeInformation />
+    <DreamClubInformation />
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>

@@ -14,11 +14,14 @@ export default {}
 </script>
 
 <style scoped>
-footer{
+footer {
   padding: 5%;
-  background-color: #1E3029;
+  background-color: #1e3029;
+  position: absolute;
+  bottom: 0 !important;
+  left: 0;
 }
-hr{
+hr {
   color: #fff;
   background-color: #fff;
 }

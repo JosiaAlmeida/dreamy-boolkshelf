@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-11 col-sm-12 mt-3">
+  <div class="col-md-11 col-sm-12 mt-3 mb-4">
     <VueSlickCarousel class="slick-default" v-bind="options">
       <div class="mb-4" v-for="(item, i) in carouselData" :key="i">
         <nuxt-link class="Link" :to="'event/' + i">
@@ -31,15 +31,15 @@ export default {
   data() {
     return {
       options: {
-        slidesToShow: 3,
+        slidesToShow: this.slideShow ? this.slideShow : 3,
         infinite: true,
         speed: 500,
-        slidesToScroll: 3,
+        slidesToScroll: this.slideScroll ? this.slideScroll : 3,
         dots: true,
         prevArrow: false,
         nextArrow: false,
         arrows: false,
-        rows: 3,
+        rows: this.row ? this.row : 3,
         responsive: [
           {
             breakpoint: 600,
@@ -47,8 +47,11 @@ export default {
               slidesToShow: 1,
               slidesToScroll: 1,
               initialSlide: 1,
-              vertical: true,
-              verticalSwiping: true,
+              rows: this.rowmobile ? this.rowmobile : 1,
+              vertical: this.vertical ? this.vertical : true,
+              verticalSwiping: this.verticalSwiping
+                ? this.verticalSwiping
+                : true,
             },
           },
         ],
@@ -57,6 +60,12 @@ export default {
   },
   props: {
     ['carouselData']: Array,
+    ['slideShow']: Number,
+    ['slideScroll']: Number,
+    ['row']: Number,
+    ['rowmobile']: Number,
+    ['vertical']: Boolean,
+    ['verticalSwiping']: Boolean,
   },
   mounted() {
     this.saveRoute()
@@ -92,7 +101,7 @@ export default {
   margin: 0 5px;
   padding: 0;
   cursor: pointer;
-  border: 1px solid blue!important;
+  border: 1px solid blue !important;
 }
 .slick-default > li > .custom-dot {
   height: 0.7em;

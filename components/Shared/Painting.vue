@@ -1,10 +1,10 @@
 <template>
-  <div class="col-12">
-    <div class="row p-5">
-      <div class="col-md-3 col-sm-12 p-4" v-for="i in 16" :key="i">
-        <div :style="RotateRandom(Math.floor(Math.random() * -20) + 15)" class="paint ">
-        </div>
-      </div>
+  <div class="row p-5">
+    <div class="col-md-3 col-sm-12 p-4" v-for="i in 16" :key="i">
+      <div
+        :style="RotateRandom(Math.floor(Math.random() * -20) + 15)"
+        class="paint"
+      ></div>
     </div>
   </div>
 </template>
@@ -16,20 +16,19 @@
 // import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
   // components: { VueSlickCarousel },
-  methods:{
-    RotateRandom(v){
-      return {'--rotate': `rotate(${v}deg)`}
-    }
+  methods: {
+    RotateRandom(v) {
+      return { '--rotate': `rotate(${v}deg)` }
+    },
   },
-  computed: {
-  }
+  computed: {},
 }
 </script>
 
 <style scoped>
 .paint {
   border: 20px solid #333333;
-  height: 310px!important;
+  height: 310px !important;
   width: 240px !important;
   -ms-transform: var(--rotate); /* IE 9 */
   -webkit-transform: var(--rotate); /* Safari */
@@ -37,18 +36,18 @@ export default {
   position: inherit;
   cursor: pointer;
 }
-.paint::before{
+.paint::before {
   content: '';
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   position: absolute;
-  background: url('/assets/img/armario.jpg')no-repeat;
+  background: url('/assets/img/armario.jpg') no-repeat;
   z-index: -1;
   background-size: cover;
 }
-.img{
+.img {
   height: 100%;
 }
 </style>
