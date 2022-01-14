@@ -12,14 +12,16 @@
       <div class="col-12">
         <HomePartialHeroEvents />
       </div>
-      <div class="row justify-content-center">
-        <SharedCarousel
-          :carouselData="images"
-          :row="1"
-          :rowmobile="2"
-          :vertical="false"
-          :verticalSwiping="false"
-        />
+      <div class="col-12">
+        <div class="row justify-content-center">
+          <SharedCarousel
+            :carouselData="images"
+            :row="1"
+            :rowmobile="2"
+            :vertical="false"
+            :verticalSwiping="false"
+          />
+        </div>
       </div>
     </div>
   </div>
