@@ -1,0 +1,10 @@
+*{
+    scroll-behavior: smooth;
+
+}
+body{
+    overflow-x: hidden;
+}
+.pt-10{
+    padding-top: 10rem;
+}

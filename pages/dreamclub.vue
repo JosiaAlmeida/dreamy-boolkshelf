@@ -1,5 +1,6 @@
 <template>
   <div>
+    <SharedNavbar />
     <DreamClubInformation />
   </div>
 </template>

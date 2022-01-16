@@ -17,6 +17,10 @@ export default {
         rel: 'stylesheet',
         href: 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css',
       },
+      {
+        rel: 'stylesheet',
+        href: 'assets/style/globalStyle.css',
+      },
     ],
   },
 
@@ -38,35 +42,19 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // '@nuxtjs/i18n',
+    '@nuxtjs/i18n',
   ],
-  // i18n: {
-  //   locales: ['pt', 'en'],
-  //   defaultLocale: 'pt',
-  //   vueI18n: {
-  //     fallbackLocale: 'pt',
-  //     messages: {
-  //       pt: {
-  //         menu: {
-  //           aboutBd: 'Sobre BD',
-  //           dreamS: 'A estante dos sonhos',
-  //           artRoom: 'Sala de artes',
-  //           dreamyClub: 'Clube dos sonhos',
-  //           events: 'Eventos',
-  //         },
-  //       },
-  //       en: {
-  //         menu: {
-  //           aboutBd: 'About BD',
-  //           dreamS: 'The dream farm',
-  //           artRoom: 'Arts room',
-  //           dreamyClub: 'Dream club',
-  //           events: 'Events',
-  //         },
-  //       },
-  //     },
-  //   },
-  // },
+  i18n: {
+    langDir: 'lang/',
+    locales: [
+      { code: 'pt', file: 'pt.js' },
+      { code: 'en', file: 'en.js' },
+    ],
+    defaultLocale: 'pt',
+    vueI18n: {
+      fallbackLocale: 'pt',
+    },
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308

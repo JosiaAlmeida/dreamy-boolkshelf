@@ -1,17 +1,21 @@
 <template>
-  <div>
-    <EventHero />
-    <div class="container-fluid">
-      <div class="row justify-content-center p-2">
-        <SharedSearchInput />
-        <SharedCarousel
-          :carouselData="images"
-          :rowmobile="3"
-          :vertical="false"
-          :verticalSwiping="false"
-        />
+  <div class="">
+    <SharedNavbar colorb="#28493C" />
+    <div class="pt-10">
+      <EventHero />
+      <div class="container-fluid">
+        <div class="row justify-content-center p-2">
+          <SharedSearchInput />
+          <SharedCarousel
+            :carouselData="images"
+            :rowmobile="3"
+            :vertical="false"
+            :verticalSwiping="false"
+          />
+        </div>
       </div>
     </div>
+
     <!-- <SharedFooter /> -->
   </div>
 </template>

@@ -1,28 +1,19 @@
 <template>
-  <div class="nav-bar">
-    <div class="nav-back-drop"></div>
+  <div class="nav-bar-d">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <div class="nav-bar-wrapper d-flex align-items-center w-100" style="">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <nuxt-link class="navbar-brand" to="/">Navbar</nuxt-link>
+          <div class="w-100" id="navbarNav">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">{{
-                  $t('menu.aboutBd')
-                }}</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">{{ $t('menu.dreamS') }}</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">{{ $t('menu.artRoom') }}</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">{{ $t('menu.dreamyClub') }}</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">{{ $t('menu.events') }}</a>
+              <li class="nav-item" v-for="item in menu" :key="item.id">
+                <nuxt-link
+                  class="nav-link"
+                  extra-active-class="active"
+                  :style="{ color: colorb }"
+                  :to="item.url"
+                  >{{ item.title }}</nuxt-link
+                >
               </li>
               <li class="nav-item ml-auto">
                 <div class="nav-right-content">
@@ -31,9 +22,9 @@
                     <a href="#"> <i class="fab fa-instagram"></i></a>
                   </div>
                   <div class="lang-option">
-                    <!--<nux-link :to="changeLocale('pt')">PT</nux-link>
+                    <nuxt-link :to="switchLocalePath('pt')">PT</nuxt-link>
                     <span>|</span>
-                    <nuxt-link :to="changeLocale('en')">EN</nuxt-link>-->
+                    <nuxt-link :to="switchLocalePath('en')">EN</nuxt-link>
                   </div>
                 </div>
               </li>
@@ -46,24 +37,55 @@
 </template>
 <script>
 export default {
-  data() {
-    return {}
-  },
-  methods: {
-    changeLocale(lang) {
-      this.$router.replace(this.switchLocalePath(lang))
+  props: {
+    colorb: {
+      type: String,
+      default: '#F0F1F1',
     },
+  },
+  computed: {
+    menu() {
+      return [
+        {
+          id: 1,
+          title: this.$t('menu.aboutBd'),
+          url: this.localePath('aboutdb'),
+        },
+        {
+          id: 2,
+          title: this.$t('menu.dreams'),
+          url: this.localePath('dreamclub'),
+        },
+        {
+          id: 3,
+          title: this.$t('menu.artRoom'),
+          url: this.localePath('roomart'),
+        },
+        {
+          id: 4,
+          title: this.$t('menu.dreamyClub'),
+          url: this.localePath('dreamclub'),
+        },
+        {
+          id: 5,
+          title: this.$t('menu.events'),
+          url: this.localePath('events'),
+        },
+      ]
+    },
+  },
+  data() {
+    return {
+      menu1: [],
+    }
   },
 }
 </script>
 <style scoped>
-.nav-bar {
-  background-image: url('/assets/img/armario.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  width: 100vw;
-  position: relative;
+.nav-bar-d {
+  position: absolute;
+  width: 100%;
+  z-index: 999;
 }
 .nav-back-drop {
   position: absolute;
@@ -74,7 +96,7 @@ export default {
 .nav-bar-wrapper {
   column-gap: 7rem;
   justify-content: space-evenly;
-  column-gap: 7rem;
+  column-gap: 11rem;
   padding: 3rem;
   display: flex;
   align-items: center;
@@ -82,7 +104,7 @@ export default {
 }
 .navbar-nav {
   width: 100;
-  column-gap: 3rem;
+  column-gap: 2rem;
   justify-content: space-around;
   align-items: center;
 }
@@ -100,7 +122,7 @@ export default {
   column-gap: 1rem;
 }
 .nav-item .nav-link {
-  color: #fff;
+  color: #f0f1f1;
   font-size: 25px;
 }
 .social-media a {

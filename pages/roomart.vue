@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <div class="container-fluid">
+  <div class="">
+    <SharedNavbar colorb="#28493C" />
+    <div class="container-fluid pt-10">
       <div class="row">
         <RoomartTitleDescription />
         <SharedPainting />

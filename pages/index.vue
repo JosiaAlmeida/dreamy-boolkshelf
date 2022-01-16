@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <SharedNavbar/> -->
+    <SharedNavbar />
     <HomeHero />
     <HomeWhatDreamy />
     <HomeDreamStocks />

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="w-100 mb-2 d-flex justify-content-center">
-      <button @click="scrollTop">Subir</button>
+      <a @click.prevent="scrollTop" href="#">Subir</a>
     </div>
     <div class="container-fluid">
       <div class="row">
