@@ -22,9 +22,19 @@
                     <a href="#"> <i class="fab fa-instagram"></i></a>
                   </div>
                   <div class="lang-option">
-                    <nuxt-link :to="switchLocalePath('pt')">PT</nuxt-link>
-                    <span>|</span>
-                    <nuxt-link :to="switchLocalePath('en')">EN</nuxt-link>
+                    <a
+                      href="#"
+                      @click.prevent.stop="changeLocale('pt')"
+                      :class="[showBtn ? 'active' : 'inactive']"
+                      >PT</a
+                    >
+                    <span></span>
+                    <a
+                      href="#"
+                      @click.prevent.stop="changeLocale('en')"
+                      :class="[!showBtn ? 'active' : 'inactive']"
+                      >EN</a
+                    >
                   </div>
                 </div>
               </li>
@@ -74,9 +84,16 @@ export default {
       ]
     },
   },
+  methods: {
+    changeLocale(lang) {
+      lang = lang.toLowerCase()
+      this.$router.push(this.switchLocalePath(lang))
+      this.showBtn = !this.showBtn
+    },
+  },
   data() {
     return {
-      menu1: [],
+      showBtn: true,
     }
   },
 }
@@ -120,16 +137,34 @@ export default {
 .lang-option {
   display: flex;
   column-gap: 1rem;
+  align-items: center;
 }
 .nav-item .nav-link {
   color: #f0f1f1;
   font-size: 25px;
 }
+.nav-item .nav-link.active {
+  border-bottom: 5px solid #d4d4ba;
+}
 .social-media a {
   font-size: 2rem;
-  color: antiquewhite;
+  color: #28493c;
 }
 .lang-option a {
-  color: antiquewhite;
+  color: #28493c;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+.lang-option span {
+  border-left: 2px solid #b4c1c0;
+  height: 35px;
+}
+
+.lang-option .active {
+  color: #28493c !important;
+}
+.lang-option .inactive {
+  color: #b4c1c0 !important;
 }
 </style>
