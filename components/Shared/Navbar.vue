@@ -143,7 +143,7 @@ export default {
   color: #f0f1f1;
   font-size: 25px;
 }
-.nav-item .nav-link.active {
+.nuxt-link-exact-active.nuxt-link-active {
   border-bottom: 5px solid #d4d4ba;
 }
 .social-media a {

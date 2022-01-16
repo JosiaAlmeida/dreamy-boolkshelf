@@ -60,6 +60,7 @@ export default {}
 .reverse {
   flex-direction: row-reverse;
   justify-content: space-between;
+  height: 100vh;
 }
 .visible-mobile {
   visibility: hidden;
