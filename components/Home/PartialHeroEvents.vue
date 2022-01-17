@@ -19,10 +19,10 @@
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
-              </div>
-              <div class="button">
-                <button class="btn btnyellow">Ver noticía</button>
-                <div class="bar ml-3"></div>
+                <div class="button">
+                  <button class="btn btnyellow">Ver noticía</button>
+                  <div class="bar ml-3"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -146,7 +146,7 @@ p {
     align-items: flex-start !important;
     left: 0;
     width: 100%;
-    margin-top: -30% !important;
+    margin-top: -25% !important;
   }
 }
 </style>

@@ -5,6 +5,7 @@
     <HomeWhatDreamy />
     <HomeDreamStocks />
     <RoomartTitleDescription />
+    <SharedLinkMore name="Ver Galeria" to="/roomart" />
     <SharedCarouselPainting :slideShow="4" :slideScroll="4" :row="1">
       <div class="pt-4 pb-4" v-for="i in 16" :key="i">
         <div

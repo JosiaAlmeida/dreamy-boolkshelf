@@ -8,3 +8,9 @@ body{
 .pt-10{
     padding-top: 10rem;
 }
+img{
+  object-fit: cover;
+}
+p{
+  font-size: .8rem;
+}

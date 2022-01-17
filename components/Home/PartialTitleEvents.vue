@@ -8,6 +8,7 @@
           eventos que <br />
           ocorrem a volta do universo literário.
         </p>
+        <SharedLinkMore name="Ver Todos" to="/events" />
       </div>
       <div class="col-12">
         <HomePartialHeroEvents />
