@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12 text-white background p-5">
         <div>
-          <h1 class="text-padding">Dreamy Bookshelf</h1>
+          <h1 class="text-padding text-white">Dreamy Bookshelf</h1>
           <p class="text-padding w-75">
             Sonhe, visualize e monte connosco a estante dos teus sonhos
           </p>

@@ -14,6 +14,13 @@ export default {
   props: {
     ['to']: String,
     ['name']: String,
+    ['color']: String,
+  },
+  computed: {
+    color() {
+      this.color = !this.color ? '#E0DAD0' : '#444851'
+      return { '--color-background': this.color }
+    },
   },
 }
 </script>

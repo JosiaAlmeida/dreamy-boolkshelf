@@ -74,7 +74,7 @@
 }
 .img {
   height: 300px;
-  /* width: 200px; */
+  width: 100% !important;
 }
 .text-styles {
   padding: 5%;
@@ -82,6 +82,7 @@
   align-items: center;
 }
 .text-content-style {
+  color: #5d707a;
 }
 .img-visible-mobile {
   visibility: hidden;
@@ -92,6 +93,9 @@
 }
 .margin-negative-top2 {
   margin-top: -4%;
+}
+h3 {
+  font-weight: bold;
 }
 @media only screen and (max-width: 600px) {
   .img-mobile-ocult {
