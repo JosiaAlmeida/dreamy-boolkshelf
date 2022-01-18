@@ -82,7 +82,7 @@ export default {}
   background-size: cover;
 }
 .alignText {
-  height: 100vh;
+  height: 100%;
   padding: 5%;
 }
 .width-text {
@@ -95,10 +95,15 @@ export default {}
 .sizeIcon {
   font-size: 30px;
 }
+p {
+  font-size: 0.9rem;
+}
 @media only screen and (max-width: 600px) {
   .reverse {
     display: inline-block;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
   }
   .background {
     display: flex;

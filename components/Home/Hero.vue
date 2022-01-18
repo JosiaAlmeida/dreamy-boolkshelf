@@ -33,7 +33,7 @@ export default {}
   background: url('/assets/img/armario.jpg') no-repeat;
   background-size: cover;
   z-index: -1;
-  filter: brightness(0.4) grayscale(0.3);
+  filter: brightness(0.4) saturate(0.5);
 }
 .col-12 {
   height: 100vh;
@@ -42,6 +42,7 @@ export default {}
 }
 .text-padding {
   padding: 0% 5% 0% 5%;
+  color: #b5bab9;
 }
 @media only screen and (max-width: 600px) {
   .col-12 {
