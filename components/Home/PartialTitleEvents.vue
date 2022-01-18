@@ -8,7 +8,7 @@
           eventos que <br />
           ocorrem a volta do universo literário.
         </p>
-        <SharedLinkMore name="Ver Todos" to="/events" />
+        <SharedLinkMore colors="#E0DAD0" name="Ver Todos" to="/events" />
       </div>
       <div class="col-12">
         <HomePartialHeroEvents />
@@ -59,5 +59,8 @@ export default {
   width: 100%;
   height: 100%;
   background-color: #c1c5c3;
+}
+p {
+  color: #808080;
 }
 </style>

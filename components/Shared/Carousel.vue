@@ -8,7 +8,7 @@
             :style="imageProps(item.img)"
           >
             <div class="w-75">
-              <h5>{{ item.title }}</h5>
+              <h6>{{ item.title }}</h6>
               <small class="text-small-grey"> {{ item.date }} </small>
             </div>
           </div>
@@ -124,8 +124,8 @@ export default {
   margin: 1%;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(105, 115, 111, 0.9) 90%
+    rgba(0, 0, 0, 0) 40%,
+    rgba(105, 115, 111, 1) 93%
   );
   position: relative;
   color: #fff;
