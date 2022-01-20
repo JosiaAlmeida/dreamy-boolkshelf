@@ -37,7 +37,7 @@
               <i class="far fa-envelope sizeIcon mt-2"></i>
               <p class="mt-2">informate@dreamybookshelf.com</p>
             </div>
-            <div class="contact">
+            <div class="contact mb-5">
               <i class="fas fa-map-marker-alt sizeIcon mt-4"></i>
               <p class="mt-3">
                 Avenida da Liberdade n23 <br />
@@ -78,7 +78,7 @@ export default {}
   height: 100%;
   width: 100%;
   position: absolute;
-  background: url('/assets/img/womenPaint.jpg') no-repeat center center;
+  background: url('/assets/img/SObre nos 02@2x.png') no-repeat center center;
   background-size: cover;
 }
 .alignText {

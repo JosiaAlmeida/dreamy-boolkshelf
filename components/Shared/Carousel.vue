@@ -140,6 +140,7 @@ export default {
   height: 100%;
   border-radius: 10px;
   background: var(--backgroundimage) no-repeat;
+  background-size: cover;
   z-index: -1;
 }
 .text-small-grey {

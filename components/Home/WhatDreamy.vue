@@ -5,24 +5,28 @@
         <div class="row flex-wrap">
           <div class="col-6 mt-3">
             <img
-              src="/assets/img/armario.jpg"
+              src="/assets/img/shutterstock_1762598804_02.png"
               class="img-fluid mt-5 img"
               alt=""
             />
           </div>
           <div class="col-6">
-            <img src="/assets/img/armario.jpg" class="img-fluid img" alt="" />
+            <img
+              src="/assets/img/shutterstock_1227558304.png"
+              class="img-fluid img"
+              alt=""
+            />
           </div>
           <div class="margin-negative-top2 col-6">
             <img
-              src="/assets/img/armario.jpg"
+              src="/assets/img/shutterstock_1919540552-2.png"
               class="img-fluid mt-5 img img-mobile-ocult"
               alt=""
             />
           </div>
           <div class="margin-negative-top col-6">
             <img
-              src="/assets/img/armario.jpg"
+              src="/assets/img/shutterstock_732217162.png"
               class="img-fluid img img-mobile-ocult"
               alt=""
             />

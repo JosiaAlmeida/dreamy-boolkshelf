@@ -55,7 +55,7 @@ p {
   width: 80%;
   position: absolute;
   border-radius: 5px;
-  background: url('/assets/img/armario.jpg') no-repeat;
+  background: url('/assets/img/Grupo 412@2x.png') no-repeat;
   background-size: cover;
   z-index: 1;
 }

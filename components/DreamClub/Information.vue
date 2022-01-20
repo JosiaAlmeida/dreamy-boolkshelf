@@ -4,7 +4,9 @@
       <div
         class="col-12 p-5 d-flex align-items-end align-content-end text-white"
       >
-        <h1 class="w-50">Estamos a criar algo especial para ti, até já!</h1>
+        <h1 class="w-50 text-white">
+          Estamos a criar algo especial para ti, até já!
+        </h1>
       </div>
     </div>
   </div>
@@ -25,7 +27,8 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  background: url('/assets/img/armario.jpg') no-repeat center center;
+  background: url('/assets/img/shutterstock_1708821736.png') no-repeat center
+    center;
   background-size: cover;
   filter: brightness(0.9) grayscale(0.5);
   z-index: -1;
