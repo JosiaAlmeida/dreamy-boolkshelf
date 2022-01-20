@@ -8,7 +8,7 @@
             :style="imageProps(item.img)"
           >
             <div class="w-75">
-              <h6>{{ item.title }}</h6>
+              <h6 class="text-white">{{ item.title }}</h6>
               <small class="text-small-grey"> {{ item.date }} </small>
             </div>
           </div>
