@@ -1,5 +1,15 @@
 <template>
-  <div>
+  <div :class="this.$root._route.path == '/dreamclub' && 'ocultFooter'">
+    <div
+      id="arrow"
+      class="w-100 d-flex justify-content-center"
+      :class="this.$root._route.path == '/' && 'backgroundColor'"
+    >
+      <div @click="scrollTop()" class="pointer">
+        <img src="/assets/img/svg1.svg" alt="seta para cima" />
+        <p>Voltar para cima</p>
+      </div>
+    </div>
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -84,6 +94,21 @@
 
 <script>
 export default {
+  // mounted() {
+  //   if (this.$root._route.path == '/') {
+  //     // document.body..classList.add('backgroundColor')
+  //     document.getElementById('arrow').style.backgroundColor =
+  //       'rgba(99, 110, 106, 0.4)'
+  //     document.getElementById('arrow').style.marginTop = '-8px'
+  //     // console.log(arrow)
+  //   }
+  //   console.log(this.$root._route)
+  // },
+  computed: {
+    configStyle() {
+      return { '--backgroundColor': 'rgba(99, 110, 106, 0.4)' }
+    },
+  },
   methods: {
     scrollTop() {
       window.scroll({
@@ -97,6 +122,14 @@ export default {
 </script>
 
 <style scoped>
+.ocultFooter {
+  visibility: hidden;
+  height: 0px !important;
+}
+.backgroundColor {
+  background-color: rgba(99, 110, 106, 0.4);
+  margin-top: -8px;
+}
 .container-fluid {
   background-color: #1e3029;
 }
@@ -113,5 +146,8 @@ hr {
 }
 .text-footer-color {
   color: #f1e4d3;
+}
+.pointer {
+  cursor: pointer;
 }
 </style>

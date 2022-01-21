@@ -58,9 +58,15 @@ export default {
 .background {
   width: 100%;
   height: 100%;
-  background-color: #c1c5c3;
+  background-color: rgba(99, 110, 106, 0.4);
+  position: relative;
 }
 p {
   color: #808080;
+}
+@media screen and (max-width: 600px) {
+  .background {
+    /* margin-bottom: -2px !important; */
+  }
 }
 </style>
