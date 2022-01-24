@@ -2,7 +2,7 @@
   <div class="nav-bar-d">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <div class="nav-bar-wrapper d-flex align-items-center w-100" style="">
+        <div class="nav-bar-wrapper d-flex align-items-center w-100 new-class" style="">
           <nuxt-link class="navbar-brand" to="/">Navbar</nuxt-link>
           <div class="w-100" id="navbarNav">
             <ul class="navbar-nav">
