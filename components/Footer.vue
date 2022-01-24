@@ -125,6 +125,8 @@ export default {
 .ocultFooter {
   visibility: hidden;
   height: 0px !important;
+  position: absolute;
+  top: 0;
 }
 .backgroundColor {
   background-color: rgba(99, 110, 106, 0.4);

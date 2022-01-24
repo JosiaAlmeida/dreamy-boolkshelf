@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="main">
     <SharedNavbar />
     <DreamClubInformation />
   </div>
@@ -8,3 +8,9 @@
 <script>
 export default {}
 </script>
+
+<style scoped>
+#main {
+  overflow: hidden;
+}
+</style>
