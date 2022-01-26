@@ -12,11 +12,12 @@
   height: 100%;
   padding: 15% 10% 5% 10%;
   background-color: #dcdccb;
-  margin-top: -25%;
+  margin-top: -245px;
 }
 @media screen and (max-width: 600px) {
   .background {
     padding: 5%;
+    margin-top: -100px;
   }
 }
 </style>
