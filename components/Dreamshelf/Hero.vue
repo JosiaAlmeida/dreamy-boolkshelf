@@ -1,6 +1,6 @@
 <template>
   <div class="container h-100 backgroundsecond">
-    <div class="row containerElementHero h-100">
+    <div class="containerElementHero h-100">
       <div class="text-white containerDescription">
         <h4 class="text-white">Livro: Acácias from haven</h4>
         <p>Montando a estante dos sonhos | 09 Agosto 21</p>
@@ -48,6 +48,7 @@ hr {
 }
 .containerElementHero {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
@@ -61,7 +62,10 @@ hr {
     width: 100%;
   }
   .containerElementHero {
-    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* align-items: flex-end !important; */
   }
 }
 </style>
