@@ -6,13 +6,67 @@
         <div class="col-12 background">
           <DreamshelfHero />
         </div>
+        <div class="col-12">
+          <SharedSearchInput />
+        </div>
+        <div class="col-12">
+          <DreamshelfContainerElement
+            Theme="Minhas impressoes"
+            to="/"
+            nameLink="Ver todos"
+            :data="data"
+          />
+        </div>
+        <div class="col-12">
+          <DreamshelfContainerElement
+            Theme="Minhas impressoes"
+            to="/"
+            nameLink="Ver todos"
+            :data="data"
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      data: [
+        {
+          img: '/assets/img/shutterstock_1889758921@2x.png',
+          title: 'Img',
+        },
+        {
+          img: '/assets/img/shutterstock_1889758921@2x.png',
+          title: 'Img',
+        },
+        {
+          img: '/assets/img/shutterstock_1889758921@2x.png',
+          title: 'Img',
+        },
+        {
+          img: '/assets/img/shutterstock_1889758921@2x.png',
+          title: 'Img',
+        },
+        {
+          img: '/assets/img/shutterstock_1889758921@2x.png',
+          title: 'Img',
+        },
+        {
+          img: '/assets/img/shutterstock_1889758921@2x.png',
+          title: 'Img',
+        },
+        {
+          img: '/assets/img/shutterstock_1889758921@2x.png',
+          title: 'Img',
+        },
+      ],
+    }
+  },
+}
 </script>
 
 <style scoped>

@@ -9,6 +9,9 @@
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley
         </p>
+        <div class="text-start">
+          <SharedLinkMore name="Ver mais" colors="#E0DAD0" to="/dreamshelf" />
+        </div>
       </div>
       <div class="card containerCard p-3">
         <div class="card-body">
@@ -45,6 +48,12 @@ hr {
 }
 .containerDescription {
   width: 75%;
+  height: 100%;
+  margin-top: -50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 .containerElementHero {
   display: flex;
