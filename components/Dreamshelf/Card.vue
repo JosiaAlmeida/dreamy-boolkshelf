@@ -1,8 +1,10 @@
 <template>
-  <div class="card mb-3 card-container">
+  <div class="mb-3 card-container">
     <img :src="img" class="card-img-top img-fluid img" />
-    <div class="card-body">
+    <div class="mt-1">
       <h5 class="card-title text-center">Card title</h5>
+      <hr />
+      <small>09 Agosto 21</small>
     </div>
   </div>
 </template>
@@ -18,6 +20,10 @@ export default {
 
 <style scoped>
 .card {
-  width: 98%;
+  width: 250px;
+  /* height: 300px; */
+}
+.img {
+  height: 250px;
 }
 </style>
