@@ -1,12 +1,10 @@
 <template>
   <div class="row p-5">
-    <h1 v-for="(i, id) in arts" :key="id">
-      {{i.description}}
-      {{i.images}}
-    </h1>
-    <div class="col-md-3 col-sm-12 p-4" v-for="(i, idx) in arts.images" :key="idx">
+    <div class="col-md-3 col-sm-12 p-4" v-for="(i, idx) in arts" :key="idx">
       <div
-        :style="RotateRandom(Math.floor(Math.random() * -20) + 15,  i[0].url)"
+        :style="
+          RotateRandom(Math.floor(Math.random() * -20) + 15, i.images[idx].url)
+        "
         class="paint"
       ></div>
     </div>
@@ -18,55 +16,57 @@
 // import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 // // optional style for arrows & dots
 // import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
-import graph from "~/graphQL/graphQL-arts.gql";
+import graph from '~/graphQL/graphQL-arts.gql'
 export default {
   // components: { VueSlickCarousel },
- 
-  data(){
-    return{
-      arts:[]
+
+  data() {
+    return {
+      arts: [],
     }
   },
   mounted() {
-    this.getData();   
+    this.getData()
   },
-   watch: {
-    "$i18n.locale": {
+  watch: {
+    '$i18n.locale': {
       handler() {
-        this.getData();
+        this.getData()
       },
       deep: true,
     },
   },
   methods: {
-    RotateRandom(v,i) {
-      return { '--rotate': `rotate(${v}deg)`, '--images' :`url(${i})` }
+    RotateRandom(v, i) {
+      return { '--rotate': `rotate(${v}deg)`, '--images': `url(${i})` }
     },
-      getData() {
+    getData() {
       this.$apollo
         .query({
           query: graph,
-          fetchPolicy: "no-cache",
+          fetchPolicy: 'no-cache',
           context: {
             headers: {
-              "X-Languages": this.$i18n.locale,
+              'X-Languages': this.$i18n.locale,
             },
           },
         })
         .then((response) => {
-
-          this.arts =  this.$flattenData(response.data.querySaladearteContents, "data");
-         
-        }).then(() => {
-          console.log("Printxx",this.arts)
-      })
-        .catch((error) => error);
+          this.arts = this.$flattenData(
+            response.data.querySaladearteContents,
+            'data'
+          )
+        })
+        .then(() => {
+          console.log('Printxx', this.arts)
+        })
+        .catch((error) => error)
     },
   },
   computed: {
-    images(){
-      return { '--images':i}
-    }
+    images() {
+      return { '--images': i }
+    },
   },
 }
 </script>
