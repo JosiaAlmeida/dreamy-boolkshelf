@@ -1,7 +1,7 @@
 <template>
   <SharedModal :showPaint="showPaint" v-if="showPaint" @close="!showPaint">
     <VueSlickCarousel v-bind="options">
-      <div class="d-flex" v-for="i in 6" :key="i">
+      <div class="d-flex" v-for="(i, id) in 6" :key="id">
         <div>
           <img src="/assets/img/armario.jpg" class="img-fluid" alt="" />
         </div>
@@ -18,7 +18,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
   components: { VueSlickCarousel },
   props: {
-    ['showPaint']: Boolean,
+    ['showPaint']: Boolean,    
   },
   data() {
     return {

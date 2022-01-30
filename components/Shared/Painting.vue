@@ -1,8 +1,12 @@
 <template>
   <div class="row p-5">
-    <div class="col-md-3 col-sm-12 p-4" v-for="i in 16" :key="i">
+    <h1 v-for="(i, id) in arts" :key="id">
+      {{i.description}}
+      {{i.images}}
+    </h1>
+    <div class="col-md-3 col-sm-12 p-4" v-for="(i, idx) in arts.images" :key="idx">
       <div
-        :style="RotateRandom(Math.floor(Math.random() * -20) + 15)"
+        :style="RotateRandom(Math.floor(Math.random() * -20) + 15,  i[0].url)"
         class="paint"
       ></div>
     </div>
@@ -14,14 +18,56 @@
 // import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 // // optional style for arrows & dots
 // import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import graph from "~/graphQL/graphQL-arts.gql";
 export default {
   // components: { VueSlickCarousel },
-  methods: {
-    RotateRandom(v) {
-      return { '--rotate': `rotate(${v}deg)` }
+ 
+  data(){
+    return{
+      arts:[]
+    }
+  },
+  mounted() {
+    this.getData();   
+  },
+   watch: {
+    "$i18n.locale": {
+      handler() {
+        this.getData();
+      },
+      deep: true,
     },
   },
-  computed: {},
+  methods: {
+    RotateRandom(v,i) {
+      return { '--rotate': `rotate(${v}deg)`, '--images' :`url(${i})` }
+    },
+      getData() {
+      this.$apollo
+        .query({
+          query: graph,
+          fetchPolicy: "no-cache",
+          context: {
+            headers: {
+              "X-Languages": this.$i18n.locale,
+            },
+          },
+        })
+        .then((response) => {
+
+          this.arts =  this.$flattenData(response.data.querySaladearteContents, "data");
+         
+        }).then(() => {
+          console.log("Printxx",this.arts)
+      })
+        .catch((error) => error);
+    },
+  },
+  computed: {
+    images(){
+      return { '--images':i}
+    }
+  },
 }
 </script>
 
@@ -43,7 +89,7 @@ export default {
   width: 100%;
   height: 100%;
   position: absolute;
-  background: url('/assets/img/armario.jpg') no-repeat;
+  background: var(--images) no-repeat;
   z-index: -1;
   background-size: cover;
 }

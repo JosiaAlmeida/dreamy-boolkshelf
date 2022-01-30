@@ -7,4 +7,8 @@ export default {
     events: 'Eventos',
   },
   home: {},
+  arts:{
+    title: 'Sala de Artes',
+    description: 'Descubra, desfrute e se inspire com os cenários estéticos e minimalistas do mundo livros'
+  }
 }
