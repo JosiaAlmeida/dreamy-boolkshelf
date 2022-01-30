@@ -4,6 +4,7 @@
       <div class="col-12 LinkContent mt-4 mb-4">
         <nuxt-link to="/dreamshelf" class="Link">Fechar</nuxt-link>
       </div>
+      <div v-for="i in 20" class="col-3" :key="i"></div>
     </div>
   </div>
 </template>
