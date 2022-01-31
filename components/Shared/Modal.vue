@@ -1,6 +1,6 @@
 <template>
   <transition name="modal"
-    ><div class="modal-mask">
+    ><div class="modal-mask" :style="backgroundModal">
       <div class="modal-wrapper">
         <slot></slot>
       </div>
@@ -12,9 +12,18 @@
 export default {
   props: {
     ['showPaint']: Boolean,
+    ['colorb']: String,
   },
   mounted() {
     if (this.showPaint) document.body.classList.add('modal-open')
+  },
+  computed: {
+    backgroundModal() {
+      return {
+        '--bColor': this.colorb ? this.colorb : 'rgba(122, 130, 127, 0.96)',
+        // "--opacity": ""
+      }
+    },
   },
 }
 </script>
@@ -30,7 +39,7 @@ body.modal-open {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(122, 130, 127, 0.96);
+  background-color: var(--bColor);
   display: table;
   transition: opacity 0.3s ease;
 }

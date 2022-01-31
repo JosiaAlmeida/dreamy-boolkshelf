@@ -7,7 +7,19 @@
           style=""
         >
           <nuxt-link class="navbar-brand" to="/">Navbar</nuxt-link>
-          <div class="w-100" id="navbarNav">
+          <button
+            @click="showmodal(true)"
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-stream" style="color: #fff0de"></i>
+          </button>
+          <div class="nav-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <div class="nav-content-items">
                 <li class="nav-item" v-for="item in menu" :key="item.id">
@@ -47,6 +59,51 @@
           </div>
         </div>
       </div>
+      <SharedModal
+        v-show="isShow"
+        :showPaint="isShow"
+        colorb="rgba(255, 255, 255, 0.2)"
+      >
+        <nav :id="isShow ? 'sidebar' : ''">
+          <div :class="isShow ? 'nav-mobile collapse' : 'nav-mobile-false'">
+            <div class="d-flex w-100 mb-5 justify-content-between">
+              <div class="lang-option">
+                <a
+                  href="#"
+                  @click.prevent.stop="changeLocale('pt')"
+                  :class="[showBtn ? 'active-mobile' : 'inactive']"
+                  >PT</a
+                >
+                <span></span>
+                <a
+                  href="#"
+                  @click.prevent.stop="changeLocale('en')"
+                  :class="[!showBtn ? 'active-mobile' : 'inactive']"
+                  >EN</a
+                >
+              </div>
+              <button
+                class="btn btn-default btnclose"
+                @click="showmodal(false)"
+              >
+                Fechar
+                <div class="borderbtn"></div>
+              </button>
+            </div>
+            <div class="text-center">
+              <div class="nav-item" v-for="item in menu" :key="item.id">
+                <nuxt-link
+                  class="nav-link"
+                  extra-active-class="active"
+                  :style="{ color: colorb }"
+                  :to="item.url"
+                  >{{ item.title }}</nuxt-link
+                >
+              </div>
+            </div>
+          </div>
+        </nav>
+      </SharedModal>
     </nav>
   </div>
 </template>
@@ -95,10 +152,14 @@ export default {
       this.$router.push(this.switchLocalePath(lang))
       this.showBtn = !this.showBtn
     },
+    showmodal(v) {
+      this.isShow = v
+    },
   },
   data() {
     return {
       showBtn: true,
+      isShow: false,
     }
   },
 }
@@ -172,7 +233,61 @@ export default {
 .lang-option .active {
   color: #28493c !important;
 }
+.active-mobile {
+  color: #fff0de !important;
+}
 .lang-option .inactive {
   color: #b4c1c0 !important;
+}
+.nav-collapse {
+  width: 100% !important;
+}
+.btnclose {
+  color: #fff0de;
+  font-weight: 600;
+}
+.borderbtn {
+  border-bottom: 4px solid #fff0de;
+}
+@media screen and (max-width: 990px) {
+  .nav-mobile-false {
+    display: none;
+    overflow: hidden;
+    width: 100%;
+    z-index: -1000000;
+  }
+  #sidebar {
+    width: 100vw !important;
+    height: 100% !important;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(3px) !important;
+  }
+  .nav-bar-wrapper {
+    justify-content: space-between;
+  }
+  .nav-collapse {
+    overflow: hidden !important;
+    display: none;
+    height: 0px !important;
+  }
+  .nav-mobile {
+    height: 100vh !important;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+    background-color: #1e3029;
+    overflow: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition-duration: 0.5s;
+    width: 60vw;
+    z-index: 100000;
+    padding: 5% 2%;
+  }
+  .nav-item {
+    font-size: 1rem;
+  }
 }
 </style>
