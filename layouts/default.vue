@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div>
+    <div class="layouts">
       <Nuxt />
     </div>
     <Footer />
@@ -15,3 +15,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+.layouts {
+  height: 100%;
+}
+</style>

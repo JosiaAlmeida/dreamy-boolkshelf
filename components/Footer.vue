@@ -1,5 +1,8 @@
 <template>
-  <div :class="this.$root._route.path == '/dreamclub' && 'ocultFooter'">
+  <div
+    class="footer"
+    :class="this.$root._route.path == '/dreamclub' && 'ocultFooter'"
+  >
     <div
       id="arrow"
       class="w-100 d-flex justify-content-center"
@@ -94,16 +97,7 @@
 
 <script>
 export default {
-  // mounted() {
-  //   if (this.$root._route.path == '/') {
-  //     // document.body..classList.add('backgroundColor')
-  //     document.getElementById('arrow').style.backgroundColor =
-  //       'rgba(99, 110, 106, 0.4)'
-  //     document.getElementById('arrow').style.marginTop = '-8px'
-  //     // console.log(arrow)
-  //   }
-  //   console.log(this.$root._route)
-  // },
+  mounted() {},
   computed: {
     configStyle() {
       return { '--backgroundColor': 'rgba(99, 110, 106, 0.4)' }
@@ -122,6 +116,12 @@ export default {
 </script>
 
 <style scoped>
+.footer {
+  clear: both;
+  position: absolute;
+  bottom: -1;
+  width: 100%;
+}
 .ocultFooter {
   visibility: hidden;
   height: 0px !important;
