@@ -38,7 +38,7 @@ export default {}
 }
 .containerCard {
   background-color: rgba(209, 209, 205, 0.8);
-  margin-top: 10%;
+  margin-top: 200px;
   height: auto;
   width: 350px !important;
   /* padding: 10% 3%; */

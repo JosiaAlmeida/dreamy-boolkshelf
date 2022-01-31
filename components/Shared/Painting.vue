@@ -2,6 +2,7 @@
   <div class="row p-5">
     <div class="col-md-3 col-sm-12 p-4" v-for="(i, idx) in arts" :key="idx">
       <div
+        @click="openModal()"
         :style="
           RotateRandom(Math.floor(Math.random() * -20) + 15, i.images[idx].url)
         "
@@ -67,6 +68,9 @@ export default {
     images() {
       return { '--images': i }
     },
+  },
+  props: {
+    ['openModal']: Function,
   },
 }
 </script>

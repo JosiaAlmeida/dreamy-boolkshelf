@@ -4,19 +4,23 @@
     <div class="container-fluid pt-10">
       <div class="row">
         <RoomartTitleDescription />
-        <SharedPainting />
-        <RoomartShowPaint  :showPaint="showPaint" />
+        <SharedPainting :openModal="openModal" />
+        <RoomartShowPaint :showPaint="showPaint" />
       </div>
     </div>
   </div>
 </template>
 <script>
-
 export default {
   data() {
     return {
-      showPaint: false,     
+      showPaint: false,
     }
-  }   
+  },
+  methods: {
+    openModal() {
+      this.showPaint = true
+    },
+  },
 }
 </script>
