@@ -8,11 +8,7 @@
 </template>
 <script>
 export default {
-  computed: {
-    getRout() {
-      console.log(this.$root._route.path)
-    },
-  },
+  computed: {},
 }
 </script>
 <style scoped>
