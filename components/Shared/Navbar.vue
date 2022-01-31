@@ -9,15 +9,17 @@
           <nuxt-link class="navbar-brand" to="/">Navbar</nuxt-link>
           <div class="w-100" id="navbarNav">
             <ul class="navbar-nav">
-              <li class="nav-item" v-for="item in menu" :key="item.id">
-                <nuxt-link
-                  class="nav-link"
-                  extra-active-class="active"
-                  :style="{ color: colorb }"
-                  :to="item.url"
-                  >{{ item.title }}</nuxt-link
-                >
-              </li>
+              <div class="ml-auto mr-auto d-flex">
+                <li class="nav-item" v-for="item in menu" :key="item.id">
+                  <nuxt-link
+                    class="nav-link"
+                    extra-active-class="active"
+                    :style="{ color: colorb }"
+                    :to="item.url"
+                    >{{ item.title }}</nuxt-link
+                  >
+                </li>
+              </div>
               <li class="nav-item ml-auto">
                 <div class="nav-right-content">
                   <div class="social-media">
@@ -124,7 +126,7 @@ export default {
 }
 .navbar-nav {
   width: 100;
-  column-gap: 2rem;
+  /* column-gap: 2rem; */
   justify-content: space-around;
   align-items: center;
 }
@@ -144,7 +146,7 @@ export default {
 }
 .nav-item .nav-link {
   color: #f0f1f1;
-  font-size: 25px;
+  /* font-size: 25px; */
 }
 .nuxt-link-exact-active.nuxt-link-active {
   border-bottom: 5px solid #d4d4ba;
