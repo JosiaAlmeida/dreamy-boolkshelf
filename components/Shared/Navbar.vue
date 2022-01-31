@@ -9,7 +9,7 @@
           <nuxt-link class="navbar-brand" to="/">Navbar</nuxt-link>
           <div class="w-100" id="navbarNav">
             <ul class="navbar-nav">
-              <div class="ml-auto mr-auto d-flex">
+              <div class="nav-content-items">
                 <li class="nav-item" v-for="item in menu" :key="item.id">
                   <nuxt-link
                     class="nav-link"
@@ -116,16 +116,14 @@ export default {
   background: rgb(116 115 113 / 23%);
 }
 .nav-bar-wrapper {
-  column-gap: 7rem;
   justify-content: space-evenly;
-  column-gap: 11rem;
   padding: 3rem;
   display: flex;
   align-items: center;
   width: 100%;
 }
 .navbar-nav {
-  width: 100;
+  /* width: 100%; */
   /* column-gap: 2rem; */
   justify-content: space-around;
   align-items: center;
@@ -143,6 +141,11 @@ export default {
   display: flex;
   column-gap: 1rem;
   align-items: center;
+}
+.nav-content-items {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100% !important;
 }
 .nav-item .nav-link {
   color: #f0f1f1;
