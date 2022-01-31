@@ -14,6 +14,7 @@
             :row="1"
             :slideScroll="1"
             :slideShow="4"
+            :slideScrollMobile="1"
           >
             <div v-for="item in data" :key="item" class="cardcontainer">
               <DreamshelfCard :img="item.img" />

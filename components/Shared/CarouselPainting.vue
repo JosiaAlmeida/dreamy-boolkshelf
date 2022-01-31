@@ -15,6 +15,7 @@ export default {
     ['carouselData']: Array,
     ['slideShow']: Number,
     ['slideScroll']: Number,
+    ['slideScrollMobile']: Number,
     ['row']: Number,
   },
   data() {
@@ -24,7 +25,7 @@ export default {
         infinite: true,
         speed: 500,
         slidesToScroll: this.slideScroll ? this.slideScroll : 3,
-        dots: true,
+        dots: false,
         prevArrow: false,
         nextArrow: false,
         arrows: false,
@@ -33,9 +34,10 @@ export default {
           {
             breakpoint: 600,
             settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
+              slidesToShow: this.slideScrollMobile ? this.slideScrollMobile : 2,
+              slidesToScroll: 1,
               initialSlide: 1,
+              rows: 1,
               vertical: false,
               verticalSwiping: true,
             },

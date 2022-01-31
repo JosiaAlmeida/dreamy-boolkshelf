@@ -20,7 +20,7 @@
             :row="1"
             :rowmobile="2"
             :vertical="false"
-            :verticalSwiping="false"
+            :verticalSwiping="true"
           />
         </div>
       </div>

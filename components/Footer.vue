@@ -16,9 +16,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <div class="container text-white">
+          <div class="container text-white text-center">
             <div class="row">
-              <div class="col-md-6 col-sm-12 pt-5 pl-5">
+              <div class="col-md-6 col-sm-12 pt-5">
                 <div class="row pl-5 pr-5">
                   <div class="col-md-4 col-sm-12">
                     <img
@@ -27,9 +27,9 @@
                       alt="icone da dreamy-boolkshelf"
                     />
                   </div>
-                  <div class="col-md-8 col-sm-12">
+                  <div class="col-md-8 mt-2 col-sm-12 text-center">
                     <div class="row">
-                      <div class="col-12 d-flex">
+                      <div class="col-12 d-flex algin-justify text-center">
                         <img
                           src="/assets/img/Caminho 636.svg"
                           class="img-fluid imgLogo"
@@ -37,7 +37,7 @@
                         />
                         <p>Home</p>
                       </div>
-                      <div class="col-12 d-flex">
+                      <div class="col-12 d-flex algin-justify">
                         <img
                           src="/assets/img/Caminho 636.svg"
                           class="img-fluid imgLogo"
@@ -45,7 +45,7 @@
                         />
                         <p>Art Room</p>
                       </div>
-                      <div class="col-12 d-flex">
+                      <div class="col-12 d-flex algin-justify">
                         <img
                           src="/assets/img/Caminho 636.svg"
                           class="img-fluid imgLogo"
@@ -53,7 +53,7 @@
                         />
                         <p>A estante dos Sonhos</p>
                       </div>
-                      <div class="col-12 d-flex">
+                      <div class="col-12 d-flex algin-justify">
                         <img
                           src="/assets/img/Caminho 636.svg"
                           class="img-fluid imgLogo"
@@ -61,7 +61,7 @@
                         />
                         <p>Dreamy Club</p>
                       </div>
-                      <div class="col-12 d-flex">
+                      <div class="col-12 d-flex algin-justify">
                         <img
                           src="/assets/img/Caminho 636.svg"
                           class="img-fluid imgLogo"
@@ -69,7 +69,7 @@
                         />
                         <p>Sobre nós</p>
                       </div>
-                      <div class="col-12 d-flex">
+                      <div class="col-12 d-flex algin-justify">
                         <img
                           src="/assets/img/Caminho 636.svg"
                           class="img-fluid imgLogo"
@@ -151,5 +151,10 @@ hr {
 }
 .pointer {
   cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+  .algin-justify {
+    justify-content: center;
+  }
 }
 </style>
