@@ -59,7 +59,7 @@
           </div>
         </div>
       </div>
-      <!-- <SharedModal
+      <SharedModal
         v-show="isShow"
         :showPaint="isShow"
         colorb="rgba(255, 255, 255, 0.2)"
@@ -103,7 +103,7 @@
             </div>
           </div>
         </nav>
-      </SharedModal> -->
+      </SharedModal>
     </nav>
   </div>
 </template>
