@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Philosopher:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+*{
+    scroll-behavior: smooth;
+
+}
+body{
+    overflow-x: hidden;
+}
+.pt-10{
+    padding-top: 10rem;
+}
+img{
+  object-fit: cover;
+}
+p{
+  font-family: 'Nunito', sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+  color: #636E6A;
+  font-weight: bold;
+  font-family: 'Philosopher',sans-serif;
+}
+small{
+  color: #BEBEBE
+}

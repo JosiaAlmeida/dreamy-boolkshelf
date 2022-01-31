@@ -1,0 +1,11 @@
+query Fetch {
+  querySaladearteContents{
+    id
+    data:flatData{
+      description      
+      images{
+        url
+      }
+    }
+  }
+}
