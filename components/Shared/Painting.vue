@@ -1,10 +1,13 @@
 <template>
   <div class="row p-5">
-    <div class="col-md-3 col-sm-12 p-4" v-for="(i, idx) in arts" :key="idx">
+    <div class="col-md-3 col-sm-12 p-4" v-for="(i, idx) in 7" :key="idx">
       <div
         @click="openModal()"
         :style="
-          RotateRandom(Math.floor(Math.random() * -20) + 15, i.images[idx].url)
+          RotateRandom(
+            Math.floor(Math.random() * -20) + 15,
+            '/assets/img/shutterstock_1919540552.png'
+          )
         "
         class="paint"
       ></div>
@@ -17,7 +20,7 @@
 // import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 // // optional style for arrows & dots
 // import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
-import graph from '~/graphQL/graphQL-arts.gql'
+// import graph from '~/graphQL/graphQL-arts.gql'
 export default {
   // components: { VueSlickCarousel },
 
