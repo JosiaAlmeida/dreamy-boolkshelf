@@ -28,10 +28,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '~/plugins/flattenData.js',
-    '~/plugins/vue-slick-carousel.js'
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -44,11 +41,45 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
+    '@nuxtjs/apollo',
     '@nuxtjs/axios',
     '@nuxtjs/i18n',
   ],
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-
+  publicRuntimeConfig: {
+    axios: {
+      baseURL: `${process.env.SQUIDEX_URL}/api/content/${process.env.SQUIDEX_APP_NAME}`
+    },
+    squidex: {
+      content: `${process.env.SQUIDEX_URL}/api/content/${process.env.SQUIDEX_APP_NAME}`,
+      assets: `${process.env.SQUIDEX_URL}/api/apps/${process.env.SQUIDEX_APP_NAME}/assets`,
+      url: process.env.SQUIDEX_URL,
+      appName: process.env.SQUIDEX_APP_NAME,
+      clientId: process.env.SQUIDEX_CLIENT_ID,
+      clientSecret: process.env.SQUIDEX_CLIENT_SECRET,
+    }
+  },
+  axios: {
+    baseURL: `${process.env.SQUIDEX_URL}/api/content/${process.env.SQUIDEX_APP_NAME}`
+  },
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: `${process.env.SQUIDEX_URL}/api/content/${process.env.SQUIDEX_APP_NAME}/graphql`,
+      }
+    }
+  },
+  i18n: {
+    langDir: 'lang/',
+    locales: [
+      { code: 'pt', file: 'pt.js' },
+      { code: 'en', file: 'en.js' },
+    ],
+    defaultLocale: 'pt',
+    vueI18n: {
+      fallbackLocale: 'pt',
+    },
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
