@@ -1,9 +1,9 @@
 <template>
-  <div class="row">
-    <div class="container">
+  <div class="">
+    <div class="nav-container">
       <div class="d-flex justify-content-between">
         <h5>{{ Theme }}</h5>
-        <router-link :to="to">
+        <router-link v-if="data && data.length > 5" :to="to">
           <h5>{{ nameLink }}</h5>
         </router-link>
       </div>
@@ -15,9 +15,10 @@
             :slideScroll="1"
             :slideShow="4"
             :slideScrollMobile="1"
+            v-if="data && data.length"
           >
-            <div v-for="item in data" :key="item" class="cardcontainer">
-              <DreamshelfCard :img="item.img" />
+            <div v-for="(item, idx) in data" :key="idx" class="cardcontainer">
+              <DreamshelfCard :item="item" />
             </div>
           </SharedCarouselPainting>
         </div>
@@ -37,6 +38,6 @@ export default {
 </script>
 <style scoped>
 .cardcontainer {
-  width: 250px !important;
+  max-width: 372px;
 }
 </style>

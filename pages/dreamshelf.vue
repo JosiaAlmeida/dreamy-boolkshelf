@@ -14,23 +14,24 @@
             Theme="Minhas impressoes"
             to="/"
             nameLink="Ver todos"
-            :data="data"
+            :data="impressoes"
           />
         </div>
-        <div class="col-12">
+        <!--<div class="col-12">
           <DreamshelfContainerElement
-            Theme="Minhas impressoes"
+            Theme="Virou filme/Série"
             to="/"
             nameLink="Ver todos"
             :data="data"
           />
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import gqlImpressoes from '../graphQL/graphQL-MinhasImpressoes.gql'
 export default {
   data() {
     return {
@@ -64,8 +65,41 @@ export default {
           title: 'Img',
         },
       ],
+      impressoes:[]
     }
   },
+    mounted() {
+    this.getData()
+  },
+  watch: {
+    '$i18n.locale': {
+      handler() {
+        this.getData()
+      },
+      deep: true,
+    },
+  },
+  methods: {
+     getData() {
+      this.$apollo
+        .query({
+          query: gqlImpressoes,
+          fetchPolicy: 'no-cache',
+          context: {
+            headers: {
+              'X-Languages': this.$i18n.locale,
+            },
+          },
+        })
+        .then((response) => {
+          this.impressoes = this.$flattenData(
+            response.data.queryMinhasimpressoesContents,
+            'data'
+          )
+        })
+        .catch((error) => error)
+    },
+  }
 }
 </script>
 

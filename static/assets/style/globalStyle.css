@@ -24,3 +24,40 @@ h1,h2,h3,h4,h5,h6{
 small{
   color: #BEBEBE
 }
+
+
+.nav-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+@media(max-width:640px) {
+  .nav-container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+  }
+  .show-none {
+      display: none !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav-container {
+      max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav-container {
+      max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .nav-container {
+      max-width: 1590px;
+  }
+}
