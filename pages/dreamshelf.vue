@@ -11,27 +11,43 @@
         </div>
         <div class="col-12">
           <DreamshelfContainerElement
-            Theme="Minhas impressoes"
+            Theme="Em alta"
             to="/"
             nameLink="Ver todos"
             :data="impressoes"
           />
         </div>
-        <!--<div class="col-12">
+        <div class="col-12">
+          <DreamshelfContainerElement
+            Theme="Minhas impressoes"
+            to="/"
+            nameLink="Ver todos"
+            :data="emAlta"
+          />
+        </div>
+        <div class="col-12">
+          <DreamshelfContainerElement
+            Theme="Montando a estante dos sonhos"
+            to="/"
+            nameLink="Ver todos"
+            :data="montando"
+          />
+        </div>
+        <div class="col-12">
           <DreamshelfContainerElement
             Theme="Virou filme/Série"
             to="/"
             nameLink="Ver todos"
-            :data="data"
+            :data="filmes"
           />
-        </div>-->
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import gqlImpressoes from '../graphQL/graphQL-MinhasImpressoes.gql'
+import gqlImpressoes from '../graphQL/queriesDreamyShelf.gql'
 export default {
   data() {
     return {
@@ -65,10 +81,13 @@ export default {
           title: 'Img',
         },
       ],
-      impressoes:[]
+      impressoes: [],
+      emAlta: [],
+      filmes: [],
+      montando: [],
     }
   },
-    mounted() {
+  mounted() {
     this.getData()
   },
   watch: {
@@ -80,7 +99,7 @@ export default {
     },
   },
   methods: {
-     getData() {
+    getData() {
       this.$apollo
         .query({
           query: gqlImpressoes,
@@ -92,14 +111,21 @@ export default {
           },
         })
         .then((response) => {
+          const data = response.data
           this.impressoes = this.$flattenData(
-            response.data.queryMinhasimpressoesContents,
+            data.queryMinhasimpressoesContents,
             'data'
           )
+          this.emAlta = this.$flattenData(data.queryEmaltaContents, 'data')
+          this.montando = this.$flattenData(
+            data.queryMontandoaestanteContents,
+            'data'
+          )
+          this.filmes = this.$flattenData(data.queryViroufilmeContents, 'data')
         })
         .catch((error) => error)
     },
-  }
+  },
 }
 </script>
 
