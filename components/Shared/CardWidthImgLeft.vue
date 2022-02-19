@@ -3,15 +3,15 @@
     <div class="row g-0">
       <div class="col-6">
         <img
-          :src="`${ImgComputed}`"
+          :src="`${images.url}`"
           class="img-fluid img rounded-start"
-          :alt="`${description}`"
+          :alt="`${images.slug}`"
         />
       </div>
       <div class="card-body col-6 marginTopNegative">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">{{ title }}</h5>
         <p class="card-text">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted">{{ datapublicacao }}</small>
         </p>
       </div>
     </div>
@@ -20,15 +20,11 @@
 <script>
 export default {
   props: {
-    ['img']: String,
-    ['description']: String,
-    ['date']: String,
+    ['images']: String,
+    ['title']: String,
+    ['datapublicacao']: String,
   },
-  computed: {
-    ImgComputed() {
-      return `/assets/img/${this.img}`
-    },
-  },
+  computed: {},
 }
 </script>
 

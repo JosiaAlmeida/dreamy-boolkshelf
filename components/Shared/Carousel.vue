@@ -5,11 +5,13 @@
         <nuxt-link class="Link" :to="'event/' + i">
           <div
             class="cardContainer d-flex align-items-end p-4"
-            :style="imageProps(item.img)"
+            :style="imageProps(item.images.url)"
           >
             <div class="w-75">
               <h6 class="text-white">{{ item.title }}</h6>
-              <small class="text-small-grey"> {{ item.date }} </small>
+              <small class="text-small-grey">
+                {{ Date.parse(item.date) }}
+              </small>
             </div>
           </div>
         </nuxt-link>

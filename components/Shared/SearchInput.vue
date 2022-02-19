@@ -1,13 +1,6 @@
 <template>
   <div
-    class="
-      col-12
-      d-flex
-      justify-content-center
-      align-content-center
-      mt-5
-      mb-5
-    "
+    class="col-12 d-flex justify-content-center align-content-center mt-5 mb-5"
   >
     <input type="text" placeholder="Pesquisar" class="form-control mt-5" />
   </div>
