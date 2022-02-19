@@ -46,6 +46,19 @@ query Fetch {
         url
       }
     }
+  },
+    queryDestaquesContents{
+    id
+    data:flatData{
+      title
+      date
+      content
+      datapublicacao
+      images{
+      	url
+        slug
+    	}
+    }
   }
 
 }

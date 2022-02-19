@@ -4,14 +4,14 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 background">
-          <DreamshelfHero />
+          <DreamshelfHero :destaques="destaques" />
         </div>
         <div class="col-12">
           <SharedSearchInput />
         </div>
         <div class="col-12">
           <DreamshelfContainerElement
-            Theme="Em alta"
+            Theme="Minhas impressoes"
             to="/"
             nameLink="Ver todos"
             :data="impressoes"
@@ -19,7 +19,7 @@
         </div>
         <div class="col-12">
           <DreamshelfContainerElement
-            Theme="Minhas impressoes"
+            Theme="Em Alta"
             to="/"
             nameLink="Ver todos"
             :data="emAlta"
@@ -85,6 +85,7 @@ export default {
       emAlta: [],
       filmes: [],
       montando: [],
+      destaques: []
     }
   },
   mounted() {
@@ -122,6 +123,7 @@ export default {
             'data'
           )
           this.filmes = this.$flattenData(data.queryViroufilmeContents, 'data')
+          this.destaques = this.$flattenData(data.queryDestaquesContents, 'data')
         })
         .catch((error) => error)
     },

@@ -29,7 +29,14 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    destaques: {
+      type: "Array",
+      default: () => []
+    }
+  }
+}
 </script>
 
 <style scoped>
