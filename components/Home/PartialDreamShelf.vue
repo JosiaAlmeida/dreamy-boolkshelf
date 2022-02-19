@@ -24,8 +24,8 @@
           estante do sonhos e acompanhe o progresso de construção da biblioteca
           particular
         </p>
-        <div v-for="i in 4" :key="i">
-          <SharedCardWidthImgLeft :img="'IMG_1202@2x.png'" />
+        <div v-for="(item, i) in destaques" :key="i">
+          <SharedCardWidthImgLeft v-bind="item" />
         </div>
       </div>
     </div>
@@ -33,7 +33,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    ['destaques']: Array,
+  },
+}
 </script>
 
 <style scoped>

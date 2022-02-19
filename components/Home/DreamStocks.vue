@@ -1,10 +1,18 @@
 <template>
   <div class="background">
-    <HomePartialDreamShelf />
+    <HomePartialDreamShelf :destaques="destaques" />
 
     <SharedLinkMore to="/" name="Ver Todas" colors="#646F65" />
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    ['destaques']: Array,
+  },
+}
+</script>
 
 <style scoped>
 .background {

@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3 card-container">
-    <div style="box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;" v-if="item">
+    <div style="box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px" v-if="item">
       <nuxt-link class="Link" :to="'arts/' + item.id">
         <img
           v-if="item.images && item.images.length"
@@ -39,10 +39,10 @@ export default {
 .img {
   height: 310px;
 }
-.Link:hover{
+.Link:hover {
   text-decoration: none;
 }
-.Link{
+.Link {
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 }

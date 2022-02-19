@@ -3,7 +3,7 @@
     <SharedNavbar />
     <HomeHero />
     <HomeWhatDreamy />
-    <HomeDreamStocks />
+    <HomeDreamStocks :destaques="destaques" />
     <RoomartTitleDescription />
     <SharedLinkMore colors="#28493C" name="Ver Galeria" to="/roomart" />
     <SharedCarouselPainting :slideShow="4" :slideScroll="4" :row="1">
@@ -14,15 +14,56 @@
         ></div>
       </div>
     </SharedCarouselPainting>
-    <HomePartialTitleEvents />
+    <HomePartialTitleEvents :events="events" />
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      impressoes: [],
+      emAlta: [],
+      filmes: [],
+      montando: [],
+      destaques: [],
+      events: [],
+    }
+  },
   methods: {
     RotateRandom(v) {
       return { '--rotate': `rotate(${v}deg)` }
+    },
+    getData() {
+      this.$apollo
+        .query({
+          query: gqlImpressoes,
+          fetchPolicy: 'no-cache',
+          context: {
+            headers: {
+              'X-Languages': this.$i18n.locale,
+            },
+          },
+        })
+        .then((response) => {
+          const data = response.data
+          this.events = this.$flattenData(data.queryEventsContents, 'data')
+          this.impressoes = this.$flattenData(
+            data.queryMinhasimpressoesContents,
+            'data'
+          )
+          this.emAlta = this.$flattenData(data.queryEmaltaContents, 'data')
+          this.montando = this.$flattenData(
+            data.queryMontandoaestanteContents,
+            'data'
+          )
+          this.filmes = this.$flattenData(data.queryViroufilmeContents, 'data')
+          this.destaques = this.$flattenData(
+            data.queryDestaquesContents,
+            'data'
+          )
+        })
+        .catch((error) => error)
     },
   },
 }

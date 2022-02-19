@@ -1,6 +1,10 @@
 <template>
   <div class="col-md-11 col-sm-12 mt-3 mb-4">
-    <VueSlickCarousel class="slick-default" v-bind="options">
+    <VueSlickCarousel
+      v-if="carouselData.length > 0"
+      class="slick-default"
+      v-bind="options"
+    >
       <div class="mb-4" v-for="(item, i) in carouselData" :key="i">
         <nuxt-link class="Link" :to="'event/' + i">
           <div
@@ -20,6 +24,9 @@
         <div class="custom-dot"></div>
       </template> -->
     </VueSlickCarousel>
+    <div class="text-center">
+      <h4>Nenhuma informação</h4>
+    </div>
   </div>
 </template>
 
