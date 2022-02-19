@@ -85,7 +85,7 @@ export default {
       emAlta: [],
       filmes: [],
       montando: [],
-      destaques: []
+      destaques: [],
     }
   },
   mounted() {
@@ -123,7 +123,10 @@ export default {
             'data'
           )
           this.filmes = this.$flattenData(data.queryViroufilmeContents, 'data')
-          this.destaques = this.$flattenData(data.queryDestaquesContents, 'data')
+          this.destaques = this.$flattenData(
+            data.queryDestaquesContents,
+            'data'
+          )
         })
         .catch((error) => error)
     },
