@@ -63,7 +63,6 @@ export default {
                     )
                 })
                 .catch((error) => error)
-            console.log(this.emAlta, this.filmes, this.events)
         },
     },
 }
