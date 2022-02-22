@@ -1,0 +1,13 @@
+query Fetch {
+	queryEventsContents {
+		id
+		data: flatData {
+			title
+			date
+			description
+			images {
+				url
+			}
+		}
+	}
+}

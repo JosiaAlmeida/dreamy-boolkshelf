@@ -1,0 +1,15 @@
+query Fetch{
+     queryDestaquesContents{
+    id
+    data:flatData{
+      title
+      date
+      content
+      datapublicacao
+      images{
+      	url
+        slug
+    	}
+    }
+  }
+}

@@ -10,17 +10,21 @@
         <div class="">
           <div class="card p-3">
             <div class="card-body">
-              <div class="card-text">
+              <div class="card-text" v-if="lastEvent.length > 0">
                 <h5 class="text-white-title">
-                  Feira dos livros gigantesca no consulado português em Angola
+                  {{ lastEvent[lastEvent.length - 1].title }}
                 </h5>
-                <small class="text-small-grey">04 Agosto 2020</small>
+                <small class="text-small-grey">{{
+                  lastEvent[lastEvent.length - 1].date
+                }}</small>
                 <p class="text-white mt-3">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  {{ lastEvent[lastEvent.length - 1].description }}
                 </p>
               </div>
-              <div class="button">
+              <div class="card-text" v-else>
+                <h5 class="text-white-title">Nenhuma informação</h5>
+              </div>
+              <div class="button" v-if="lastEvent.length > 0">
                 <button class="btn btnyellow">Ver noticía</button>
                 <div class="bar ml-3"></div>
               </div>
@@ -33,7 +37,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    ['lastEvent']: Array,
+  },
+}
 </script>
 
 <style scoped>
