@@ -16,7 +16,7 @@
       <div class="col-12">
         <div class="row justify-content-center">
           <SharedCarousel
-            :carouselData="images"
+            :carouselData="events"
             :row="1"
             :rowmobile="2"
             :vertical="false"
@@ -50,6 +50,9 @@ export default {
         },
       ],
     }
+  },
+  props: {
+    ['events']: Array,
   },
 }
 </script>
