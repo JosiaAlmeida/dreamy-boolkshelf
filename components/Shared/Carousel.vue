@@ -81,7 +81,7 @@ export default {
   },
   methods: {
     saveRoute() {
-      localStorage.setItem('routeEventCarousel', this.$root._route.path)
+      window.localStorage.setItem('routeEventCarousel', this.$root._route.path)
     },
     imageProps(img) {
       return { '--backgroundimage': `url(${img})` }
