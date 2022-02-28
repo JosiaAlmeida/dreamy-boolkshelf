@@ -43,8 +43,8 @@ export default {
     }
   },
   created() {
-    if (localStorage.getItem('routeEventCarousel'))
-      this.routes = localStorage.getItem('routeEventCarousel')
+    if (window.localStorage.getItem('routeEventCarousel'))
+      this.routes = window.localStorage.getItem('routeEventCarousel')
   },
 }
 </script>

@@ -21,8 +21,8 @@
           <div class="card-text">
             <h5>Destaques</h5>
             <hr />
-            <div v-for="i in 4" :key="i">
-              <SharedCardWidthImgLeft v-bind="destaques" />
+            <div v-for="(item, i) in destaques" :key="i">
+              <SharedCardWidthImgLeft v-bind="item" />
             </div>
           </div>
         </div>
