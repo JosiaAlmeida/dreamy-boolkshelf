@@ -1,0 +1,14 @@
+query Fetch{
+  queryViroufilmeContents{
+    id
+    data:flatData{
+      title
+      date
+      datapublicacao
+      content
+      images{
+        url
+      }
+    }
+  }
+}

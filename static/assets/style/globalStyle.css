@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Philosopher:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+*{
+    scroll-behavior: smooth;
+
+}
+body{
+    overflow-x: hidden;
+}
+.pt-10{
+    padding-top: 10rem;
+}
+img{
+  object-fit: cover;
+}
+p{
+  font-family: 'Nunito', sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+  color: #636E6A;
+  font-weight: bold;
+  font-family: 'Philosopher',sans-serif;
+}
+small{
+  color: #BEBEBE
+}
+
+
+.nav-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+@media(max-width:640px) {
+  .nav-container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+  }
+  .show-none {
+      display: none !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav-container {
+      max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav-container {
+      max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .nav-container {
+      max-width: 1590px;
+  }
+}

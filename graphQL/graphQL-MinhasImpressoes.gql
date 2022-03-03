@@ -1,0 +1,14 @@
+query Fetch {
+  queryMinhasimpressoesContents{
+    id
+    data:flatData{
+      content
+      title
+      datapublicacao
+      date
+      images{
+        url
+      }
+    }
+  }
+}
