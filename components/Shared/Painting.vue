@@ -1,10 +1,10 @@
 <template>
   <div class="row p-5">
-    <div class="col-md-4 col-sm-12 p-4" v-for="(i, idx) in arts" :key="idx">
+    <div class="col-md-4 col-sm-12 p-4" v-for="(i, idx) in imgs" :key="idx">
       <div
         @click="openModal()"
         :style="
-          RotateRandom(Math.floor(Math.random() * -20) + 15, i.images[0].url)
+          RotateRandom(Math.floor(Math.random() * -20) + 15, i)
         "
         class="paint"
       ></div>
@@ -22,10 +22,6 @@
 </template>
 
 <script>
-// import VueSlickCarousel from 'vue-slick-carousel'
-// import 'vue-slick-carousel/dist/vue-slick-carousel.css'
-// // optional style for arrows & dots
-// import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 import graph from '~/graphQL/graphQL-arts.gql'
 export default {
   // components: { VueSlickCarousel },
@@ -33,10 +29,12 @@ export default {
   data() {
     return {
       arts: [],
+      imgs: [],
     }
   },
   mounted() {
     this.getData()
+    this.getAllImage()
   },
   watch: {
     '$i18n.locale': {
@@ -68,10 +66,19 @@ export default {
           )
         })
         .then(() => {
-          console.log('Printxx', this.arts)
+          const item = this.arts.map((item) => item.images)
+          for (let index = 0; index < item.length; index++) {
+            const element = item[index].map((item) => item);
+            for (let j = 0; j < element.length; j++) {
+              const element2 = element[j].url;
+              this.imgs.push(element2)
+            }
+          }
         })
         .catch((error) => error)
     },
+    getAllImage(){
+    }
   },
   computed: {
     images() {
