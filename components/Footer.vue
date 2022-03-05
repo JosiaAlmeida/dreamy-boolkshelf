@@ -140,11 +140,7 @@ hr {
 }
 .img {
   width: 100px;
-<<<<<<< HEAD
-  height: 100px;
-=======
   height: auto;
->>>>>>> 84b4fb971610d8e7fd1836894547212a15a9cc4a
 }
 .imgLogo {
   width: 20px;
