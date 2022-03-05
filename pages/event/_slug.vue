@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12 LinkContent mt-4 mb-4">
-        <nuxt-link :to="routes" class="Link">Fechar</nuxt-link>
+        <nuxt-link to="/" class="Link">Fechar</nuxt-link>
       </div>
-      <div class="mt-2 col-md-7 img col-sm-12">
+      <div class="mt-2 col-md-7 img col-sm-12" :style="getImage">
         <!-- <img src="/assets/img/armario.jpg" alt="" class="img-fluid" /> -->
       </div>
       <!-- <div class="col-md-1"></div> -->
@@ -37,10 +37,7 @@ export default {
       events: [],
     }
   },
-  created() {
-    if (window.localStorage.getItem('routeEventCarousel'))
-      this.routes = window.localStorage.getItem('routeEventCarousel')
-  },
+  created() {},
   mounted() {
     this.getData()
   },
@@ -71,6 +68,21 @@ export default {
       const [, month, day, years] = date.toString().split(' ')
       return `${day} ${month} ${years}`
     },
+    getImage() {
+      if (this.events) {
+        if (this.events.images) {
+          console.log('images', images)
+          const images = this.events.images[0].url
+          console.log('images', images)
+          return {
+            '--image': `url(${images})`,
+          }
+        }
+      }
+      return {
+        '--image': `url(/assets/img/Grupo 412@2x.png)`,
+      }
+    },
   },
 }
 </script>
@@ -94,7 +106,7 @@ p {
   top: 0;
   left: 0;
   border-radius: 7px !important;
-  background: url('/assets/img/armario.jpg') no-repeat;
+  background: var(--image) no-repeat;
   background-size: cover;
 }
 .LinkContent {

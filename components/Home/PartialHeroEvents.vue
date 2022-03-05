@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 mt-2 d-flex reverse">
-        <div class="backgroundImage">
+        <div class="backgroundImage" :style="getImage">
           <div class="row">
             <div class="col-12"></div>
           </div>
@@ -10,19 +10,21 @@
         <div>
           <div class="card">
             <div class="card-body">
-              <div class="card-text">
+              <div class="card-text" v-if="lastEvent.length > 0">
                 <h5 class="text-white-title">
-                  Feira dos livros gigantesca no consulado português em Angola
+                  {{ lastEvent[lastEvent.length - 1].title }}
                 </h5>
-                <small class="text-small-grey text-ocult">04 Agosto 2020</small>
+                <small class="text-small-grey text-ocult">{{ getDate }}</small>
                 <p class="text-white text-ocult mt-3">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  {{ lastEvent[lastEvent.length - 1].description }}
                 </p>
                 <div class="button">
                   <button class="btn btnyellow">Ver noticía</button>
                   <div class="bar ml-3"></div>
                 </div>
+              </div>
+              <div class="card-text" v-else>
+                <h5 class="text-white-title">Nenhuma informação</h5>
               </div>
             </div>
           </div>
@@ -33,7 +35,31 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    ['lastEvent']: Array,
+  },
+  mounted() {},
+  computed: {
+    getDate() {
+      const date = new Date(this.lastEvent[this.lastEvent.length - 1].date)
+      const [, month, day, years] = date.toString().split(' ')
+      // console.log(this.lastEvent[)
+      return `${day} ${month} ${years}`
+    },
+    getImage() {
+      if (this.lastEvent.length) {
+        const images = this.lastEvent[this.lastEvent.length - 1].images[0].url
+        return {
+          '--image': `url(${images})`,
+        }
+      }
+      return {
+        '--image': `url(/assets/img/Grupo 412@2x.png)`,
+      }
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -55,7 +81,8 @@ p {
   width: 80%;
   position: absolute;
   border-radius: 5px;
-  background: url('/assets/img/Grupo 412@2x.png') no-repeat;
+  /* background: url('/assets/img/Grupo 412@2x.png') no-repeat; */
+  background: var(--image) no-repeat;
   background-size: cover;
   z-index: 1;
 }

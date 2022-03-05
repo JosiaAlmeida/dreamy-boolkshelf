@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 mt-2 d-flex reverse">
-        <div class="backgroundImage">
+        <div class="backgroundImage" :style="getImage">
           <div class="row">
             <div class="col-12"></div>
           </div>
@@ -14,9 +14,7 @@
                 <h5 class="text-white-title">
                   {{ lastEvent[lastEvent.length - 1].title }}
                 </h5>
-                <small class="text-small-grey">{{
-                  lastEvent[lastEvent.length - 1].date
-                }}</small>
+                <small class="text-small-grey">{{ getDate }}</small>
                 <p class="text-white mt-3">
                   {{ lastEvent[lastEvent.length - 1].description }}
                 </p>
@@ -40,6 +38,24 @@
 export default {
   props: {
     ['lastEvent']: Array,
+  },
+  computed: {
+    getDate() {
+      const date = new Date(this.lastEvent[this.lastEvent.length - 1].date)
+      const [, month, day, years] = date.toString().split(' ')
+      return `${day} ${month} ${years}`
+    },
+    getImage() {
+      if (this.lastEvent.length) {
+        const images = this.lastEvent[this.lastEvent.length - 1].images[0].url
+        return {
+          '--image': `url(${images})`,
+        }
+      }
+      return {
+        '--image': `url(/assets/img/Grupo 412@2x.png)`,
+      }
+    },
   },
 }
 </script>
@@ -66,7 +82,7 @@ p {
   width: 80%;
   position: absolute;
   border-radius: 5px;
-  background: url('/assets/img/Grupo 412@2x.png') no-repeat;
+  background: var(--image) no-repeat;
   background-size: cover;
 }
 .card {
@@ -139,7 +155,7 @@ p {
     width: 100% !important;
     position: absolute;
     border-radius: 0px;
-    background: url('/assets/img/armario.jpg') no-repeat center;
+    background: var(--image) no-repeat;
     background-size: cover;
   }
   .card {

@@ -10,7 +10,7 @@
             <div class="w-100">
               <h6 class="text-white">{{ item.title }}</h6>
               <small class="text-small-grey">
-                {{ Date.parse(item.date) }}
+                {{ getDate(item.date) }}
               </small>
             </div>
           </div>
@@ -67,6 +67,11 @@ export default {
     },
     imageProps(img) {
       return { '--backgroundimage': `url(${img})` }
+    },
+    getDate(item) {
+      const date = new Date(item)
+      const [, month, day, years] = date.toString().split(' ')
+      return `${day} ${month} ${years}`
     },
   },
   computed: {},

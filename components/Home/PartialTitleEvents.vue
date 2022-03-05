@@ -11,7 +11,7 @@
         <SharedLinkMore colors="#E0DAD0" name="Ver Todos" to="/events" />
       </div>
       <div class="col-12">
-        <HomePartialHeroEvents />
+        <HomePartialHeroEvents :lastEvent="events" />
       </div>
       <div class="col-12">
         <div v-if="events.length" class="row justify-content-center">
