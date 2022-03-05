@@ -7,25 +7,40 @@
       <div class="">
         <h3 class="text-center pb-3">{{ dreamy[0].title }}</h3>
         <div class="carousel-dreamy">
-          <VueSlickCarousel class="w-100 h-100" ref="refDreamy" v-bind="options" v-if="dreamy[0].images && dreamy[0].images.length">
-              <div class="carousel-dreamy-img carousel-wrapper w-100 h-100" v-for="(item, idx) in dreamy[0].images" :key="idx">
-                  <img :src="item.url" alt="" class="w-100">
-              </div>
-               <template #customPaging class="mt-5">
+          <VueSlickCarousel
+            class="w-100 h-100"
+            ref="refDreamy"
+            v-bind="options"
+            v-if="dreamy[0].images && dreamy[0].images.length"
+          >
+            <div
+              class="carousel-dreamy-img carousel-wrapper w-100 h-100"
+              v-for="(item, idx) in dreamy[0].images"
+              :key="idx"
+            >
+              <img :src="item.url" alt="" class="w-100" />
+            </div>
+            <template #customPaging class="mt-5">
               <div class="custom-dot"></div>
             </template>
           </VueSlickCarousel>
         </div>
         <div class="custom-details pt-5">
-            <div class="d-flex align-items-center" style="column-gap:3rem">
-                <h4>{{dreamy[0].created}}</h4>
-                <h4><span class="pr-3">|</span> {{dreamy[0].createdByUser.displayName}} <span class="pl-3">|</span></h4>
-                <h4>Tittle</h4>
-            </div>
-            <hr>
+          <div
+            class="d-flex align-items-center"
+            style="column-gap: 3rem; flex-wrap: wrap"
+          >
+            <h4>{{ getDate }}</h4>
+            <h4>
+              <span class="pr-3">|</span>
+              {{ dreamy[0].createdByUser.displayName }}
+              <span class="pl-3">|</span>
+            </h4>
+            <h4>Tittle</h4>
+          </div>
+          <hr />
         </div>
-        <div v-html="dreamy[0].content">
-        </div>
+        <div v-html="dreamy[0].content"></div>
       </div>
     </div>
   </div>
@@ -36,7 +51,9 @@ import query from '~/graphQL/graphQL-QueryDreamy.gql'
 export default {
   async asyncData({ params }) {
     const slug = params.slug // When calling /abc the slug will be "abc"
-    return { slug }
+    return {
+      slug,
+    }
   },
   data() {
     return {
@@ -45,7 +62,7 @@ export default {
       dreamy: {},
       options: {
         centerMode: true,
-        centerPadding: "50px",
+        centerPadding: '50px',
         focusOnSelect: true,
         slidesToShow: 1,
         speed: 500,
@@ -56,7 +73,7 @@ export default {
       },
     }
   },
-   watch: {
+  watch: {
     '$i18n.locale': {
       handler() {
         this.getById(this.id)
@@ -73,7 +90,9 @@ export default {
       this.$apollo
         .query({
           query: query,
-          variables: { filter: `id eq '${id}'` },
+          variables: {
+            filter: `id eq '${id}'`,
+          },
           fetchPolicy: 'no-cache',
           context: {
             headers: {
@@ -90,6 +109,13 @@ export default {
         .catch((error) => error)
     },
   },
+  computed: {
+    getDate() {
+      const date = new Date(this.dreamy[0].created)
+      const [, month, day, years] = date.toString().split(' ')
+      return `${day} ${month} ${years}`
+    },
+  },
 }
 </script>
 
@@ -98,12 +124,14 @@ p {
   font-size: 0.8rem;
   text-align: start;
 }
+
 .img {
   width: 100%;
   height: 500px;
   position: relative;
   /* background-color: red; */
 }
+
 .img::before {
   content: '';
   position: absolute;
@@ -115,9 +143,11 @@ p {
   background: url('/assets/img/armario.jpg') no-repeat;
   background-size: cover;
 }
+
 .LinkContent {
   padding: 1%;
 }
+
 .Link {
   color: #28493c;
   font-weight: 600;
@@ -125,37 +155,50 @@ p {
   margin-left: -1%;
   border-bottom: 1px solid #000;
 }
+
 .Link:hover {
   text-decoration: none;
 }
+
 .text-white-title {
   color: #636e6a !important;
   font-weight: bold;
 }
+
 .text-small-grey {
   color: #bcbcbc;
+}
+
+.carousel-dreamy-img img {
+  height: 600px;
+  object-fit: cover;
+}
+.carousel-dreamy {
+  width: 85%;
+  height: 600px;
+  margin: 0 auto;
 }
 @media only screen and (max-width: 600px) {
   .img {
     height: 300px;
   }
+
   .img::before {
     border-radius: 0px !important;
   }
+
   .LinkContent {
     width: 100%;
     text-align: right !important;
   }
-}
-.carousel-dreamy{
+
+  .carousel-dreamy-img img {
+    height: 300px;
+  }
+  .carousel-dreamy {
     width: 85%;
-    height:600px;
+    height: auto;
     margin: 0 auto;
-}
-.carousel-dreamy-img img{
-    
-        height:600px;
-        object-fit: cover;
-    
+  }
 }
 </style>

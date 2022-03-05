@@ -6,7 +6,6 @@
 
 <script>
 export default {
-  
   props: {
     ['carouselData']: Array,
     ['slideShow']: Number,

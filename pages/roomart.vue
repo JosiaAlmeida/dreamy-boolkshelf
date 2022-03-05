@@ -4,8 +4,13 @@
     <div class="container-fluid pt-10">
       <div class="row">
         <RoomartTitleDescription />
-        <SharedPainting :openModal="openModal" />
-        <RoomartShowPaint :showPaint="showPaint" />
+        <SharedPainting
+          :slideShow="4"
+          :slideScroll="4"
+          :row="5"
+          :openModal="openModal"
+        />
+        <RoomartShowPaint :showPaint="showPaint" :openModal="openModal" />
       </div>
     </div>
   </div>
@@ -19,7 +24,7 @@ export default {
   },
   methods: {
     openModal() {
-      this.showPaint = true
+      this.showPaint = !this.showPaint
     },
   },
 }

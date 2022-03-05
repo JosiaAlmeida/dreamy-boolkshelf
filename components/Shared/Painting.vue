@@ -3,20 +3,9 @@
     <div class="col-md-4 col-sm-12 p-4" v-for="(i, idx) in imgs" :key="idx">
       <div
         @click="openModal()"
-        :style="
-          RotateRandom(Math.floor(Math.random() * -20) + 15, i)
-        "
+        :style="RotateRandom(Math.floor(Math.random() * -20) + 15, i)"
         class="paint"
       ></div>
-      <!-- <div v-else>
-        <div
-          @click="openModal()"
-          :style="
-            RotateRandom(Math.floor(Math.random() * -20) + 15, i.images[idx].url)
-          "
-          class="paint"
-        ></div> -->
-      </div>
     </div>
   </div>
 </template>
@@ -24,8 +13,6 @@
 <script>
 import graph from '~/graphQL/graphQL-arts.gql'
 export default {
-  // components: { VueSlickCarousel },
-
   data() {
     return {
       arts: [],
@@ -68,17 +55,16 @@ export default {
         .then(() => {
           const item = this.arts.map((item) => item.images)
           for (let index = 0; index < item.length; index++) {
-            const element = item[index].map((item) => item);
+            const element = item[index].map((item) => item)
             for (let j = 0; j < element.length; j++) {
-              const element2 = element[j].url;
+              const element2 = element[j].url
               this.imgs.push(element2)
             }
           }
         })
         .catch((error) => error)
     },
-    getAllImage(){
-    }
+    getAllImage() {},
   },
   computed: {
     images() {

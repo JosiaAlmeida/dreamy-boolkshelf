@@ -1,64 +1,72 @@
 query Fetch {
-  queryMinhasimpressoesContents{
+  queryMinhasimpressoesContents {
     id
-    data:flatData{
+    data: flatData {
       content
       title
       datapublicacao
       date
-      images{
+      images {
         url
       }
-    }
-  },
-  queryViroufilmeContents{
-    id
-    data:flatData{
-      title
-      date
-      datapublicacao
-      content
-      images{
-        url
-      }
-    }
-  },
-  queryEmaltaContents{
-    id
-    data:flatData{
-      content
-      title
-      datapublicacao
-      date
-      images{
-        url
-      }
-    }
-  },
-  queryMontandoaestanteContents{
-    id
-    data:flatData{
-      title
-      date
-      datapublicacao
-      content
-      images{
-        url
-      }
-    }
-  },
-    queryDestaquesContents{
-    id
-    data:flatData{
-      title
-      date
-      content
-      datapublicacao
-      images{
-      	url
-        slug
-    	}
     }
   }
-
+  queryViroufilmeContents {
+    id
+    data: flatData {
+      title
+      date
+      datapublicacao
+      content
+      images {
+        url
+      }
+    }
+  }
+  queryEmaltaContents {
+    id
+    data: flatData {
+      content
+      title
+      datapublicacao
+      date
+      images {
+        url
+      }
+    }
+  }
+  queryMontandoaestanteContents {
+    id
+    data: flatData {
+      title
+      date
+      datapublicacao
+      content
+      images {
+        url
+      }
+    }
+  }
+  queryDestaquesContents {
+    id
+    data: flatData {
+      title
+      date
+      content
+      datapublicacao
+      images {
+        url
+        slug
+      }
+    }
+  }
+  querySaladearteContents {
+    id
+    data: flatData {
+      description
+      images {
+        url
+      }
+    }
+  }
 }

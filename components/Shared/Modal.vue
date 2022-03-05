@@ -17,6 +17,9 @@ export default {
   mounted() {
     if (this.showPaint) document.body.classList.add('modal-open')
   },
+  destroyed(){
+    document.body.classList.remove('modal-open')
+  },
   computed: {
     backgroundModal() {
       return {
@@ -39,11 +42,19 @@ body.modal-open {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--bColor);
   display: table;
   transition: opacity 0.3s ease;
 }
-
+.modal-mask::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(3px) !important;
+  background-color: var(--bColor);
+}
 .modal-wrapper {
   display: table-cell;
   /* vertical-align: middle; */
@@ -54,9 +65,10 @@ body.modal-open {
   height: 100%;
   margin: 0px auto;
   padding: 20px 30px;
-  background-color: rgba(122, 130, 127, 0.9);
+  /* background-color: rgba(122, 130, 127, 0.9); */
   border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33); */
+  backdrop-filter: blur(3px) !important;
   transition: all 0.3s ease;
   font-family: Helvetica, Arial, sans-serif;
 }
