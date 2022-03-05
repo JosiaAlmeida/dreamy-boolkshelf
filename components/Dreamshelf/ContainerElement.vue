@@ -17,7 +17,7 @@
             :slideScrollMobile="1"
             v-if="data && data.length"
           >
-            <div v-for="(item, idx) in data" :key="idx" class="cardcontainer">
+            <div v-for="(item, idx) in data" :key="idx" class="pl-2 pr-2 cardcontainer">
               <DreamshelfCard :item="item" />
             </div>
           </SharedCarouselPainting>

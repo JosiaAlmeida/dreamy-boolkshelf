@@ -37,7 +37,9 @@ export default {
   /* height: 300px; */
 }
 .img {
-  height: 310px;
+  height: 270px;
+  object-fit: cover;
+
 }
 .Link:hover {
   text-decoration: none;

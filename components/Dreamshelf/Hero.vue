@@ -39,10 +39,11 @@
 <script>
 export default {
   props: {
-    destaques: {
-      type: 'Array',
-      default: () => [],
-    },
+    ['destaques']: Array ,
+    // {
+    //   type: 'Array',
+    //   default: () => [],
+    // },
     ['title']: String,
   },
   computed: {},

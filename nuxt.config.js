@@ -17,15 +17,17 @@ export default {
         rel: 'stylesheet',
         href: 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css',
       },
-      {
-        rel: 'stylesheet',
-        href: 'assets/style/globalStyle.css',
-      },
+      // {
+      //   rel: 'stylesheet',
+      //   href: 'assets/style/globalStyle.css',
+      // },
     ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+    '@/static/assets/style/globalStyle.css'
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [

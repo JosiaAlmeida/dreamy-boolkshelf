@@ -6,7 +6,9 @@
           class="nav-bar-wrapper d-flex align-items-center w-100 new-class"
           style=""
         >
-          <nuxt-link class="navbar-brand" to="/">Navbar</nuxt-link>
+          <nuxt-link class="navbar-brand" to="/">
+            <img src="/assets/Logo.svg" class="img-fluid logo" alt="Logo da dreamy">
+          </nuxt-link>
           <button
             @click="showmodal(true)"
             class="navbar-toggler"
@@ -248,6 +250,10 @@ export default {
 }
 .borderbtn {
   border-bottom: 4px solid #fff0de;
+}
+.logo{
+  height: auto;
+  width: 100px;
 }
 @media screen and (max-width: 990px) {
   .nav-mobile-false {
