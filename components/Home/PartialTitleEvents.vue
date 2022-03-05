@@ -14,7 +14,7 @@
         <HomePartialHeroEvents />
       </div>
       <div class="col-12">
-        <div class="row justify-content-center">
+        <div v-if="events.length" class="row justify-content-center">
           <SharedCarousel
             :carouselData="events"
             :row="1"

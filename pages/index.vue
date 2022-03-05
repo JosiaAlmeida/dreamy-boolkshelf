@@ -6,15 +6,20 @@
     <HomeDreamStocks :destaques="destaques" />
     <RoomartTitleDescription />
     <SharedLinkMore colors="#28493C" name="Ver Galeria" to="/roomart" />
-    <SharedCarouselPainting :slideShow="4" :slideScroll="4" :row="1">
-      <div class="pt-4 pb-4" v-for="i in 4" :key="i">
+    <SharedCarouselPainting
+      v-if="imgs.length"
+      :slideShow="4"
+      :slideScroll="4"
+      :row="1"
+    >
+      <div class="pt-4 pb-4" v-for="i in imgs" :key="i">
         <div
-          :style="RotateRandom(Math.floor(Math.random() * -20) + 15)"
+          :style="RotateRandom(Math.floor(Math.random() * -20) + 15, i)"
           class="paint"
         ></div>
       </div>
     </SharedCarouselPainting>
-    <HomePartialTitleEvents :events="events" />
+    <HomePartialTitleEvents :events="events.length > 0 ? events : []" />
   </div>
 </template>
 
@@ -33,17 +38,9 @@ export default {
       imgs: [],
     }
   },
-  //   mounted() {
-  //     this.getData()
-  //   },
-  //   beforeUpdate(){
-
-  //     this.getData()
-  //   },
-  //   destroyed(){
-
-  //     this.getData()
-  //   },
+  mounted() {
+    this.getData()
+  },
   methods: {
     RotateRandom(v, i) {
       return {
@@ -122,7 +119,7 @@ export default {
   width: 100%;
   height: 100%;
   position: absolute;
-  background: url('/assets/img/armario.jpg') no-repeat;
+  background: var(--images) no-repeat;
   z-index: -1;
   background-size: cover;
 }

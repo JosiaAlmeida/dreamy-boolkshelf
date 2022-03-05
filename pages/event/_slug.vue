@@ -10,21 +10,14 @@
       <!-- <div class="col-md-1"></div> -->
       <div class="col-md-5 mt-2 pl-5 w-100 col-sm-12">
         <h3 class="text-white-title">
-          Feira dos livos gigantesca no consulado português em Angola
-          {{ this.slug }}
+          {{ events.title }}
         </h3>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-        </p>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
+          {{ events.description }}
         </p>
       </div>
       <div class="col-md-7 mt-5 mb-5 d-flex justify-content-between">
-        <small class="text-small-grey">10 de Agosto 2021</small>
+        <small class="text-small-grey"> {{ getDate }} </small>
         <small class="text-small-grey">Partilhar </small>
       </div>
     </div>
@@ -32,6 +25,7 @@
 </template>
 
 <script>
+import queriesEvents from '~/graphQL/queriesEvents.gql'
 export default {
   async asyncData({ params }) {
     const slug = params.slug // When calling /abc the slug will be "abc"
@@ -40,11 +34,43 @@ export default {
   data() {
     return {
       routes: null,
+      events: [],
     }
   },
   created() {
     if (window.localStorage.getItem('routeEventCarousel'))
       this.routes = window.localStorage.getItem('routeEventCarousel')
+  },
+  mounted() {
+    this.getData()
+  },
+  methods: {
+    async getData() {
+      await this.$apollo
+        .query({
+          query: queriesEvents,
+          fetchPolicy: 'no-cache',
+          context: {
+            headers: {
+              'X-Languages': this.$i18n.locale,
+            },
+          },
+        })
+        .then((response) => {
+          const data = response.data
+          const dataEvent = this.$flattenData(data.queryEventsContents, 'data')
+          this.events = dataEvent.find(({ id }) => id == this.slug)
+          console.log(this.events)
+        })
+        .catch((error) => error)
+    },
+  },
+  computed: {
+    getDate() {
+      const date = new Date(this.events.date)
+      const [, month, day, years] = date.toString().split(' ')
+      return `${day} ${month} ${years}`
+    },
   },
 }
 </script>
