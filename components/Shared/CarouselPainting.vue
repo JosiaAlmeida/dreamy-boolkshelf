@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="d-flex justify-content-center mt-2">
+    <div class="d-flex justify-content-center mt-2" v-if="arrowsShow">
       <button
         type="button"
         class="zIndex btn btn-default"
@@ -19,6 +19,22 @@
     <VueSlickCarousel class="slick-default" ref="refCarousel" v-bind="options">
       <slot></slot>
     </VueSlickCarousel>
+    <div class="d-flex justify-content-center" v-if="!arrowsShow">
+      <button
+        type="button"
+        class="zIndex btn btn-default"
+        @click="$refs.refCarousel.prev()"
+      >
+        <i class="fas fa-arrow-left" style="color: #1e3029"></i>
+      </button>
+      <button
+        class="zIndex btn btn-default"
+        type="button"
+        @click="$refs.refCarousel.next()"
+      >
+        <i class="fas fa-arrow-right" style="color: #1e3029"></i>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -35,6 +51,7 @@ export default {
     ['slideScrollMobile']: Number,
     ['row']: Number,
     ['arrowsShow']: Boolean,
+    ['centerMode']: Boolean,
   },
   data() {
     return {
@@ -42,8 +59,9 @@ export default {
         slidesToShow: this.slideShow ? this.slideShow : 3,
         infinite: true,
         speed: 500,
+        centerMode: this.centerMode ? true : false,
         slidesToScroll: this.slideScroll ? this.slideScroll : 3,
-        dots: true,
+        dots: false,
         prevArrow: false,
         nextArrow: false,
         arrows: false,

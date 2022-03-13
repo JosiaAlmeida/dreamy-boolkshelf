@@ -1,52 +1,56 @@
 <template>
   <div>
     <SharedNavbar />
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12 background">
-          <DreamshelfHero :destaques="destaques" />
-        </div>
-        <div class="col-12">
-          <SharedSearchInput />
-        </div>
-        <div class="col-12">
-          <DreamshelfContainerElement
-            Theme="Minhas impressoes"
-            to="/"
-            nameLink="Ver todos"
-            :data="impressoes"
-            url="impressoes"
-          />
-        </div>
-        <div class="col-12">
-          <DreamshelfContainerElement
-            Theme="Em Alta"
-            to="/"
-            nameLink="Ver todos"
-            :data="emAlta"
-            url="emAlta"
-          />
-        </div>
-        <div class="col-12">
-          <DreamshelfContainerElement
-            Theme="Montando a estante dos sonhos"
-            to="/"
-            nameLink="Ver todos"
-            :data="montando"
-            url="montando"
-          />
-        </div>
-        <div class="col-12">
-          <DreamshelfContainerElement
-            Theme="Virou filme/Série"
-            to="/"
-            nameLink="Ver todos"
-            :data="filmes"
-            url="filmes"
-          />
-        </div>
-      </div>
+    <!-- <div class="container-fluid"> -->
+    <!-- <div class="row"> -->
+    <div class="col-12 background">
+      <DreamshelfHero :destaques="destaques" />
     </div>
+    <div class="col-12">
+      <SharedSearchInput />
+    </div>
+    <!-- <div class="col-12"> -->
+    <DreamshelfContainerElement
+      Theme="Minhas impressoes"
+      to="/"
+      nameLink="Ver todos"
+      :data="impressoes"
+      url="impressoes"
+      :navContainer="true"
+    />
+    <!-- </div> -->
+    <!-- <div class="col-12"> -->
+    <DreamshelfContainerElement
+      Theme="Virou filme/Série"
+      to="/"
+      nameLink="Ver todos"
+      :data="filmes"
+      url="filmes"
+      :centerMode="true"
+    />
+    <!-- </div> -->
+    <!-- <div class="col-12"> -->
+    <DreamshelfContainerElement
+      Theme="Em Alta/ top favoritos do momento"
+      to="/"
+      nameLink="Ver todos"
+      :data="emAlta"
+      url="emAlta"
+      :centerMode="true"
+    />
+    <!-- </div> -->
+    <!-- <div class="col-12"> -->
+    <DreamshelfContainerElement
+      Theme="Montando a estante dos sonhos"
+      to="/"
+      nameLink="Ver todos"
+      :data="montando"
+      url="montando"
+      :navContainer="true"
+    />
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
   </div>
 </template>
 

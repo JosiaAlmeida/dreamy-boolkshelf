@@ -11,6 +11,7 @@
       :slideShow="4"
       :slideScroll="4"
       :row="1"
+      :arrowsShow="true"
     >
       <div class="pt-4 pb-4" v-for="i in imgs" :key="i">
         <div
