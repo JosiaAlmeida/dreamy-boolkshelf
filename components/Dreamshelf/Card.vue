@@ -16,7 +16,7 @@
         <div class="p-3">
           <h5 class="card-title text-center">{{ item.title }}</h5>
           <hr />
-          <small>09 Agosto 21</small>
+          <small> {{ getDate }} </small>
         </div>
       </nuxt-link>
     </div>
@@ -32,6 +32,13 @@ export default {
       default: 'impressoes'
     }
   },
+  computed: {
+    getDate() {
+      const date = new Date(this.item.date)
+      const [, month, day, years] = date.toString().split(' ')
+      return `${day} ${month} ${years}`
+    },
+  },
 }
 </script>
 
@@ -43,7 +50,6 @@ export default {
 .img {
   height: 270px;
   object-fit: cover;
-
 }
 .Link:hover {
   text-decoration: none;

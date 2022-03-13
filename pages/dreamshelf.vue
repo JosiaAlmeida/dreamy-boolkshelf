@@ -55,36 +55,6 @@ import gqlImpressoes from '../graphQL/queriesDreamyShelf.gql'
 export default {
   data() {
     return {
-      data: [
-        {
-          img: '/assets/img/shutterstock_1889758921@2x.png',
-          title: 'Img',
-        },
-        {
-          img: '/assets/img/shutterstock_1889758921@2x.png',
-          title: 'Img',
-        },
-        {
-          img: '/assets/img/shutterstock_1889758921@2x.png',
-          title: 'Img',
-        },
-        {
-          img: '/assets/img/shutterstock_1889758921@2x.png',
-          title: 'Img',
-        },
-        {
-          img: '/assets/img/shutterstock_1889758921@2x.png',
-          title: 'Img',
-        },
-        {
-          img: '/assets/img/shutterstock_1889758921@2x.png',
-          title: 'Img',
-        },
-        {
-          img: '/assets/img/shutterstock_1889758921@2x.png',
-          title: 'Img',
-        },
-      ],
       impressoes: [],
       emAlta: [],
       filmes: [],

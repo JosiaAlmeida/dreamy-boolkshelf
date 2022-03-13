@@ -1,42 +1,27 @@
 <template>
-  <div class="col-md-11 col-sm-12 mt-3 mb-4">
-    <VueSlickCarousel
-      v-if="carouselData.length > 0"
-      class="slick-default"
-      v-bind="options"
-    >
-      <div class="mb-4" v-for="(item, i) in carouselData" :key="i">
-        <nuxt-link class="Link" :to="'event/' + i">
+  <div class="col-11 mt-3 mb-4">
+    <VueSlickCarousel class="row" v-bind="options">
+      <div v-for="(item, i) in carouselData" :key="i" class="col-4">
+        <nuxt-link class="Link" :to="'event/' + item.id">
           <div
             class="cardContainer d-flex align-items-end p-4"
-            :style="imageProps(item.images.url)"
+            :style="imageProps(item.images[0].url)"
           >
-            <div class="w-75">
+            <div class="w-100">
               <h6 class="text-white">{{ item.title }}</h6>
               <small class="text-small-grey">
-                {{ Date.parse(item.date) }}
+                {{ getDate(item.date) }}
               </small>
             </div>
           </div>
         </nuxt-link>
       </div>
-      <!-- <template #customPaging class="mt-5">
-        <div class="custom-dot"></div>
-      </template> -->
     </VueSlickCarousel>
-    <div class="text-center">
-      <h4>Nenhuma informação</h4>
-    </div>
   </div>
 </template>
 
 <script>
-import VueSlickCarousel from 'vue-slick-carousel'
-import 'vue-slick-carousel/dist/vue-slick-carousel.css'
-// optional style for arrows & dots
-import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
-  components: { VueSlickCarousel },
   data() {
     return {
       options: {
@@ -45,9 +30,6 @@ export default {
         speed: 500,
         slidesToScroll: this.slideScroll ? this.slideScroll : 3,
         dots: true,
-        prevArrow: false,
-        nextArrow: false,
-        arrows: false,
         rows: this.row ? this.row : 3,
         responsive: [
           {
@@ -86,48 +68,19 @@ export default {
     imageProps(img) {
       return { '--backgroundimage': `url(${img})` }
     },
+    getDate(item) {
+      const date = new Date(item)
+      const [, month, day, years] = date.toString().split(' ')
+      return `${day} ${month} ${years}`
+    },
   },
   computed: {},
 }
 </script>
 
 <style scoped>
-.slick-default > .slick-dots {
-  display: flex !important;
-  list-style: none;
-  justify-content: center;
-  margin-top: 2rem;
-}
-.slick-default > li {
-  list-style-type: none;
-  margin-right: 0.5rem;
-}
-.slick-dots > li {
-  position: relative;
-  display: inline-block;
-  width: 20px;
-  height: 40px;
-  margin: 0 5px;
-  padding: 0;
-  cursor: pointer;
-  border: 1px solid blue !important;
-}
-.slick-default > li > .custom-dot {
-  height: 0.7em;
-  width: 0.7em;
-  border-radius: 0.7em;
-  border: 1px solid #00a9e0;
-  display: flex;
-}
-.slick-default > .slick-action ul {
-  list-style-type: none;
-}
-.slick-default > .slick-action ul > li > .slick-active .custom-dot {
-  background-color: #00a9e0;
-  border: none;
-}
 .cardContainer {
-  width: 97%;
+  width: 300px !important;
   height: 300px;
   border-radius: 10px;
   margin: 1%;
@@ -145,7 +98,7 @@ export default {
   top: 0;
   left: 0;
   position: absolute;
-  width: 100%;
+  width: 100% !important;
   height: 100%;
   border-radius: 10px;
   background: var(--backgroundimage) no-repeat;

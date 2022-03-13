@@ -2,7 +2,7 @@
   <div class="background">
     <HomePartialDreamShelf :destaques="destaques" />
 
-    <SharedLinkMore to="/" name="Ver Todas" colors="#646F65" />
+    <SharedLinkMore to="/dreamshelf" name="Ver Todas" colors="#646F65" />
   </div>
 </template>
 
