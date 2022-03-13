@@ -14,12 +14,18 @@
     >
       <div class="pt-4 pb-4" v-for="i in imgs" :key="i">
         <div
+          @click="findItem(i)"
           :style="RotateRandom(Math.floor(Math.random() * -20) + 15, i)"
           class="paint"
         ></div>
       </div>
     </SharedCarouselPainting>
     <HomePartialTitleEvents :events="events.length > 0 ? events : []" />
+    <RoomartShowPaint
+      :showPaint="showPaint"
+      :openModal="openModal"
+      :Data="itemModal"
+    />
   </div>
 </template>
 
@@ -36,6 +42,8 @@ export default {
       events: [],
       arts: [],
       imgs: [],
+      showPaint: false,
+      itemModal: [],
     }
   },
   mounted() {
@@ -47,6 +55,25 @@ export default {
         '--rotate': `rotate(${v}deg)`,
         '--images': `url(${i})`,
       }
+    },
+    openModal(item) {
+      this.showPaint = !this.showPaint
+      if (item != [] || item.length > 0) {
+        const items = item?.map(function (item) {
+          const description = item.description
+          const images = item.images.map((item) => item.url)
+          return { description, images }
+        })
+        this.itemModal = items
+        console.log(this.itemModal)
+      }
+    },
+    findItem(i) {
+      const item = this.arts.filter((item) =>
+        item.images.find((item) => item.url == i)
+      )
+      // console.log(item)
+      this.openModal(item)
     },
     getData() {
       this.$apollo
