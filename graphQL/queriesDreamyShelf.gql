@@ -69,4 +69,24 @@ query Fetch {
       }
     }
   }
+  queryEventsContents {
+    id
+    data: flatData {
+      title
+      date
+      description
+      images {
+        url
+      }
+    }
+  }
+  querySaladearteContents {
+    id
+    data: flatData {
+      description
+      images {
+        url
+      }
+    }
+  }
 }

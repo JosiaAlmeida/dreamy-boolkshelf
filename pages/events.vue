@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row justify-content-center p-2">
           <SharedSearchInput />
-          <div v-if="events.length > 0">
+          <div class="col-12" v-if="events.length">
             <SharedCarousel
               :carouselData="events"
               :rowmobile="3"
@@ -26,135 +26,22 @@
 </template>
 
 <script>
+import queriesEvents from '../graphQL/queriesEvents.gql'
 export default {
   name: 'event',
   data() {
     return {
-      images: [
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-        {
-          title: 'Feira dos livos gigantesca no consulado português em Angola',
-          date: '09 Agosto 21',
-          img: '/assets/img/shutterstock_1856415790.png',
-        },
-      ],
       events: [],
     }
+  },
+  mounted() {
+    this.getData()
   },
   methods: {
     getData() {
       this.$apollo
         .query({
-          query: gqlImpressoes,
+          query: queriesEvents,
           fetchPolicy: 'no-cache',
           context: {
             headers: {
@@ -165,6 +52,7 @@ export default {
         .then((response) => {
           const data = response.data
           this.events = this.$flattenData(data.queryEventsContents, 'data')
+          console.log('events', this.events)
         })
         .catch((error) => error)
     },
