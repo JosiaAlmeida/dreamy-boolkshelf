@@ -34,6 +34,7 @@ export default {
     ['slideScroll']: Number,
     ['slideScrollMobile']: Number,
     ['row']: Number,
+    ['arrowsShow']: Boolean,
   },
   data() {
     return {
