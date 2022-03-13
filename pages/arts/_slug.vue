@@ -48,6 +48,9 @@
 
 <script>
 import query from '~/graphQL/graphQL-QueryDreamy.gql'
+import queryFilmes from '~/graphQL/graphQL-QueryFilmes.gql'
+import queryAlta from '~/graphQL/graphQL-QueryemAlta.gql'
+import queryMontando from '~/graphQL/graphQL-QueryMontando.gql'
 export default {
   async asyncData({ params }) {
     const slug = params.slug // When calling /abc the slug will be "abc"
@@ -71,25 +74,37 @@ export default {
         slidesToScroll: 1,
         dots: true,
       },
+      url: '',
     }
   },
   watch: {
     '$i18n.locale': {
       handler() {
-        this.getById(this.id)
+        this.getById(this.$route.params.slug)
       },
       deep: true,
     },
   },
   mounted() {
-    console.log((this.id = this.$route.params.slug))
-    this.getById(this.id)
+    this.id = this.$route.params.slug
+    this.url = this.$route.query.url
+    console.log(this.$route.params.slug)
+    this.getById(this.$route.params.slug)
   },
   methods: {
     getById(id) {
       this.$apollo
         .query({
-          query: query,
+          query:
+            this.url == 'impressoes'
+              ? query
+              : this.url == 'emAlta'
+              ? queryAlta
+              : this.url == 'montando'
+              ? queryMontando
+              : this.url == 'filmes'
+              ? queryFilmes
+              : '',
           variables: {
             filter: `id eq '${id}'`,
           },
@@ -101,10 +116,32 @@ export default {
           },
         })
         .then((response) => {
-          this.dreamy = this.$flattenData(
-            response.data.queryMinhasimpressoesContents,
-            'data'
-          )
+          switch (this.url) {
+            case 'impressoes':
+              this.dreamy = this.$flattenData(
+                response.data.queryMinhasimpressoesContents,
+                'data'
+              )
+            break
+            case 'emAlta':
+              this.dreamy = this.$flattenData(
+                response.data.queryEmaltaContents,
+                'data'
+              )
+            break
+             case 'montando':
+              this.dreamy = this.$flattenData(
+                response.data.queryMontandoaestanteContents,
+                'data'
+              )
+            break
+             case 'filmes':
+              this.dreamy = this.$flattenData(
+                response.data.queryViroufilmeContents,
+                'data'
+              )
+            break
+          }
         })
         .catch((error) => error)
     },

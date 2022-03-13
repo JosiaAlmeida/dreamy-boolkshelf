@@ -15,6 +15,7 @@
             to="/"
             nameLink="Ver todos"
             :data="impressoes"
+            url="impressoes"
           />
         </div>
         <div class="col-12">
@@ -23,6 +24,7 @@
             to="/"
             nameLink="Ver todos"
             :data="emAlta"
+            url="emAlta"
           />
         </div>
         <div class="col-12">
@@ -31,6 +33,7 @@
             to="/"
             nameLink="Ver todos"
             :data="montando"
+            url="montando"
           />
         </div>
         <div class="col-12">
@@ -39,6 +42,7 @@
             to="/"
             nameLink="Ver todos"
             :data="filmes"
+            url="filmes"
           />
         </div>
       </div>
