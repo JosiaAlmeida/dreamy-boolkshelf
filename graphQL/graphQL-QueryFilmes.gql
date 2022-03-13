@@ -1,0 +1,20 @@
+query Fetch($filter: String)
+{
+  queryViroufilmeContents(filter: $filter) {
+   id
+    createdByUser {
+      id
+      displayName
+    }  
+    created
+    data:flatData{
+      content
+      title
+      datapublicacao
+      date
+      images{
+        url
+      }
+    }
+  }
+}

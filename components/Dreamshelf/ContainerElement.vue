@@ -18,7 +18,7 @@
             v-if="data && data.length"
           >
             <div v-for="(item, idx) in data" :key="idx" class="pl-2 pr-2 cardcontainer">
-              <DreamshelfCard :item="item" />
+              <DreamshelfCard :item="item" :propsurl="url" />
             </div>
           </SharedCarouselPainting>
         </div>
@@ -33,6 +33,7 @@ export default {
     ['Theme']: String,
     ['to']: String,
     ['data']: Array,
+    ['url']: String,
   },
 }
 </script>
