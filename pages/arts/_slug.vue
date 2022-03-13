@@ -88,7 +88,7 @@ export default {
   mounted() {
     this.id = this.$route.params.slug
     this.url = this.$route.query.url
-    console.log(this.$route.params.slug)
+    console.log(this.$route)
     this.getById(this.$route.params.slug)
   },
   methods: {
