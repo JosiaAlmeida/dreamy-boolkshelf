@@ -23,7 +23,11 @@
                 <h5 class="text-white-title">Nenhuma informação</h5>
               </div>
               <div class="button" v-if="lastEvent.length > 0">
-                <button class="btn btnyellow">Ver noticía</button>
+                <nuxt-link
+                  class="btn btnyellow"
+                  :to="'event/' + lastEvent[lastEvent.length - 1].id"
+                  >Ver noticía</nuxt-link
+                >
                 <div class="bar ml-3"></div>
               </div>
             </div>
