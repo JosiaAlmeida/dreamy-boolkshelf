@@ -39,16 +39,16 @@
       :centerMode="true"
     />
     <!-- </div> -->
-    <div class="col-12">
-      <DreamshelfContainerElement
-        Theme="Montando a estante dos sonhos"
-        to="/"
-        nameLink="Ver todos"
-        :data="montando"
-        url="montando"
-        :navContainer="true"
-      />
-    </div>
+    <!-- <div class="col-12"> -->
+    <DreamshelfContainerElement
+      Theme="Montando a estante dos sonhos"
+      to="/"
+      nameLink="Ver todos"
+      :data="montando"
+      url="montando"
+      :navContainer="true"
+    />
+    <!-- </div> -->
     <!-- </div> -->
     <!-- </div> -->
   </div>
