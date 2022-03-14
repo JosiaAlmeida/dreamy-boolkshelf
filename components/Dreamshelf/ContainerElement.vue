@@ -5,9 +5,9 @@
       :class="!navContainer && 'nav-container'"
     >
       <h5>{{ Theme }}</h5>
-      <router-link v-if="data && data.length > 5" :to="to">
-        <h5>{{ nameLink }}</h5>
-      </router-link>
+      <nuxt-link class="Link" v-if="data && data.length" :to="`arts?url=${url}`">
+          <h5>{{ nameLink }}</h5>
+      </nuxt-link>
     </div>
     <!-- <div class="row">
         <div class="col-12 text-center mb-5"> -->

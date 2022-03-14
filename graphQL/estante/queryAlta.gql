@@ -1,0 +1,20 @@
+query Fetch
+{
+  queryEmaltaContents{
+   id
+    createdByUser {
+      id
+      displayName
+    }  
+    created
+    data:flatData{
+      content
+      title
+      datapublicacao
+      date
+      images{
+        url
+      }
+    }
+  }
+}
