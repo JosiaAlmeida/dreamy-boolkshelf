@@ -14,6 +14,8 @@
           :showPaint="showPaint"
           :openModal="openModal"
           :Data="itemModal"
+          :description="description"
+          :closeModal="closeModal"
         />
       </div>
     </div>
@@ -25,20 +27,17 @@ export default {
     return {
       showPaint: false,
       itemModal: [],
+      description: '',
     }
   },
   methods: {
     openModal(item) {
       this.showPaint = !this.showPaint
-      if (item != [] || item.length > 0) {
-        const items = item?.map(function (item) {
-          const description = item.description
-          const images = item.images.map((item) => item.url)
-          return { description, images }
-        })
-        this.itemModal = items
-        console.log(this.itemModal)
-      }
+      this.description = item.description
+      this.itemModal = item.images
+    },
+    closeModal() {
+      this.showPaint = false
     },
   },
 }

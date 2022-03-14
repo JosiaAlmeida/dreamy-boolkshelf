@@ -7,16 +7,22 @@
     <RoomartTitleDescription />
     <SharedLinkMore colors="#28493C" name="Ver Galeria" to="/roomart" />
     <SharedCarouselPainting
-      v-if="imgs.length"
-      :slideShow="4"
-      :slideScroll="4"
+      v-if="arts.length"
+      :slideShow="3"
+      :slideScroll="3"
       :row="1"
       :arrowsShow="true"
     >
-      <div class="pt-4 pb-4" v-for="i in imgs" :key="i">
+      <div
+        class="pt-4 pb-4 d-flex flex-column justify-content-between"
+        v-for="(i, idx) in arts"
+        :key="idx"
+      >
         <div
           @click="findItem(i)"
-          :style="RotateRandom(Math.floor(Math.random() * -20) + 15, i)"
+          :style="
+            RotateRandom(Math.floor(Math.random() * -20) + 15, i.images[0].url)
+          "
           class="paint"
         ></div>
       </div>
@@ -26,6 +32,8 @@
       :showPaint="showPaint"
       :openModal="openModal"
       :Data="itemModal"
+      :description="description"
+      :closeModal="closeModal"
     />
   </div>
 </template>
@@ -45,10 +53,19 @@ export default {
       imgs: [],
       showPaint: false,
       itemModal: [],
+      description: '',
     }
   },
   mounted() {
     this.getData()
+  },
+  watch: {
+    '$i18n.locale': {
+      handler() {
+        this.getData()
+      },
+      deep: true,
+    },
   },
   methods: {
     RotateRandom(v, i) {
@@ -58,23 +75,15 @@ export default {
       }
     },
     openModal(item) {
-      this.showPaint = !this.showPaint
-      if (item != [] || item.length > 0) {
-        const items = item?.map(function (item) {
-          const description = item.description
-          const images = item.images.map((item) => item.url)
-          return { description, images }
-        })
-        this.itemModal = items
-        console.log(this.itemModal)
-      }
+      this.showPaint = true
+      this.description = item.description
+      this.itemModal = item.images
+    },
+    closeModal() {
+      this.showPaint = false
     },
     findItem(i) {
-      const item = this.arts.filter((item) =>
-        item.images.find((item) => item.url == i)
-      )
-      // console.log(item)
-      this.openModal(item)
+      this.openModal(i)
     },
     getData() {
       this.$apollo
@@ -108,17 +117,7 @@ export default {
             response.data.querySaladearteContents,
             'data'
           )
-        })
-        .then(() => {
-          const item = this.arts.map((item) => item.images)
-          for (let index = 0; index < item.length; index++) {
-            const element = item[index].map((item) => item)
-            for (let j = 0; j < element.length; j++) {
-              const element2 = element[j].url
-              this.imgs.push(element2)
-            }
-          }
-          console.log('imgs', this.imgs)
+          console.log(this.arts)
         })
         .catch((error) => error)
     },

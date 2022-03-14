@@ -19,7 +19,11 @@
                   {{ lastEvent[lastEvent.length - 1].description }}
                 </p>
                 <div class="button">
-                  <button class="btn btnyellow">Ver noticía</button>
+                  <nuxt-link
+                    class="btn btnyellow"
+                    :to="'event/' + lastEvent[lastEvent.length - 1].id"
+                    >Ver noticía</nuxt-link
+                  >
                   <div class="bar ml-3"></div>
                 </div>
               </div>

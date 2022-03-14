@@ -1,9 +1,11 @@
 <template>
   <div class="row p-5">
-    <div class="col-md-4 col-sm-12 p-4" v-for="(i, idx) in imgs" :key="idx">
+    <div class="col-md-4 col-sm-12 p-4" v-for="(i, idx) in arts" :key="idx">
       <div
         @click="findItem(i)"
-        :style="RotateRandom(Math.floor(Math.random() * -20) + 15, i)"
+        :style="
+          RotateRandom(Math.floor(Math.random() * -20) + 15, i.images[0].url)
+        "
         class="paint"
       ></div>
     </div>
@@ -52,25 +54,10 @@ export default {
             'data'
           )
         })
-        .then(() => {
-          const item = this.arts.map((item) => item.images)
-          for (let index = 0; index < item.length; index++) {
-            const element = item[index].map((item) => item)
-            for (let j = 0; j < element.length; j++) {
-              const element2 = element[j].url
-              // console.log(item[index])
-              this.imgs.push(element2)
-            }
-          }
-        })
         .catch((error) => error)
     },
     findItem(i) {
-      const item = this.arts.filter((item) =>
-        item.images.find((item) => item.url == i)
-      )
-      // console.log(item)
-      this.openModal(item)
+      this.openModal(i)
     },
     getAllImage() {},
   },
