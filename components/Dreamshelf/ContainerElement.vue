@@ -5,8 +5,12 @@
       :class="!navContainer && 'nav-container'"
     >
       <h5>{{ Theme }}</h5>
-      <nuxt-link class="Link" v-if="data && data.length" :to="`arts?url=${url}`">
-          <h5>{{ nameLink }}</h5>
+      <nuxt-link
+        class="Link"
+        v-if="data && data.length"
+        :to="`arts/:${url}/all`"
+      >
+        <h5>{{ nameLink }}</h5>
       </nuxt-link>
     </div>
     <!-- <div class="row">
@@ -18,7 +22,6 @@
       :slideShow="4"
       :slideScrollMobile="1"
       v-if="data && data.length"
-      :centerMode="centerMode"
     >
       <div
         v-for="(item, idx) in data"
