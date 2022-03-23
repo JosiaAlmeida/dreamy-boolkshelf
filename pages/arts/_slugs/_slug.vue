@@ -86,10 +86,10 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$route.query.url)
+    // console.log(this.$route.query.url)
     this.id = this.$route.params.slugs
     this.url = this.$route.query.url
-    console.log('Id', this.id)
+    // console.log('Id', this.id)
     this.getById(this.id)
   },
   beforeUpdate() {},
@@ -145,7 +145,7 @@ export default {
               break
           }
 
-          console.log(this.dreamy)
+          // console.log(this.dreamy)
         })
         .catch((error) => error)
     },

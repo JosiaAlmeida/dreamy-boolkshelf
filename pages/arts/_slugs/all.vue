@@ -1,13 +1,13 @@
 <template>
   <div class="container-fluid p-5">
-    <nuxt-link to="/dreamshelf">Fechar</nuxt-link>
+    <nuxt-link to="/dreamshelf" class="Link">Fechar</nuxt-link>
     <div class="cards-content">
       <h5 class="text-center my-4">{{ title }}</h5>
       <div
         class="m-2 d-flex flex-wrap w-100 justify-content-center"
         v-if="dreamy && dreamy.length"
       >
-        <div v-for="item in dreamy" :key="item" class="m-2 card-content-item">
+        <div v-for="(item, i) in dreamy" :key="i" class="m-2 card-content-item">
           <nuxt-link class="" :to="`../../arts/${item.id}?url=${url}`">
             <img
               v-if="item.images && item.images.length"
@@ -140,11 +140,20 @@ export default {
   height: 360px;
   object-fit: cover;
 }
+
+.LinkContent {
+  padding: 1%;
+}
+
+.Link {
+  color: #28493c;
+  font-weight: 600;
+  font-size: 20px;
+  margin-left: -1%;
+  border-bottom: 1px solid #000;
+}
+
 .Link:hover {
   text-decoration: none;
-}
-.Link {
-  background: #fff;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 }
 </style>

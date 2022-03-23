@@ -52,7 +52,7 @@ export default {
         .then((response) => {
           const data = response.data
           this.events = this.$flattenData(data.queryEventsContents, 'data')
-          console.log('events', this.events)
+          // console.log('events', this.events)
         })
         .catch((error) => error)
     },

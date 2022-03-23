@@ -41,7 +41,7 @@
 <script>
 export default {
   mounted() {
-    console.log(this.$refs.refCarousel)
+    // console.log(this.$refs.refCarousel)
   },
   props: {
     ['refCarousel']: Object,

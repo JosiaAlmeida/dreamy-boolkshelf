@@ -10,7 +10,7 @@
 export default {
   computed: {
     getRout() {
-      console.log(this.$root._route.path)
+      // console.log(this.$root._route.path)
     },
   },
 }
