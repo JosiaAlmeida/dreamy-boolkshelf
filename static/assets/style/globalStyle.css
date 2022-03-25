@@ -12,7 +12,9 @@ body{
 }
 img{
   object-fit: cover;
+  width: 100%;
 }
+
 p{
   font-family: 'Nunito', sans-serif;
 }

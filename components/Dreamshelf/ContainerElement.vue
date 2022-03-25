@@ -1,12 +1,16 @@
 <template>
   <div :class="navContainer && 'nav-container'">
     <div
-      class="d-flex justify-content-between"
+      class="d-flex justify-content-between my-3"
       :class="!navContainer && 'nav-container'"
     >
       <h5>{{ Theme }}</h5>
-      <nuxt-link class="Link" v-if="data && data.length" :to="`arts?url=${url}`">
-          <h5>{{ nameLink }}</h5>
+      <nuxt-link
+        class="Link"
+        v-if="data && data.length > 4"
+        :to="`arts/:${url}/all`"
+      >
+        <h5>{{ nameLink }}</h5>
       </nuxt-link>
     </div>
     <!-- <div class="row">
@@ -17,8 +21,9 @@
       :slideScroll="1"
       :slideShow="4"
       :slideScrollMobile="1"
+      :carouselQtd="data.length"
+      :arrowsShow="data.length > 4 ? true : false "
       v-if="data && data.length"
-      :centerMode="centerMode"
     >
       <div
         v-for="(item, idx) in data"

@@ -57,7 +57,7 @@ export default {
           const data = response.data
           const dataEvent = this.$flattenData(data.queryEventsContents, 'data')
           this.events = dataEvent.find(({ id }) => id == this.slug)
-          console.log(this.events)
+          // console.log(this.events)
         })
         .catch((error) => error)
     },
@@ -71,9 +71,9 @@ export default {
     getImage() {
       if (this.events) {
         if (this.events.images) {
-          console.log('images', images)
+          // console.log('images', images)
           const images = this.events.images[0].url
-          console.log('images', images)
+          // console.log('images', images)
           return {
             '--image': `url(${images})`,
           }

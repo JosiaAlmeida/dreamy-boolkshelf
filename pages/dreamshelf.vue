@@ -132,4 +132,9 @@ export default {
   filter: brightness(0.9) grayscale(0.5);
   z-index: -1;
 }
+@media(max-width:600px){
+.background{
+  height:45vh;
+}
+}
 </style>

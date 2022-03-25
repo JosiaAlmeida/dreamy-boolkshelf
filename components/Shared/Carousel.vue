@@ -111,4 +111,12 @@ export default {
 .Link:hover {
   text-decoration: none;
 }
+@media(max-width: 600px){
+  .cardContainer{
+    width:326px !important;
+  }
+  .slick-track{
+    height: auto !important;
+  }
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="d-flex justify-content-center mt-2" v-if="arrowsShow">
+    <!--<div class="d-flex justify-content-center mt-2" v-if="arrowsShow">
       <button
         type="button"
         class="zIndex btn btn-default"
@@ -15,11 +15,11 @@
       >
         <i class="fas fa-arrow-right" style="color: #1e3029"></i>
       </button>
-    </div>
+    </div>-->
     <VueSlickCarousel class="slick-default" ref="refCarousel" v-bind="options">
       <slot></slot>
     </VueSlickCarousel>
-    <div class="d-flex justify-content-center" v-if="!arrowsShow">
+    <div class="d-flex justify-content-center my-3" v-if="arrowsShow">
       <button
         type="button"
         class="zIndex btn btn-default"
@@ -41,7 +41,7 @@
 <script>
 export default {
   mounted() {
-    console.log(this.$refs.refCarousel)
+    // console.log(this.$refs.refCarousel)
   },
   props: {
     ['refCarousel']: Object,
@@ -51,6 +51,7 @@ export default {
     ['slideScrollMobile']: Number,
     ['row']: Number,
     ['arrowsShow']: Boolean,
+    ['carouselQtd']: Number,
     ['centerMode']: Boolean,
   },
   data() {

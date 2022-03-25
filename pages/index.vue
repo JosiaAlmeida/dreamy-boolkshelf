@@ -117,7 +117,7 @@ export default {
             response.data.querySaladearteContents,
             'data'
           )
-          console.log(this.arts)
+          // console.log(this.arts)
         })
         .catch((error) => error)
     },

@@ -14,7 +14,7 @@
           alt=""
         />
         <div class="p-3">
-          <h5 class="card-title text-center">{{ item.title }}</h5>
+          <h5 class="card-title text-center">{{ item.title.substring(0,29) }}...</h5>
           <hr />
           <small> {{ getDate }} </small>
         </div>

@@ -31,7 +31,7 @@
             >
               <div v-for="(item, i) in Data" :key="i">
                 <div class="row justify-content-center align-items-center">
-                  <div class="col-5 mt-5">
+                  <div class="col-5 mt-5 img-top">
                     <img :src="item.url" class="img-fluid img" alt="" />
                   </div>
                   <div class="ml-4 col-5 separator2 d-flex">
@@ -230,5 +230,23 @@ hr {
 .slick-next:hover::before {
   border-top: 8px solid rgba(0, 0, 0, 0.8);
   border-right: 8px solid rgba(0, 0, 0, 0.8);
+}
+@media(max-width: 600px){
+  .img{
+    height:400px;
+    width:70%
+  }
+  .row{
+    flex-flow: column;
+  }
+  .separator2{
+    border-left: none;        
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  .img-top{
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
 }
 </style>

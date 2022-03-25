@@ -80,17 +80,19 @@ export default {
   watch: {
     '$i18n.locale': {
       handler() {
-        this.getById(this.$route.params.slug)
+        this.getById(this.$route.params.slugs)
       },
       deep: true,
     },
   },
   mounted() {
-    this.id = this.$route.params.slug
+    // console.log(this.$route.query.url)
+    this.id = this.$route.params.slugs
     this.url = this.$route.query.url
-    console.log(this.$route)
-    this.getById(this.$route.params.slug)
+    // console.log('Id', this.id)
+    this.getById(this.id)
   },
+  beforeUpdate() {},
   methods: {
     getById(id) {
       this.$apollo
@@ -122,26 +124,28 @@ export default {
                 response.data.queryMinhasimpressoesContents,
                 'data'
               )
-            break
+              break
             case 'emAlta':
               this.dreamy = this.$flattenData(
                 response.data.queryEmaltaContents,
                 'data'
               )
-            break
-             case 'montando':
+              break
+            case 'montando':
               this.dreamy = this.$flattenData(
                 response.data.queryMontandoaestanteContents,
                 'data'
               )
-            break
-             case 'filmes':
+              break
+            case 'filmes':
               this.dreamy = this.$flattenData(
                 response.data.queryViroufilmeContents,
                 'data'
               )
-            break
+              break
           }
+
+          // console.log(this.dreamy)
         })
         .catch((error) => error)
     },

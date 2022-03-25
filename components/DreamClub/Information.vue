@@ -4,7 +4,7 @@
       <div
         class="col-12 p-5 d-flex align-items-end align-content-end text-white"
       >
-        <h1 class="w-50 text-white">
+        <h1 class="w-50 text-white mobile-qr">
           Estamos a criar algo especial para ti, até já!
         </h1>
       </div>
@@ -35,5 +35,11 @@
 }
 .col-12 {
   height: 100vh;
+}
+@media(max-width: 600px){
+  .mobile-qr{
+    width:100% !important;
+    text-align: center;
+  }
 }
 </style>
