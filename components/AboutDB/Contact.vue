@@ -103,7 +103,7 @@ p {
     display: inline-block;
     flex-direction: column;
     height: 100%;
-    width: 100%;
+    width: 100vw;
   }
   .background {
     display: flex;

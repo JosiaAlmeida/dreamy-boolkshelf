@@ -20,7 +20,7 @@
           <div class="margin-negative-top2 col-6">
             <img
               src="/assets/img/shutterstock_1919540552-2.png"
-              class="img-fluid mt-5 img img-mobile-ocult"
+              class="img-fluid mt-5 img img-mobile-ocult img-mt-5"
               alt=""
             />
           </div>
@@ -35,7 +35,7 @@
       </div>
       <div class="col-md-6 col-sm-12 text-styles">
         <div class="text-content-style">
-          <h3>Porquê a Dreamy Bookshelf</h3>
+          <h3 class="title">Porquê a Dreamy Bookshelf</h3>
           <p>
             Porque o sonho de qualquer leitor é ter em seu domínio um espaço
             dedicado aos livros e a leitura, mas sabes por onde começar montar a
@@ -88,10 +88,7 @@
 .text-content-style {
   color: #5d707a;
 }
-.img-visible-mobile {
-  visibility: hidden;
-  height: 0px !important;
-}
+
 .margin-negative-top {
   margin-top: -7%;
 }
@@ -103,12 +100,21 @@ h3 {
 }
 @media only screen and (max-width: 600px) {
   .img-mobile-ocult {
-    visibility: hidden;
-    height: 0px !important;
+    display:none;
   }
   .img-visible-mobile {
     visibility: visible;
     height: 300px !important;
   }
+  .img{
+    height: 210px !important;
+  }
+  .text-content-style{
+    text-align: center;
+  }
+  .title{
+    max-width: 330px;
+  }
+
 }
 </style>

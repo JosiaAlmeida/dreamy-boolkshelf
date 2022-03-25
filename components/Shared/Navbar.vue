@@ -296,4 +296,11 @@ export default {
     font-size: 1rem;
   }
 }
+@media(max-width: 600px){
+  .nav-bar-wrapper{
+    padding-left:0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+  }
+}
 </style>

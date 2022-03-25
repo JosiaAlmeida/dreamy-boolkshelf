@@ -83,7 +83,14 @@ export default {}
     height: 30px;
   }
   .img-fluid {
-    height: 50px;
+    height: 71px;
+    width: 50px !important;
+  }
+  .background{
+    height:50vh !important;
+  }
+  .background2{
+    height:50vh !important;
   }
 }
 </style>

@@ -2,7 +2,7 @@
   <div class="container mt-5 mb-5">
     <div class="row flex">
       <div class="col-12 paddingLeft ocultWeb text-center">
-        <h3>Destaques Estante de Sonho</h3>
+        <h3 class="title">Destaques Estante de Sonho</h3>
         <p>
           Saiba mais sobre o mundo dos livros, veja quais livros estão na
           estante do sonhos e acompanhe o progresso de construção da biblioteca
@@ -61,11 +61,20 @@ export default {
   .ocultWeb {
     visibility: visible;
     height: auto;
-    margin-top: 8%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding-bottom: 8%;
+    padding-top: 8%;
   }
   .ocultMobile {
     visibility: hidden;
     height: 0px;
+  }
+  .title{
+    width: 220px;
+    margin: 0 auto;
+    padding-top: 15px;
+    padding-bottom: 23px;
   }
 }
 </style>
