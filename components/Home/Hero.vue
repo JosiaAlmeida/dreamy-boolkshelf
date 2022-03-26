@@ -48,6 +48,11 @@ export default {}
 .imgpena {
   margin-top: -6%;
 }
+ .img-fluid {
+    height: 71px !important;
+    max-width: 50px !important;
+    width: 50px !important;
+  }
 /* .background2::before {
   content: '';
   top: 0;
@@ -83,7 +88,8 @@ export default {}
     height: 30px;
   }
   .img-fluid {
-    height: 71px;
+    height: 71px !important;
+    max-width: 50px !important;
     width: 50px !important;
   }
   .background{
