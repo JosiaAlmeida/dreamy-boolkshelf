@@ -50,24 +50,6 @@
           </p>
         </div>
       </div>
-      <div class="col-md-6 col-sm-12">
-        <div class="row">
-          <div class="col-6 mt-3">
-            <img
-              src="/assets/img/armario.jpg"
-              class="img-fluid mt-5 img img-visible-mobile"
-              alt=""
-            />
-          </div>
-          <div class="col-6">
-            <img
-              src="/assets/img/armario.jpg"
-              class="img-fluid img img-visible-mobile"
-              alt=""
-            />
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
