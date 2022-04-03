@@ -81,22 +81,24 @@ h3 {
   font-weight: bold;
 }
 @media only screen and (max-width: 600px) {
+  .text-styles {
+    margin-bottom: 60px;
+  }
   .img-mobile-ocult {
-    display:none;
+    display: none;
   }
   .img-visible-mobile {
     visibility: visible;
     height: 300px !important;
   }
-  .img{
+  .img {
     height: 210px !important;
   }
-  .text-content-style{
+  .text-content-style {
     text-align: center;
   }
-  .title{
+  .title {
     max-width: 330px;
   }
-
 }
 </style>
