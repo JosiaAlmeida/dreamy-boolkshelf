@@ -38,11 +38,11 @@ export default {
               slidesToShow: 1,
               slidesToScroll: 1,
               initialSlide: 1,
-              rows: this.rowmobile ? this.rowmobile : 1,
-              vertical: this.vertical ? this.vertical : true,
+              rows: this.rowmobile ? this.rowmobile : 2,
+              vertical: this.vertical ? this.vertical : false,
               verticalSwiping: this.verticalSwiping
                 ? this.verticalSwiping
-                : true,
+                : false,
             },
           },
         ],
@@ -111,11 +111,11 @@ export default {
 .Link:hover {
   text-decoration: none;
 }
-@media(max-width: 600px){
-  .cardContainer{
-    width:326px !important;
+@media (max-width: 600px) {
+  .cardContainer {
+    width: 326px !important;
   }
-  .slick-track{
+  .slick-track {
     height: auto !important;
   }
 }
