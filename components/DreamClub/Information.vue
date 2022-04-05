@@ -3,15 +3,61 @@
     <div class="row">
       <div
         class="col-12 p-5 d-flex align-items-end align-content-end text-white"
+        v-if="src != null && src.length" :style="{
+              'background-image': `url(${src[0].url}) `,
+            }"
       >
-        <h1 class="w-50 text-white mobile-qr">
+        <h1 class="w-50 text-white mobile-qr z-index-1">
           Estamos a criar algo especial para ti, até já!
         </h1>
       </div>
     </div>
   </div>
 </template>
-
+<script>
+import query from '~/graphQL/clube.gql'
+export default {
+  data() {
+    return{
+      src:'',
+    }
+  },
+   watch: {
+    '$i18n.locale': {
+      handler() {
+        this.getByData()
+      },
+      deep: true,
+    },
+  },
+  created() {
+      this.getByData()
+  },
+  methods: {
+    getByData() {
+      this.$apollo
+        .query({
+          query:query,
+          fetchPolicy: 'no-cache',
+          context: {
+            headers: {
+              'X-Languages': this.$i18n.locale,
+            },
+          },
+        })
+        .then((response) => {
+          let res = this.$flattenData(
+                response.data.queryDestaquesclubeContents,
+                'data'
+              )
+           this.src = res[0].src
+           console.log(this.src)
+        })
+        .catch((error) => error)
+    },
+  }
+}
+</script>
 <style scoped>
 .background {
   height: 100vh;
@@ -19,6 +65,8 @@
   position: relative;
   align-items: flex-end;
   text-align: end;
+  z-index: 1;  
+  background: rgba(99, 110, 106, 0.5);
 }
 .background::before {
   content: '';
@@ -27,11 +75,10 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  background: url('/assets/img/shutterstock_1708821736.png') no-repeat center
-    center;
   background-size: cover;
   filter: brightness(0.9) grayscale(0.5);
-  z-index: -1;
+  z-index: 1;  
+  background: rgba(99, 110, 106, 0.5);
 }
 .col-12 {
   height: 100vh;

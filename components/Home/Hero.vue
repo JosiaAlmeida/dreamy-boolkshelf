@@ -1,8 +1,10 @@
 <template>
-  <div class="container-fluid background">
+  <div class="container-fluid background" v-cloak>
     <div class="row">
-      <div class="col-12 flexContainer text-white background2 p-5">
-        <div>
+      <div class="col-12 flexContainer text-white background2 p-5" v-if="src != null && src.length" :style="{
+              'background-image': `url(${src[0].url}) `,
+            }">
+        <div class="z-index-1 position-relative">
           <h1 class="text-padding text-white">Dreamy Bookshelf</h1>
           <p class="text-padding w-75">
             Sonhe, visualize e monte connosco a estante dos teus sonhos
@@ -17,7 +19,48 @@
 </template>
 
 <script>
-export default {}
+import query from '~/graphQL/home.gql'
+export default {
+  data() {
+    return{
+      src:'',
+    }
+  },
+   watch: {
+    '$i18n.locale': {
+      handler() {
+        this.getByData()
+      },
+      deep: true,
+    },
+  },
+  created() {
+      this.getByData()
+  },
+  methods: {
+    getByData() {
+      this.$apollo
+        .query({
+          query:query,
+          fetchPolicy: 'no-cache',
+          context: {
+            headers: {
+              'X-Languages': this.$i18n.locale,
+            },
+          },
+        })
+        .then((response) => {
+          let res = this.$flattenData(
+                response.data.queryDetaquehomeContents,
+                'data'
+              )
+           this.src = res[0].src
+           console.log(this.src)
+        })
+        .catch((error) => error)
+    },
+  }
+}
 </script>
 
 <style scoped>
@@ -32,12 +75,9 @@ export default {}
   right: 0;
   width: 100%;
   height: 100%;
-  position: absolute;
-  background: url('/assets/img/shutterstock_1919540552.png') center right
-    no-repeat;
-  background-size: 100% 100%;
-  z-index: -1;
-  filter: brightness(0.5);
+  position: absolute;    
+  z-index: 1;  
+  background: rgba(99, 110, 106, 0.5);
 }
 .background2 {
   height: 100vh !important;

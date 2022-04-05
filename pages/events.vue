@@ -1,16 +1,17 @@
 <template>
-  <div class="">
+  <div class="w-100">
     <SharedNavbar colorb="#28493C" />
     <div class="pt-10">
       <EventHero :lastEvent="events" />
       <div class="container-fluid">
         <div class="row justify-content-center p-2">
-          <SharedSearchInput />
           <div class="col-12" v-if="events.length">
+          <SharedSearchInput />
             <SharedCarousel
               :carouselData="events"
               :rowmobile="3"
               :vertical="false"
+              :row="events.length > 3 ? 2 : 3"
               :verticalSwiping="false"
             />
           </div>

@@ -1,0 +1,10 @@
+  query Fetch{
+    queryDestaquesclubeContents{
+      id
+      data: flatData{
+        src {
+          url
+        }
+      }
+    }
+  }

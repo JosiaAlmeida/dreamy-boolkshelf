@@ -1,0 +1,10 @@
+  query Fetch{
+    queryDetaquehomeContents{
+      id
+       data: flatData{
+        src {
+          url
+        }
+      }     
+    }
+  }

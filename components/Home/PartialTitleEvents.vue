@@ -16,7 +16,7 @@
       <div class="col-12">
         <div v-if="events.length" class="row justify-content-center">
           <SharedCarousel
-            :carouselData="events"
+            :carouselData="events.slice(0, 3)"
             :row="1"
             :rowmobile="2"
             :vertical="false"
