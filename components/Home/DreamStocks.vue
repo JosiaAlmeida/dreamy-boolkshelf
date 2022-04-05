@@ -20,7 +20,14 @@ export default {
   height: 100%;
   padding: 15% 10% 5% 10%;
   background-color: #dcdccb;
-  margin-top: -245px;
+  margin-top: -220px;
+}
+
+@media screen and (min-width: 680px) and (max-width: 920px) {
+  .background {
+    padding: 5%;
+    margin-top: -90px;
+  }
 }
 @media screen and (max-width: 600px) {
   .background {

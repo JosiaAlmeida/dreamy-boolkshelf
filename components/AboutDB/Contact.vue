@@ -53,7 +53,48 @@
 </template>
 
 <script>
-export default {}
+import query from '~/graphQL/sobre.gql'
+export default {
+  data() {
+    return{
+      src:'',
+    }
+  },
+   watch: {
+    '$i18n.locale': {
+      handler() {
+        this.getByData()
+      },
+      deep: true,
+    },
+  },
+  created() {
+      this.getByData()
+  },
+  methods: {
+    getByData() {
+      this.$apollo
+        .query({
+          query:query,
+          fetchPolicy: 'no-cache',
+          context: {
+            headers: {
+              'X-Languages': this.$i18n.locale,
+            },
+          },
+        })
+        .then((response) => {
+          let res = this.$flattenData(
+                response.data.queryDestaqueContents,
+                'data'
+              )
+           this.src = res[0].src
+           console.log(this.src)
+        })
+        .catch((error) => error)
+    },
+  }
+}
 </script>
 
 <style scoped>

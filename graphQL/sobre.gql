@@ -1,0 +1,11 @@
+
+  query Fetch{
+    queryDestaqueContents{
+      id
+      data: flatData{
+        src {
+          url
+        }
+      }
+    }
+  }

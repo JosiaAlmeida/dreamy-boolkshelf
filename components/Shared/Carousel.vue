@@ -1,20 +1,20 @@
 <template>
-  <div class="col-11 mt-3 mb-4">
-    <VueSlickCarousel class="row" v-bind="options">
-      <div v-for="(item, i) in carouselData" :key="i" class="col-4">
-        <nuxt-link class="Link" :to="'event/' + item.id">
-          <div
-            class="cardContainer d-flex align-items-end p-4"
-            :style="imageProps(item.images[0].url)"
-          >
-            <div class="w-100">
-              <h6 class="text-white">{{ item.title }}</h6>
-              <small class="text-small-grey">
-                {{ getDate(item.date) }}
-              </small>
+  <div class="w-100">
+    <VueSlickCarousel class="w-100" v-bind="options">
+      <div class="d-flex flex-wrap w-100">
+          <nuxt-link class="Link" :to="'event/' + item.id" v-for="(item, i) in carouselData" :key="i">
+            <div
+              class="cardContainer d-flex align-items-end p-4"
+              :style="imageProps(item.images[0].url)"
+            >
+              <div class="w-100">
+                <h6 class="text-white">{{ item.title }}</h6>
+                <small class="text-small-grey">
+                  {{ getDate(item.date) }}
+                </small>
+              </div>
             </div>
-          </div>
-        </nuxt-link>
+          </nuxt-link>
       </div>
     </VueSlickCarousel>
   </div>
@@ -38,11 +38,11 @@ export default {
               slidesToShow: 1,
               slidesToScroll: 1,
               initialSlide: 1,
-              rows: this.rowmobile ? this.rowmobile : 1,
-              vertical: this.vertical ? this.vertical : true,
+              rows: this.rowmobile ? this.rowmobile : 2,
+              vertical: this.vertical ? this.vertical : false,
               verticalSwiping: this.verticalSwiping
                 ? this.verticalSwiping
-                : true,
+                : false,
             },
           },
         ],
@@ -111,11 +111,11 @@ export default {
 .Link:hover {
   text-decoration: none;
 }
-@media(max-width: 600px){
-  .cardContainer{
-    width:326px !important;
+@media (max-width: 600px) {
+  .cardContainer {
+    width: 326px !important;
   }
-  .slick-track{
+  .slick-track {
     height: auto !important;
   }
 }

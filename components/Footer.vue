@@ -64,6 +64,9 @@
 
 <script>
 export default {
+  props: {
+   
+  },
   mounted() {},
   computed: {
     configStyle() {

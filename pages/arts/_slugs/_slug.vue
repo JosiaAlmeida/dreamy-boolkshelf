@@ -27,16 +27,20 @@
         </div>
         <div class="custom-details pt-5">
           <div
-            class="d-flex align-items-center"
-            style="column-gap: 3rem; flex-wrap: wrap"
+            class="
+              d-flex
+              justify-content-between
+              align-items-center
+              mobile-type
+            "
           >
-            <h4>{{ getDate }}</h4>
-            <h4>
+            <h4 class="mobile-type-h4">{{ getDate }}</h4>
+            <h4 class="mobile-type-h4">
               <span class="pr-3">|</span>
               {{ dreamy[0].createdByUser.displayName }}
               <span class="pl-3">|</span>
             </h4>
-            <h4>Tittle</h4>
+            <h4 class="mobile-type-h4">{{ url }}</h4>
           </div>
           <hr />
         </div>
@@ -238,6 +242,13 @@ p {
     width: 85%;
     height: auto;
     margin: 0 auto;
+  }
+  .mobile-type {
+    border-bottom: 1px solid #b5b5b5;
+  }
+  .mobile-type-h4 {
+    font-size: 0.8rem;
+    color: #b5b5b5;
   }
 }
 </style>
