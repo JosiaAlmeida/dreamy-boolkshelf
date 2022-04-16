@@ -1,0 +1,15 @@
+  query Fetch{
+    queryDreamybdContents{
+    id
+    data:flatData{
+      content
+      title
+      id
+      datapublicacao
+      date
+      images{
+        url
+      }
+    }
+  }
+  }

@@ -3,7 +3,9 @@
     <SharedNavbar />
     <!-- <div class="container-fluid"> -->
     <!-- <div class="row"> -->
-    <div class="col-12 background">
+    <div class="col-12 background"  v-if="src != null && src.length" :style="{
+              'background-image': `url(${src[0].url}) `,
+            }">
       <DreamshelfHero :destaques="destaques" />
     </div>
     <div class="col-12">
@@ -64,6 +66,7 @@ export default {
       filmes: [],
       montando: [],
       destaques: [],
+      src:""
     }
   },
   mounted() {
@@ -102,9 +105,15 @@ export default {
           )
           this.filmes = this.$flattenData(data.queryViroufilmeContents, 'data')
           this.destaques = this.$flattenData(
-            data.queryDestaquesContents,
+            data.queryDreamybdContents,
             'data'
           )
+          let res  = this.$flattenData(
+            data.queryImagendestaqueContents,
+            'data'
+          )
+          this.src = res[0].src
+        console.log(this.src)
         })
         .catch((error) => error)
     },
@@ -113,12 +122,6 @@ export default {
 </script>
 
 <style scoped>
-.background {
-  height: 100vh;
-  width: 100%;
-  position: relative;
-  background-color: rgba(117, 124, 116, 0.4);
-}
 .background::before {
   content: '';
   top: 0;
@@ -126,11 +129,15 @@ export default {
   width: 100%;
   height: 100%;
   position: absolute;
-  background: url('/assets/img/shutterstock_1889758921@2x.png') no-repeat center
-    center;
+   background-color: rgba(99, 110, 106, 0.5);
   background-size: cover;
-  filter: brightness(0.9) grayscale(0.5);
-  z-index: -1;
+  z-index: 1;
+}
+.background {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: rgba(117, 124, 116, 0.4);
 }
 @media(max-width:600px){
 .background{

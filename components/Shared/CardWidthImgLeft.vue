@@ -3,13 +3,13 @@
     <div class="row g-0">
       <div class="col-6">
         <img
-          :src="`${images.url}`"
+          :src="`${images[0].url}`"
           class="img-fluid img rounded-start"
           :alt="`${images.slug}`"
         />
       </div>
       <div class="card-body col-6 marginTopNegative">
-        <h5 class="card-title">{{ title }}</h5>
+        <h5 class="card-title">{{ title.substring(0,35) }}...</h5>
         <p class="card-text">
           <small class="text-muted">{{ datapublicacao }}</small>
         </p>
@@ -41,5 +41,9 @@ export default {
 }
 .marginTopNegative {
   margin-top: -10px;
+}
+.card-title{
+  color: #636E6A;
+  font-size: 15px;
 }
 </style>

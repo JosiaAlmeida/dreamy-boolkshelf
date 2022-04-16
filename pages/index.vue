@@ -110,7 +110,7 @@ export default {
           )
           this.filmes = this.$flattenData(data.queryViroufilmeContents, 'data')
           this.destaques = this.$flattenData(
-            data.queryDestaquesContents,
+            data.queryDreamybdContents,
             'data'
           )
           this.arts = this.$flattenData(
