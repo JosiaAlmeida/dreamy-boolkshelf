@@ -24,7 +24,7 @@
           estante do sonhos e acompanhe o progresso de construção da biblioteca
           particular
         </p>
-        <div v-for="(item, i) in destaques" :key="i">
+        <div v-for="(item, i) in destaques.slice(0,4)" :key="i">
           <SharedCardWidthImgLeft v-bind="item" />
         </div>
       </div>

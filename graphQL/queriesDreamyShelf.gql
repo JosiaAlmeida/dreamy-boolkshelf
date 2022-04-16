@@ -89,4 +89,26 @@ query Fetch {
       }
     }
   }
+    queryDreamybdContents{
+    id
+    data:flatData{
+      content
+      title
+      identificador
+      datapublicacao
+      description
+      date
+      images{
+        url
+      }
+    }
+  }
+    queryImagendestaqueContents{
+    id
+    data: flatData{
+      src {
+        url
+      }
+    }
+  }
 }
