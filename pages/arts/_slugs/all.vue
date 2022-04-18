@@ -21,7 +21,9 @@
               alt=""
             />
             <div class="p-3 text-center">
-              <h5 class="card-title text-center">{{ item.title.substring(0,25) }}...</h5>
+              <h5 class="card-title text-center">
+                {{ item.title.substring(0, 25) }}...
+              </h5>
               <hr />
               <small> {{ getDate(item.created) }} </small>
             </div>
@@ -36,6 +38,7 @@ import query from '~/graphQL/estante/queryImpressoes.gql'
 import queryFilmes from '~/graphQL/estante/queryFilmes.gql'
 import queryAlta from '~/graphQL/estante/queryAlta.gql'
 import queryMontando from '~/graphQL/estante/queryMontando.gql'
+import gqlImpressoes from '@/graphQL/queriesDreamyShelf.gql'
 export default {
   data() {
     return {
@@ -55,20 +58,6 @@ export default {
   mounted() {
     ;[, this.url] = this.$route.params.slugs.split(':')
     this.getById()
-    switch (this.url) {
-      case 'impressoes':
-        this.title = 'Minhas Impressões'
-        break
-      case 'emAlta':
-        this.title = 'Em Alta/ top favoritos do momento'
-        break
-      case 'montando':
-        this.title = 'Montando a estante dos sonhos'
-        break
-      case 'filmes':
-        this.title = 'Virou filme/Série'
-        break
-    }
   },
   methods: {
     getDate(d) {
@@ -79,16 +68,7 @@ export default {
     getById() {
       this.$apollo
         .query({
-          query:
-            this.url == 'impressoes'
-              ? query
-              : this.url == 'emAlta'
-              ? queryAlta
-              : this.url == 'montando'
-              ? queryMontando
-              : this.url == 'filmes'
-              ? queryFilmes
-              : '',
+          query: gqlImpressoes,
           fetchPolicy: 'no-cache',
           context: {
             headers: {
@@ -97,32 +77,10 @@ export default {
           },
         })
         .then((response) => {
-          switch (this.url) {
-            case 'impressoes':
-              this.dreamy = this.$flattenData(
-                response.data.queryMinhasimpressoesContents,
-                'data'
-              )
-              break
-            case 'emAlta':
-              this.dreamy = this.$flattenData(
-                response.data.queryEmaltaContents,
-                'data'
-              )
-              break
-            case 'montando':
-              this.dreamy = this.$flattenData(
-                response.data.queryMontandoaestanteContents,
-                'data'
-              )
-              break
-            case 'filmes':
-              this.dreamy = this.$flattenData(
-                response.data.queryViroufilmeContents,
-                'data'
-              )
-              break
-          }
+          this.dreamy = this.$flattenData(
+            response.data.queryDreamybdContents,
+            'data'
+          )
         })
         .catch((error) => error)
     },

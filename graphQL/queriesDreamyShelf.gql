@@ -91,6 +91,11 @@ query Fetch {
   }
     queryDreamybdContents{
     id
+    createdByUser {
+      id
+      displayName
+    }  
+    created
     data:flatData{
       content
       title
