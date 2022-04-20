@@ -8,7 +8,7 @@
         v-if="dreamy && dreamy.length"
       >
         <div v-for="(item, i) in dreamy" :key="i" class="m-2 card-content-item">
-          <nuxt-link class="" :to="`../../arts/${item.id}?url=${url}`">
+          <nuxt-link class="" :to="`../../arts/${item.id}`">
             <img
               v-if="item.images && item.images.length"
               :src="item.images[0].url"
@@ -45,6 +45,7 @@ export default {
       dreamy: [],
       url: '',
       title: '',
+      id: null
     }
   },
   watch: {
@@ -56,8 +57,10 @@ export default {
     },
   },
   mounted() {
-    ;[, this.url] = this.$route.params.slugs.split(':')
-    this.getById()
+    ;[, this.url] = this.$route.params.slug
+     this.id = this.$route.params.slug
+   //  console.log(this.$route.params)
+   // this.getById(this.id)
   },
   methods: {
     getDate(d) {
@@ -65,10 +68,14 @@ export default {
       const [, month, day, years] = date.toString().split(' ')
       return `${day} ${month} ${years}`
     },
-    getById() {
+    getById(id) {
+      debugger
       this.$apollo
         .query({
           query: gqlImpressoes,
+          variables: {
+            filter: `identificador eq '${id}'`,
+          },
           fetchPolicy: 'no-cache',
           context: {
             headers: {

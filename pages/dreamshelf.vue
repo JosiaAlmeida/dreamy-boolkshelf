@@ -21,7 +21,7 @@
       Theme="Minhas impressoes"
       to="/"
       nameLink="Ver todos"
-      :data="impressoes"
+      :datas="impressoes"
       url="impressoes"
       :navContainer="true"
     />
@@ -32,7 +32,7 @@
       Theme="Virou filme/Série"
       to="/"
       nameLink="Ver todos"
-      :data="filmes"
+      :datas="filmes"
       url="filmes"
       :centerMode="true"
     />
@@ -43,7 +43,7 @@
       Theme="Em Alta/ top favoritos do momento"
       to="/"
       nameLink="Ver todos"
-      :data="emAlta"
+      :datas="emAlta"
       url="emAlta"
       :centerMode="true"
     />
@@ -54,7 +54,7 @@
       Theme="Montando a estante dos sonhos"
       to="/"
       nameLink="Ver todos"
-      :data="montando"
+      :datas="montando"
       url="montando"
       :navContainer="true"
     />
