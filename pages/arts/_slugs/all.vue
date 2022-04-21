@@ -40,27 +40,33 @@ import queryAlta from '~/graphQL/estante/queryAlta.gql'
 import queryMontando from '~/graphQL/estante/queryMontando.gql'
 import gqlImpressoes from '@/graphQL/queriesDreamyShelf.gql'
 export default {
+  asyncData({ params }) {
+    const { slugs } = params
+    return {
+      slugs,
+    }
+  },
   data() {
     return {
       dreamy: [],
       url: '',
       title: '',
-      id: null
+      id: null,
     }
   },
   watch: {
     '$i18n.locale': {
       handler() {
-        this.getById(this.$route.params.slug)
+        this.getById(this.slugs)
       },
       deep: true,
     },
   },
   mounted() {
-    ;[, this.url] = this.$route.params.slug
-     this.id = this.$route.params.slug
-   //  console.log(this.$route.params)
-   // this.getById(this.id)
+    // ;[, this.url] = this.$route.params.slug
+    //  this.id = this.$route.params.slug
+    //  console.log(this.$route.params)
+    this.getById(this.slugs)
   },
   methods: {
     getDate(d) {
@@ -69,7 +75,7 @@ export default {
       return `${day} ${month} ${years}`
     },
     getById(id) {
-      debugger
+      // debugger
       this.$apollo
         .query({
           query: gqlImpressoes,
@@ -84,9 +90,12 @@ export default {
           },
         })
         .then((response) => {
-          this.dreamy = this.$flattenData(
+          const datasResult = this.$flattenData(
             response.data.queryDreamybdContents,
             'data'
+          )
+          this.dreamy = datasResult.filter(
+            (item) => item.identificador == this.slugs
           )
         })
         .catch((error) => error)
