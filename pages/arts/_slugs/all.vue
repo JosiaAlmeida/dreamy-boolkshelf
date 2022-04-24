@@ -8,7 +8,7 @@
         v-if="dreamy && dreamy.length"
       >
         <div v-for="(item, i) in dreamy" :key="i" class="m-2 card-content-item">
-          <nuxt-link class="" :to="`../../arts/${item.id}?url=${url}`">
+          <nuxt-link class="" :to="`../../arts/${item.id}`">
             <img
               v-if="item.images && item.images.length"
               :src="item.images[0].url"
@@ -21,7 +21,9 @@
               alt=""
             />
             <div class="p-3 text-center">
-              <h5 class="card-title text-center">{{ item.title.substring(0,25) }}...</h5>
+              <h5 class="card-title text-center">
+                {{ item.title.substring(0, 25) }}...
+              </h5>
               <hr />
               <small> {{ getDate(item.created) }} </small>
             </div>
@@ -36,39 +38,35 @@ import query from '~/graphQL/estante/queryImpressoes.gql'
 import queryFilmes from '~/graphQL/estante/queryFilmes.gql'
 import queryAlta from '~/graphQL/estante/queryAlta.gql'
 import queryMontando from '~/graphQL/estante/queryMontando.gql'
+import gqlImpressoes from '@/graphQL/queriesDreamyShelf.gql'
 export default {
+  asyncData({ params }) {
+    const { slugs } = params
+    return {
+      slugs,
+    }
+  },
   data() {
     return {
       dreamy: [],
       url: '',
       title: '',
+      id: null,
     }
   },
   watch: {
     '$i18n.locale': {
       handler() {
-        this.getById(this.$route.params.slug)
+        this.getById(this.slugs)
       },
       deep: true,
     },
   },
   mounted() {
-    ;[, this.url] = this.$route.params.slugs.split(':')
-    this.getById()
-    switch (this.url) {
-      case 'impressoes':
-        this.title = 'Minhas Impressões'
-        break
-      case 'emAlta':
-        this.title = 'Em Alta/ top favoritos do momento'
-        break
-      case 'montando':
-        this.title = 'Montando a estante dos sonhos'
-        break
-      case 'filmes':
-        this.title = 'Virou filme/Série'
-        break
-    }
+    // ;[, this.url] = this.$route.params.slug
+    //  this.id = this.$route.params.slug
+    //  console.log(this.$route.params)
+    this.getById(this.slugs)
   },
   methods: {
     getDate(d) {
@@ -76,19 +74,14 @@ export default {
       const [, month, day, years] = date.toString().split(' ')
       return `${day} ${month} ${years}`
     },
-    getById() {
+    getById(id) {
+      // debugger
       this.$apollo
         .query({
-          query:
-            this.url == 'impressoes'
-              ? query
-              : this.url == 'emAlta'
-              ? queryAlta
-              : this.url == 'montando'
-              ? queryMontando
-              : this.url == 'filmes'
-              ? queryFilmes
-              : '',
+          query: gqlImpressoes,
+          variables: {
+            filter: `identificador eq '${id}'`,
+          },
           fetchPolicy: 'no-cache',
           context: {
             headers: {
@@ -97,32 +90,13 @@ export default {
           },
         })
         .then((response) => {
-          switch (this.url) {
-            case 'impressoes':
-              this.dreamy = this.$flattenData(
-                response.data.queryMinhasimpressoesContents,
-                'data'
-              )
-              break
-            case 'emAlta':
-              this.dreamy = this.$flattenData(
-                response.data.queryEmaltaContents,
-                'data'
-              )
-              break
-            case 'montando':
-              this.dreamy = this.$flattenData(
-                response.data.queryMontandoaestanteContents,
-                'data'
-              )
-              break
-            case 'filmes':
-              this.dreamy = this.$flattenData(
-                response.data.queryViroufilmeContents,
-                'data'
-              )
-              break
-          }
+          const datasResult = this.$flattenData(
+            response.data.queryDreamybdContents,
+            'data'
+          )
+          this.dreamy = datasResult.filter(
+            (item) => item.identificador == this.slugs
+          )
         })
         .catch((error) => error)
     },

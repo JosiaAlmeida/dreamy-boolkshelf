@@ -55,6 +55,7 @@ import query from '~/graphQL/graphQL-QueryDreamy.gql'
 import queryFilmes from '~/graphQL/graphQL-QueryFilmes.gql'
 import queryAlta from '~/graphQL/graphQL-QueryemAlta.gql'
 import queryMontando from '~/graphQL/graphQL-QueryMontando.gql'
+import gqlImpressoes from '@/graphQL/queriesDreamyShelf.gql'
 export default {
   async asyncData({ params }) {
     const slug = params.slug // When calling /abc the slug will be "abc"
@@ -101,16 +102,7 @@ export default {
     getById(id) {
       this.$apollo
         .query({
-          query:
-            this.url == 'impressoes'
-              ? query
-              : this.url == 'emAlta'
-              ? queryAlta
-              : this.url == 'montando'
-              ? queryMontando
-              : this.url == 'filmes'
-              ? queryFilmes
-              : '',
+          query: gqlImpressoes,
           variables: {
             filter: `id eq '${id}'`,
           },
@@ -122,33 +114,10 @@ export default {
           },
         })
         .then((response) => {
-          switch (this.url) {
-            case 'impressoes':
-              this.dreamy = this.$flattenData(
-                response.data.queryMinhasimpressoesContents,
-                'data'
-              )
-              break
-            case 'emAlta':
-              this.dreamy = this.$flattenData(
-                response.data.queryEmaltaContents,
-                'data'
-              )
-              break
-            case 'montando':
-              this.dreamy = this.$flattenData(
-                response.data.queryMontandoaestanteContents,
-                'data'
-              )
-              break
-            case 'filmes':
-              this.dreamy = this.$flattenData(
-                response.data.queryViroufilmeContents,
-                'data'
-              )
-              break
-          }
-
+          this.dreamy = this.$flattenData(
+            response.data.queryDreamybdContents,
+            'data'
+          )
           // console.log(this.dreamy)
         })
         .catch((error) => error)
