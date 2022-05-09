@@ -91,9 +91,7 @@ hr {
 }
 @media screen and (max-width: 600px) {
   .containerCard {
-    width: 0px !important;
-    overflow: hidden;
-    height: 0px !important;
+    display:none !important;
   }
   .containerDescription {
     width: 100%;

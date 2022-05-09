@@ -61,6 +61,7 @@ export default {
         infinite: true,
         speed: 500,
         centerMode: this.centerMode ? true : false,
+        centerPadding: this.centerMode ? "20px" : "",
         slidesToScroll: this.slideScroll ? this.slideScroll : 3,
         dots: false,
         prevArrow: false,

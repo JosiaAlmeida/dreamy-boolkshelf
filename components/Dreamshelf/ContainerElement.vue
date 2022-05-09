@@ -7,7 +7,7 @@
       <h5>{{ Theme }}</h5>
       <nuxt-link
         class="Link"    
-        v-if="datas && datas.length"   
+        v-if="datas && datas.length > 4"   
         :to="`arts/:${url}/all`"
       >
         <h5>{{ nameLink }}</h5>
