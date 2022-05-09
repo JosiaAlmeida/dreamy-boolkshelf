@@ -80,6 +80,7 @@ export default {
   mounted() {
     this.getData()
   },
+  beforeUpdate() {},
   watch: {
     '$i18n.locale': {
       handler() {

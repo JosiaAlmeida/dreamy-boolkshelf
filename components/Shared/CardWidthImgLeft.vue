@@ -9,7 +9,7 @@
         />
       </div>
       <div class="card-body col-6 marginTopNegative">
-        <h5 class="card-title">{{ title.substring(0,35) }}...</h5>
+        <h5 class="card-title">{{ title.substring(0, 35) }}...</h5>
         <p class="card-text">
           <small class="text-muted">{{ datapublicacao }}</small>
         </p>
@@ -20,7 +20,7 @@
 <script>
 export default {
   props: {
-    ['images']: String,
+    ['images']: Array,
     ['title']: String,
     ['datapublicacao']: String,
   },
@@ -42,8 +42,8 @@ export default {
 .marginTopNegative {
   margin-top: -10px;
 }
-.card-title{
-  color: #636E6A;
+.card-title {
+  color: #636e6a;
   font-size: 15px;
 }
 </style>

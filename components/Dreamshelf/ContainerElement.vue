@@ -6,9 +6,9 @@
     >
       <h5>{{ Theme }}</h5>
       <nuxt-link
-        class="Link"    
-        v-if="datas && datas.length > 4"   
-        :to="`arts/:${url}/all`"
+        class="Link"
+        v-if="datas && datas.length"
+        :to="`arts/${datas[0].identificador}/all`"
       >
         <h5>{{ nameLink }}</h5>
       </nuxt-link>
@@ -22,7 +22,7 @@
       :slideShow="4"
       :slideScrollMobile="1"
       :carouselQtd="datas.length"
-      :arrowsShow="datas.length > 4 ? true : false "
+      :arrowsShow="datas.length > 4 ? true : false"
       v-if="datas && datas.length"
     >
       <div
@@ -47,13 +47,12 @@ export default {
     ['url']: String,
     ['navContainer']: Boolean,
   },
-  data(){
-    return{
-      identificador: 0
+  data() {
+    return {
+      identificador: 0,
     }
   },
-  mounted() {
-  }
+  mounted() {},
 }
 </script>
 <style scoped>
