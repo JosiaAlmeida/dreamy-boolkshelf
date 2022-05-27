@@ -2,8 +2,8 @@
   <div class="container-fluid mt-5 mb-2 background">
     <div class="row p-3">
       <div class="col-12 mt-5 text-center">
-        <h3>Eventos</h3>
-        <p>
+        <h3 style="font-size:32px;">Eventos</h3>
+        <p style="font-size:18px;">
           E fora dos livros tem ideia do que se passa? Fica por dentro dos
           eventos que <br />
           ocorrem a volta do universo literário.

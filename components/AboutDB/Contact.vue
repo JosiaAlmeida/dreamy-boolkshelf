@@ -11,19 +11,19 @@
           </div>
         </div>
       </div>
-      <div class="col-11 d-flex alignText align-items-center">
+      <div class="container d-flex alignText align-items-start" style="margin-top:9%">
         <div class="width-text">
-          <p class="visible-width-100">
+          <p class="visible-width-100 mb-4 text-size-24">
             O Dreamy Booshelf é um espaço para amantes de livros e fotografias.
           </p>
-          <p class="Text-padding-mobile">
+          <p class="Text-padding-mobile mb-4 text-size-24">
             Num país, onde o acesso a leitura diversificada vem se tornando um
             desafio, apostar em plataformas digitais foi uma maneira de mostrar
             que todos podemos ter acesso a leitura de nossos gostos independente
             dos generos literários, que ler pode e deveria ser um prazer mais do
             que obrigação e/ou nos fazer parecer mais cultos que os outros.
           </p>
-          <p class="Text-padding-mobile">
+          <p class="Text-padding-mobile mb-4 text-size-24">
             O Dreamy Booshelf vem juntar em um canto todos os amantes de livros
             e partilhar tudo que existe no mundo literário e explorar o universo
             de fotografias.
@@ -56,11 +56,11 @@
 import query from '~/graphQL/sobre.gql'
 export default {
   data() {
-    return{
-      src:'',
+    return {
+      src: '',
     }
   },
-   watch: {
+  watch: {
     '$i18n.locale': {
       handler() {
         this.getByData()
@@ -69,13 +69,13 @@ export default {
     },
   },
   created() {
-      this.getByData()
+    this.getByData()
   },
   methods: {
     getByData() {
       this.$apollo
         .query({
-          query:query,
+          query: query,
           fetchPolicy: 'no-cache',
           context: {
             headers: {
@@ -85,15 +85,15 @@ export default {
         })
         .then((response) => {
           let res = this.$flattenData(
-                response.data.queryDestaqueContents,
-                'data'
-              )
-           this.src = res[0].src
-           console.log(this.src)
+            response.data.queryDestaqueContents,
+            'data'
+          )
+          this.src = res[0].src
+          console.log(this.src)
         })
         .catch((error) => error)
     },
-  }
+  },
 }
 </script>
 
@@ -105,6 +105,10 @@ export default {
 }
 .visible-mobile {
   visibility: hidden;
+}
+.text-size-24 {
+  font-size: 18px;
+  font-family: Nunito, Regular;
 }
 .background {
   display: flex;
@@ -127,7 +131,8 @@ export default {
   padding: 5%;
 }
 .width-text {
-  width: 50%;
+  width: 530px;
+  height: 464px;
 }
 .contact {
   display: flex;
@@ -153,16 +158,17 @@ p {
     z-index: 1;
     position: relative;
     width: 100%;
-    height: 50vh;
+    height: 100vh;
   }
   .width-text {
     width: 100%;
     text-align: left;
   }
   .alignText {
-    widows: 100%;
+    width: 100%;
     justify-content: center !important;
     padding: 3%;
+    margin-bottom: 220px;
   }
   .top {
     margin-top: -5% !important;

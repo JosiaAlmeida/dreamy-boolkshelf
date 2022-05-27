@@ -4,6 +4,7 @@
     :class="this.$root._route.path == '/dreamclub' && 'ocultFooter'"
   >
     <div
+      v-if="this.$root._route.path != '/aboutdb'"
       id="arrow"
       class="w-100 d-flex justify-content-center"
       :class="this.$root._route.path == '/' && 'backgroundColor'"
@@ -20,19 +21,15 @@
             <div class="row">
               <div class="col-md-6 col-sm-12 pt-5">
                 <div class="d-flex">
-                    <nuxt-link to="/">
-                      <img
-                        src="/assets/Logo.svg"
-                        class="img img-fluid"
-                        alt="icone da dreamy-boolkshelf"
-                      />
-                    </nuxt-link>
-                  <ul
-                    class="nav flex-column pl-5"
-                  >
-                    <li class="nav-item"
-                    v-for="item in menu"
-                    :key="item.id">
+                  <nuxt-link to="/">
+                    <img
+                      src="/assets/Logo.svg"
+                      class="img img-fluid"
+                      alt="icone da dreamy-boolkshelf"
+                    />
+                  </nuxt-link>
+                  <ul class="nav flex-column pl-5">
+                    <li class="nav-item" v-for="item in menu" :key="item.id">
                       <div class="d-flex algin-justify text-center">
                         <img
                           :src="item.src"
@@ -64,9 +61,7 @@
 
 <script>
 export default {
-  props: {
-   
-  },
+  props: {},
   mounted() {},
   computed: {
     configStyle() {
