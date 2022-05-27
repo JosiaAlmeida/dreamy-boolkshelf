@@ -212,7 +212,8 @@ export default {
 }
 .nav-item .nav-link {
   color: #f0f1f1;
-  /* font-size: 25px; */
+   font-size: 26px;
+   font-family: 'Philosopher',sans-serif;
 }
 .nuxt-link-exact-active.nuxt-link-active {
   border-bottom: 5px solid #d4d4ba;

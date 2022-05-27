@@ -5,8 +5,8 @@
               'background-image': `url(${src[0].url}) `,
             }">
         <div class="z-index-1 position-relative">
-          <h1 class="text-padding text-white">Dreamy Bookshelf</h1>
-          <p class="text-padding w-75">
+          <h1 class="text-padding text-white titleSize \">Dreamy Bookshelf</h1>
+          <p class="text-padding w-75 text-white ">
             Sonhe, visualize e monte connosco a estante dos teus sonhos
           </p>
         </div>
@@ -64,6 +64,9 @@ export default {
 </script>
 
 <style scoped>
+.titleSize{
+  font-size:47px !important;
+}
 .background {
   height: 100vh !important;
   width: 100%;
@@ -80,6 +83,7 @@ export default {
   background: rgba(99, 110, 106, 0.5);
 }
 .background2 {
+  background-size: cover;
   height: 100vh !important;
   width: 100%;
   position: relative;
@@ -113,6 +117,7 @@ export default {
 .text-padding {
   padding: 0% 5% 0% 5%;
   color: #b5bab9;
+  font-size: 25px;
 }
 @media only screen and (max-width: 600px) {
   .flexContainer {
