@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row justify-content-center p-2">
           <div class="col-12" v-if="events.length">
-          <SharedSearchInput />
-            <SharedCarousel
+            <SharedSearchInput />
+            <EventListCard
               :carouselData="events"
               :rowmobile="3"
               :vertical="false"
-              :row="events.length > 3 ? 2 : 3"
+              :row="events.length > 4 ? 3 : 1"
               :verticalSwiping="false"
             />
           </div>
@@ -60,3 +60,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+:is(body, html) {
+  overflow-x: hidden !important;
+}
+</style>
