@@ -1,9 +1,9 @@
 <template>
-  <div class="container mt-5" v-if="array && array.length > 0">
+  <div class="container-fluid mt-5" v-if="array && array.length > 0">
     <div class="row">
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-7 col-sm-12">
         <div class="row flex-wrap" v-if="array[0].src">
-          <div class="col-6" :class="[id == 0 ? 'mt-3': '', id == 2 ? 'margin-negative-top2' : '', id == 3 ? 'margin-negative-top' : '' ]" v-for="(item, id) in array[0].src" :key="id">
+          <div class="col-6" :class="[id == 0 ? 'mt-5': '', id == 2 ? 'margin-negative-top2' : '', id == 3 ? 'margin-negative-top' : '' ]" v-for="(item, id) in array[0].src" :key="id">
             <img
               :src="item.url"
               class="img-fluid img"
@@ -13,7 +13,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 col-sm-12 text-styles">
+      <div class="col-md-5 col-sm-12 text-styles">
         <div class="text-content-style">
           <h3 class="title">{{array[0].title}}</h3>
           <p>{{array[0].description}}</p>
@@ -76,10 +76,11 @@ export default {
   padding: 4%;
 }
 .img {
-  height: 300px;
+  height: 530px;
   width: 100% !important;
   object-fit: cover;
 }
+
 .text-styles {
   padding: 5%;
   display: flex;
@@ -93,10 +94,15 @@ export default {
   margin-top: -7%;
 }
 .margin-negative-top2 {
-  margin-top: -4%;
+  margin-top: -2%;
 }
 h3 {
   font-weight: bold;
+}
+@media(max-width:768px){
+  .img{
+    height:250px;
+  }
 }
 @media only screen and (max-width: 600px) {
   .text-styles {

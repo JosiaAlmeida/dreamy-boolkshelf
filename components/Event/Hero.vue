@@ -119,6 +119,7 @@ p {
   color: rgb(230, 220, 205);
   text-align: start !important;
   margin-left: -13px;
+  font-size: 22px;
 }
 .text-small-grey {
   color: #cbcfcd;
