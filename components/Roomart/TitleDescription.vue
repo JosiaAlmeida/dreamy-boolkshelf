@@ -2,10 +2,8 @@
   <div class="col-12">
     <div class="row d-flex justify-content-center">
       <div class="col-md-5 col-sm-12 text-center mt-5">
-        <h3 class="text-title text-center">{{lang.title}}</h3>
-        <p class="text-center">
-          {{lang.description}}
-        </p>
+        <h3 class="text-title text-center">{{lang.title}}</h3>        
+          <div v-html="lang.description"></div>
       </div>
     </div>
   </div>

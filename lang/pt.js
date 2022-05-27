@@ -9,6 +9,6 @@ export default {
   home: {},
   arts:{
     title: 'Sala de Artes',
-    description: 'Descubra, desfrute e se inspire com os cenários estéticos e minimalistas do mundo livros'
+    description: '<p class="text-center" style="font-size:22px;">Descubra, desfrute e se inspire com os cenários estéticos e <br/> minimalistas do mundo livros</p>'
   }
 }

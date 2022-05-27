@@ -75,6 +75,7 @@ export default {
     margin: 0 auto;
     padding-top: 15px;
     padding-bottom: 23px;
+    font-size: 33px;
   }
 }
 </style>
