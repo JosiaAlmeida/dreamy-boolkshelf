@@ -20,7 +20,7 @@
                 </p>
               </div>
               <div class="card-text" v-else>
-                <h5 class="text-white-title">Nenhuma informação</h5>
+                <h5 class="text-white-title">{{lang.title}}</h5>
               </div>
               <div class="button" v-if="lastEvent.length > 0">
                 <nuxt-link
@@ -49,6 +49,11 @@ export default {
       const [, month, day, years] = date.toString().split(' ')
       return `${day} ${month} ${years}`
     },
+     lang() {
+      return {
+        title: this.$t("noInformation.title"),
+      }
+      },
     getImage() {
       if (this.lastEvent.length) {
         const images = this.lastEvent[this.lastEvent.length - 1].images[0].url

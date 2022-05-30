@@ -33,7 +33,7 @@
     </div>
     <div class="containerElementHero h-100" v-else>
       <div class="text-white containerDescription">
-        <h4 class="text-white">Nenhuma informação</h4>
+        <h4 class="text-white">{{ lang.title }}</h4>
       </div>
     </div>
   </div>
@@ -49,7 +49,13 @@ export default {
     // },
     ['title']: String,
   },
-  computed: {},
+  computed: {
+     lang() {
+      return {
+        title: this.$t("noInformation.title"),
+      }
+      }
+  },
   mounted() {
     console.log(this.destaques)
   }

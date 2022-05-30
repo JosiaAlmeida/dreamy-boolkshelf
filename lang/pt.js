@@ -7,7 +7,7 @@ export default {
     events: 'Eventos',
   },
   home: {
-
+    desc:'Sonhe, visualize e monte connosco a estante dos teus sonhos'
   },
   whyDreamy:{
     title:'Porquê a Dreamy Bookshelf?',
@@ -38,6 +38,18 @@ export default {
     apostar em plataformas digitais foi uma maneira de mostrar que todos podemos ter 
     acesso a leitura de nossos gostos independente dos generos literários, que ler pode e 
     deveria ser um prazer mais do que obrigação e/ou nos fazer parecer mais cultos que os outros.`,
-    description3: `O Dreamy Booshelf vem juntar em um canto todos os amantes de livros e partilhar tudo que existe no mundo literário`,
+    description2: `O Dreamy Booshelf vem juntar em um canto todos os amantes de livros e partilhar tudo que existe no mundo literário`,
+  },
+  top:{
+    title:'Voltar para cima'
+  },
+  noInformation:{
+    title:'Nenhuma informação'
+  },
+  dreamyClub:{
+    title:'Estamos a criar algo especial para ti, até já!'
+  },
+  close:{
+    title:'Fechar'
   }
 }

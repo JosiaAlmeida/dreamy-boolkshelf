@@ -7,7 +7,7 @@ export default {
     events: 'Events',
   },
   home: {
-
+    desc:'Dream, visualize and assemble the bookcase of your dreams with us'
   },
   whyDreamy:{
     title:'Why the Dreamy Bookshelf?',
@@ -24,8 +24,8 @@ export default {
     description:'Enjoy and get inspried with minimalist and aesthetic scenarios from the book world'
   },
   destaqueEvents:{
-    title:'Events',
-    description:'Get updated about everything that is happening on the Books universe',
+    title:'<p style="font-size:32px;">Events</p>',
+    description:'<p style="font-size:18px;">Get updated about everything that is happening on the Books universe</p>',
   },
   arts:{
     title: 'Arts room',
@@ -37,5 +37,17 @@ export default {
     invest in a digital platform was a way to show that all of us can have acces to to books of every kind of genre, 
     regardless of our tastes, reading can and should be a leisure more than a obligation than makes look smarter than others.`,
     description2: 'Dreamy bookhslef aims to join in a place every book lover and share everything you need you need know about this world',
+  },
+  top:{
+    title:'Go to top'
+  },
+  noInformation:{
+    title:'No information'
+  },
+  dreamyClub:{
+    title:'We are creating something special for you, see you soon!'
+  }  ,
+  close:{
+    title:'Close'
   }
 }

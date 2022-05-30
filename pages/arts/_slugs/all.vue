@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid p-5">
-    <nuxt-link to="/dreamshelf" class="Link">Fechar</nuxt-link>
+    <nuxt-link to="/dreamshelf" class="Link">{{lang.title}}</nuxt-link>
     <div class="cards-content">
       <h5 class="text-center my-4">{{ title }}</h5>
       <div
@@ -101,7 +101,13 @@ export default {
         .catch((error) => error)
     },
   },
-  computed: {},
+  computed: {
+       lang() {
+      return {
+        title: this.$t("close.title"),
+      };
+    },
+  },
 }
 </script>
 <style scoped>
