@@ -7,7 +7,7 @@
         <div class="z-index-1 position-relative">
           <h1 class="text-padding text-white titleSize \">Dreamy Bookshelf</h1>
           <p class="text-padding w-75 text-white ">
-            Sonhe, visualize e monte connosco a estante dos teus sonhos
+            {{lang.title}}
           </p>
         </div>
       </div>
@@ -59,7 +59,14 @@ export default {
         })
         .catch((error) => error)
     },
-  }
+  },
+    computed: {   
+    lang() {
+      return {
+        title: this.$t("home.desc"),
+      };
+    },
+  },
 }
 </script>
 

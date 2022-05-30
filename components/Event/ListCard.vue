@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-wrap justify-content-start">
+  <div class="d-flex flex-wrap justify-content-center">
     <nuxt-link
       class="Link p-3"
       :to="'event/' + item.id"

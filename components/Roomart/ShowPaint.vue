@@ -7,7 +7,7 @@
             @click="closeModal()"
             class="btn btn-default btn-close text-white"
           >
-            Fechar
+            {{lang.title}}
           </button>
         </div>
         <div class="col-12">
@@ -106,7 +106,13 @@ export default {
       },
     }
   },
-  computed: {},
+  computed: {
+      lang() {
+      return {
+        title: this.$t("close.title"),
+      };
+    },
+  },
   mounted() {},
   destroyed() {},
 }

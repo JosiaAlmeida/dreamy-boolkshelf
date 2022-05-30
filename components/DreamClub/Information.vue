@@ -16,7 +16,7 @@
         }"
       >
         <h1 class="w-50 text-white mobile-qr z-index-1">
-          Estamos a criar algo especial para ti, até já!
+          {{lang.title}}
         </h1>
       </div>
     </div>
@@ -64,6 +64,13 @@ export default {
         .catch((error) => error)
     },
   },
+  computed: {
+      lang() {
+      return {
+        title: this.$t("dreamyClub.title"),
+      };
+    },
+  }
 }
 </script>
 <style scoped>

@@ -2,12 +2,9 @@
   <div class="container-fluid mt-5 mb-2 background">
     <div class="row p-3">
       <div class="col-12 mt-5 text-center">
-        <h3 style="font-size:32px;">Eventos</h3>
-        <p style="font-size:18px;">
-          E fora dos livros tem ideia do que se passa? Fica por dentro dos
-          eventos que <br />
-          ocorrem a volta do universo literário.
-        </p>
+        <div v-html="lang.title"></div>
+        <div v-html="lang.description">
+        </div>
         <SharedLinkMore colors="#E0DAD0" name="Ver Todos" to="/events" />
       </div>
       <div class="col-12">
@@ -72,6 +69,12 @@ export default {
   computed: {
     getEvents() {
       return this.events.slice(0, 3)
+    },
+     lang() {
+      return {
+        title: this.$t("destaqueEvents.title"),
+        description: this.$t("destaqueEvents.description"),
+      };
     },
   },
   methods: {

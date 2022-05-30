@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 LinkContent mt-4 mb-4">
-        <nuxt-link to="/" class="Link">Fechar</nuxt-link>
+        <nuxt-link to="/" class="Link">{{lang.title}}</nuxt-link>
       </div>
       <div class="mt-2 col-md-7 img col-sm-12" :style="getImage">
         <!-- <img src="/assets/img/armario.jpg" alt="" class="img-fluid" /> -->
@@ -82,6 +82,11 @@ export default {
       return {
         '--image': `url(/assets/img/Grupo 412@2x.png)`,
       }
+    },
+      lang() {
+      return {
+        title: this.$t("close.title"),
+      };
     },
   },
 }

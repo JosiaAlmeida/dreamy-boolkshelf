@@ -88,7 +88,7 @@
                 class="btn btn-default btnclose"
                 @click="showmodal(false)"
               >
-                Fechar
+                {{lang.title}}
                 <div class="borderbtn"></div>
               </button>
             </div>
@@ -146,6 +146,11 @@ export default {
           url: this.localePath('events'),
         },
       ]
+    },
+    lang() {
+      return {
+        title: this.$t("close.title"),
+      };
     },
   },
   methods: {
