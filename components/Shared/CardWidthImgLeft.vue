@@ -9,7 +9,7 @@
         />
       </div>
       <div class="card-body col-6 marginTopNegative">
-        <h5 class="card-title">{{ title.substring(0, 35) }}...</h5>
+        <h5 class="card-title">{{ title != null ? title.substring(0, 35)+'...' : ''}}</h5>
         <p class="card-text">
           <small class="text-muted">{{ datapublicacao }}</small>
         </p>

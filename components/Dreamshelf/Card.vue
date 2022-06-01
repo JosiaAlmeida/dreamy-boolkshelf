@@ -15,7 +15,7 @@
         />
         <div class="p-3">
           <h5 class="card-title text-center">
-            {{ item.title.substring(0, 25) }}...
+            {{ item.title != null ? item.title.substring(0, 25)+'...' : '' }}
           </h5>
           <hr />
           <small> {{ getDate }} </small>
