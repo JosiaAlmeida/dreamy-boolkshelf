@@ -71,20 +71,26 @@
         colorb="rgba(255, 255, 255, 0.2)"
       >
         <nav :id="isShow ? 'sidebar' : ''">
-          <div :class="isShow ? 'nav-mobile collapse' : 'nav-mobile-false'">
+          <div :class="isShow ? 'nav-mobile collapse p-4' : 'nav-mobile-false'">
             <div class="d-flex w-100 mb-5 justify-content-between">
               <div class="lang-option">
                 <a
                   href="#"
                   @click.prevent.stop="changeLocale('pt')"
-                  :class="[showBtn ? 'active-mobile' : 'inactive']"
+                  :class="[
+                    showBtn ? 'active-mobile text-size' : 'inactive text-size',
+                  ]"
                   >PT</a
                 >
                 <span></span>
                 <a
                   href="#"
                   @click.prevent.stop="changeLocale('en')"
-                  :class="[!showBtn ? 'active-mobile' : 'inactive']"
+                  :class="[
+                    !showBtn
+                      ? 'active-mobile  text-size'
+                      : 'inactive text-size',
+                  ]"
                   >EN</a
                 >
               </div>
@@ -99,7 +105,7 @@
             <div class="text-center">
               <div class="nav-item" v-for="item in menu" :key="item.id">
                 <nuxt-link
-                  class="nav-link"
+                  class="nav-link text-size text-white"
                   extra-active-class="active"
                   :style="{ color: colorb }"
                   :to="item.url"
@@ -277,6 +283,9 @@ export default {
     height: 100% !important;
     background-color: rgba(255, 255, 255, 0);
     backdrop-filter: blur(3px) !important;
+  }
+  .text-size {
+    font-size: 1rem !important;
   }
   .nav-bar-wrapper {
     justify-content: space-between;
