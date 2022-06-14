@@ -1,9 +1,9 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  server: {
+  /*server: {
     host: '0',
     port: 3000
-  },
+  }, */
   head: {
     title: 'dreamy-boolkshelf',
     htmlAttrs: {
