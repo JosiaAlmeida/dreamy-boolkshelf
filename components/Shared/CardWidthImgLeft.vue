@@ -46,4 +46,16 @@ export default {
   color: #636e6a;
   font-size: 15px;
 }
+@media all and (min-width: 700px) and (max-width: 1380px) {
+  .card {
+    height: calc(100px * 0.8);
+  }
+  .card-body {
+    height: calc(90px * 0.8);
+  }
+  .img {
+    height: calc(99px * 0.8);
+    /* width: calc(100% / 2); */
+  }
+}
 </style>

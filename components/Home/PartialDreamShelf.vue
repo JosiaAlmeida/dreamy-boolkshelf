@@ -2,10 +2,8 @@
   <div class="container mt-5 mb-5">
     <div class="row flex">
       <div class="col-12 paddingLeft ocultWeb text-center">
-        <h3 class="title">{{lang.title}}</h3>
-        <p>
-          {{lang.description}}
-        </p>
+        <h3 class="title">{{ lang.title }}</h3>
+        <p v-html="lang.description"></p>
       </div>
       <div class="col-md-7 col-sm-12">
         <img
@@ -16,11 +14,9 @@
         <SharedCardSimple paddingLeft="4%" paddingRight="4%" />
       </div>
       <div class="col-md-5 paddingLeft col-sm-12 text-center">
-        <h3 class="ocultMobile">{{lang.title}}</h3>
-        <p class="ocultMobile">
-          {{lang.description}}
-        </p>
-        <div v-for="(item, i) in destaques.slice(0,4)" :key="i">
+        <h3 class="ocultMobile">{{ lang.title }}</h3>
+        <p class="ocultMobile" v-html="lang.description"></p>
+        <div v-for="(item, i) in destaques.slice(0, 4)" :key="i">
           <SharedCardWidthImgLeft v-bind="item" />
         </div>
       </div>
@@ -33,12 +29,12 @@ export default {
   props: {
     ['destaques']: Array,
   },
-  computed: {   
+  computed: {
     lang() {
       return {
-        title: this.$t("destaqueEstante.title"),
-        description: this.$t("arts.description"),
-      };
+        title: this.$t('destaqueEstante.title'),
+        description: this.$t('arts.description'),
+      }
     },
   },
 }
@@ -74,7 +70,7 @@ export default {
     visibility: hidden;
     height: 0px;
   }
-  .title{
+  .title {
     width: 220px;
     margin: 0 auto;
     padding-top: 15px;
