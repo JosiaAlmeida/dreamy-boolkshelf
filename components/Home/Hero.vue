@@ -4,9 +4,7 @@
       <div
         class="col-12 flexContainer text-white background2 p-5"
         v-if="src != null && src.length"
-        :style="{
-          'background-image': `url(${src[0].url}) `,
-        }"
+        :style="backgrounStyleImg(src[0].url)"
       >
         <div class="">
           <h1 class="text-padding text-white title-size \">Dreamy Bookshelf</h1>
@@ -67,6 +65,9 @@ export default {
         })
         .catch((error) => error)
     },
+    backgrounStyleImg(img) {
+      return { '--img': `url(${img}) no-repeat center center` }
+    },
   },
   computed: {
     lang() {
@@ -94,11 +95,12 @@ export default {
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 1;
-  background: rgba(99, 110, 106, 0.5);
+  z-index: -1;
+  background: var(--img);
+  background-size: cover;
+  filter: brightness(0.5);
 }
 .background2 {
-  background-size: cover;
   height: 100vh !important;
   width: 100%;
   position: relative;
@@ -121,8 +123,10 @@ export default {
 }
 .text-padding {
   padding: 0% 5% 0% 5%;
-  color: #b5bab9;
   font-size: 25px;
+}
+.text-white {
+  color: #fff !important;
 }
 @media only screen and (max-width: 600px) {
   .flexContainer {
