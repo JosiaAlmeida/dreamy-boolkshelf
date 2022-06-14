@@ -18,7 +18,7 @@ export default {
 <style scoped>
 .layouts {
   height: 100%;
-  min-height: calc(100vh-90px);
+  min-height: 70vh;
 }
 .footer {
 }

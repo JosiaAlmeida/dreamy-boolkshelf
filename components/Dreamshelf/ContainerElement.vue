@@ -13,8 +13,6 @@
         <h5>{{ nameLink }}</h5>
       </nuxt-link>
     </div>
-    <!-- <div class="row">
-        <div class="col-12 text-center mb-5"> -->
     <SharedCarouselPainting
       class="w-auto"
       :row="1"
@@ -33,8 +31,6 @@
         <DreamshelfCard :item="item" :propsurl="url" />
       </div>
     </SharedCarouselPainting>
-    <!-- </div>
-      </div> -->
   </div>
 </template>
 <script>
