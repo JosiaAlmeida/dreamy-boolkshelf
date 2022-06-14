@@ -51,11 +51,7 @@
 </template>
 
 <script>
-import query from '~/graphQL/graphQL-QueryDreamy.gql'
-import queryFilmes from '~/graphQL/graphQL-QueryFilmes.gql'
-import queryAlta from '~/graphQL/graphQL-QueryemAlta.gql'
-import queryMontando from '~/graphQL/graphQL-QueryMontando.gql'
-import gqlImpressoes from '@/graphQL/queriesDreamyShelf.gql'
+import query from '~/graphQL/graphQL-dreamydb.gql'
 export default {
   async asyncData({ params }) {
     const slug = params.slug // When calling /abc the slug will be "abc"
@@ -91,10 +87,9 @@ export default {
     },
   },
   mounted() {
-    // console.log(this.$route.query.url)
     this.id = this.$route.params.slugs
     this.url = this.$route.query.url
-    // console.log('Id', this.id)
+    console.log(this.id)
     this.getById(this.id)
   },
   beforeUpdate() {},
@@ -102,7 +97,7 @@ export default {
     getById(id) {
       this.$apollo
         .query({
-          query: gqlImpressoes,
+          query: query,
           variables: {
             filter: `id eq '${id}'`,
           },
@@ -118,7 +113,6 @@ export default {
             response.data.queryDreamybdContents,
             'data'
           )
-          // console.log(this.dreamy)
         })
         .catch((error) => error)
     },

@@ -34,7 +34,7 @@
   </div>
 </template>
 <script>
-import query from '~/graphQL/estante/queryImpressoes.gql'
+import query from '~/graphQL/graphQL-dreamydb.gql'
 import queryFilmes from '~/graphQL/estante/queryFilmes.gql'
 import queryAlta from '~/graphQL/estante/queryAlta.gql'
 import queryMontando from '~/graphQL/estante/queryMontando.gql'
@@ -78,9 +78,9 @@ export default {
       // debugger
       this.$apollo
         .query({
-          query: gqlImpressoes,
+          query: query,
           variables: {
-            filter: `identificador eq '${id}'`,
+            filter: `id eq '${id}'`,
           },
           fetchPolicy: 'no-cache',
           context: {
@@ -94,9 +94,9 @@ export default {
             response.data.queryDreamybdContents,
             'data'
           )
-          this.dreamy = datasResult.filter(
+          /*this.dreamy = datasResult.filter(
             (item) => item.identificador == this.slugs
-          )
+          )*/
         })
         .catch((error) => error)
     },
