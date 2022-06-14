@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="">
-      <nuxt-link to="/dreamshelf" class="Link">Fechar</nuxt-link>
+      <nuxt-link to="/dreamshelf" class="Link">{{lang.title}}</nuxt-link>
     </div>
     <div class="my-5" v-if="dreamy && dreamy.length">
       <div class="">
@@ -128,6 +128,11 @@ export default {
       const date = new Date(this.dreamy[0].created)
       const [, month, day, years] = date.toString().split(' ')
       return `${day} ${month} ${years}`
+    },
+    lang() {
+      return {
+        title: this.$t("close.title"),
+      };
     },
   },
 }

@@ -5,8 +5,7 @@
         <div class="row">
           <div class="col-12">
             <p class="visible-mobile">
-              O Dreamy Booshelf é um espaço para amantes de livros e
-              fotografias.
+              {{lang.title}}
             </p>
           </div>
         </div>
@@ -14,19 +13,13 @@
       <div class="container d-flex alignText">
         <div class="width-text">
           <p class="visible-width-100 mb-4 text-size-24">
-            O Dreamy Booshelf é um espaço para amantes de livros e fotografias.
+            {{lang.title}}
           </p>
           <p class="Text-padding-mobile mb-4 text-size-24">
-            Num país, onde o acesso a leitura diversificada vem se tornando um
-            desafio, apostar em plataformas digitais foi uma maneira de mostrar
-            que todos podemos ter acesso a leitura de nossos gostos independente
-            dos generos literários, que ler pode e deveria ser um prazer mais do
-            que obrigação e/ou nos fazer parecer mais cultos que os outros.
+            {{lang.description}}
           </p>
           <p class="Text-padding-mobile mb-4 text-size-24">
-            O Dreamy Booshelf vem juntar em um canto todos os amantes de livros
-            e partilhar tudo que existe no mundo literário e explorar o universo
-            de fotografias.
+            {{lang.description2}}
           </p>
           <div class="Text-padding-mobile mb-custom">
             <div class="contact">
@@ -73,6 +66,15 @@ export default {
     return {
       src: '',
     }
+  },
+  computed: {   
+    lang() {
+      return {
+        title: this.$t("about.title"),
+        description: this.$t("about.description"),
+        description2: this.$t("about.description2"),
+      };
+    },
   },
   watch: {
     '$i18n.locale': {

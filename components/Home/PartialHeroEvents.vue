@@ -28,7 +28,7 @@
                 </div>
               </div>
               <div class="card-text" v-else>
-                <h5 class="text-white-title">Nenhuma informação</h5>
+                <h5 class="text-white-title">{{lang.title}}</h5>
               </div>
             </div>
           </div>
@@ -45,6 +45,11 @@ export default {
   },
   mounted() {},
   computed: {
+     lang() {
+        return {
+          title: this.$t("noInformation.title"),
+        }
+      },
     getDate() {
       const date = new Date(this.lastEvent[this.lastEvent.length - 1].date)
       const [, month, day, years] = date.toString().split(' ')

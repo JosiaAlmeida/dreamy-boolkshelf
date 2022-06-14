@@ -16,7 +16,7 @@
             />
           </div>
           <div v-else>
-            <h4>Nenhuma informação</h4>
+            <h4>{{lang.title}}</h4>
           </div>
         </div>
       </div>
@@ -56,6 +56,13 @@ export default {
           // console.log('events', this.events)
         })
         .catch((error) => error)
+    },
+  },
+   computed: {   
+    lang() {
+      return {
+        title: this.$t("noInformation.title"),
+      };
     },
   },
 }
