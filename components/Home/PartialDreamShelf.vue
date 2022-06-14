@@ -3,9 +3,7 @@
     <div class="row flex">
       <div class="col-12 paddingLeft ocultWeb text-center">
         <h3 class="title">{{ lang.title }}</h3>
-        <p>
-          {{ lang.description }}
-        </p>
+        <p v-html="lang.description"></p>
       </div>
       <div class="col-md-7 col-sm-12">
         <img

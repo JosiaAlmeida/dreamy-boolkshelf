@@ -7,7 +7,11 @@
           style=""
         >
           <nuxt-link class="navbar-brand" to="/">
-            <img src="/assets/Logo.svg" class="img-fluid logo" alt="Logo da dreamy">
+            <img
+              src="/assets/Logo.svg"
+              class="img-fluid logo"
+              alt="Logo da dreamy"
+            />
           </nuxt-link>
           <button
             @click="showmodal(true)"
@@ -88,7 +92,7 @@
                 class="btn btn-default btnclose"
                 @click="showmodal(false)"
               >
-                {{lang.title}}
+                {{ lang.title }}
                 <div class="borderbtn"></div>
               </button>
             </div>
@@ -149,8 +153,8 @@ export default {
     },
     lang() {
       return {
-        title: this.$t("close.title"),
-      };
+        title: this.$t('close.title'),
+      }
     },
   },
   methods: {
@@ -217,8 +221,8 @@ export default {
 }
 .nav-item .nav-link {
   color: #f0f1f1;
-   font-size: 26px;
-   font-family: 'Philosopher',sans-serif;
+  font-size: 26px;
+  font-family: 'Philosopher', sans-serif;
 }
 .nuxt-link-exact-active.nuxt-link-active {
   border-bottom: 5px solid #d4d4ba;
@@ -257,7 +261,7 @@ export default {
 .borderbtn {
   border-bottom: 4px solid #fff0de;
 }
-.logo{
+.logo {
   height: auto;
   width: 100px;
 }
@@ -302,11 +306,18 @@ export default {
     font-size: 1rem;
   }
 }
-@media(max-width: 600px){
-  .nav-bar-wrapper{
-    padding-left:0 !important;
+@media (max-width: 600px) {
+  .nav-bar-wrapper {
+    padding-left: 0 !important;
     padding-right: 0 !important;
     padding-top: 0 !important;
+  }
+  .logo {
+    height: 120px;
+    padding: 4%;
+  }
+  .nuxt-link-exact-active.nuxt-link-active {
+    border-bottom: none;
   }
 }
 </style>

@@ -1,18 +1,26 @@
 <template>
   <div class="container-fluid background" v-cloak>
     <div class="row">
-      <div class="col-12 flexContainer text-white background2 p-5" v-if="src != null && src.length" :style="{
-              'background-image': `url(${src[0].url}) `,
-            }">
-        <div class="z-index-1 position-relative">
-          <h1 class="text-padding text-white titleSize \">Dreamy Bookshelf</h1>
-          <p class="text-padding w-75 text-white ">
-            {{lang.title}}
+      <div
+        class="col-12 flexContainer text-white background2 p-5"
+        v-if="src != null && src.length"
+        :style="{
+          'background-image': `url(${src[0].url}) `,
+        }"
+      >
+        <div class="">
+          <h1 class="text-padding text-white title-size \">Dreamy Bookshelf</h1>
+          <p class="text-padding w-75 text-white text-body-size">
+            {{ lang.title }}
           </p>
         </div>
       </div>
-      <div class="col-12 imgpena text-center">
-        <img src="/assets/img/Caminho 636.svg" class="img-fluid" alt="pena" />
+      <div class="col-12 img-pena text-center">
+        <img
+          src="/assets/img/Caminho 636.svg"
+          class="img-fluid img-size"
+          alt="pena"
+        />
       </div>
     </div>
   </div>
@@ -22,11 +30,11 @@
 import query from '~/graphQL/home.gql'
 export default {
   data() {
-    return{
-      src:'',
+    return {
+      src: '',
     }
   },
-   watch: {
+  watch: {
     '$i18n.locale': {
       handler() {
         this.getByData()
@@ -35,13 +43,13 @@ export default {
     },
   },
   created() {
-      this.getByData()
+    this.getByData()
   },
   methods: {
     getByData() {
       this.$apollo
         .query({
-          query:query,
+          query: query,
           fetchPolicy: 'no-cache',
           context: {
             headers: {
@@ -51,29 +59,29 @@ export default {
         })
         .then((response) => {
           let res = this.$flattenData(
-                response.data.queryDetaquehomeContents,
-                'data'
-              )
-           this.src = res[0].src
-           console.log(this.src)
+            response.data.queryDetaquehomeContents,
+            'data'
+          )
+          this.src = res[0].src
+          console.log(this.src)
         })
         .catch((error) => error)
     },
   },
-    computed: {   
+  computed: {
     lang() {
       return {
-        title: this.$t("home.desc"),
-      };
+        title: this.$t('home.desc'),
+      }
     },
   },
 }
 </script>
 
 <style scoped>
-.titleSize{
-  font-size:47px !important;
-}
+/* .titleSize {
+  font-size: 47px !important;
+} */
 .background {
   height: 100vh !important;
   width: 100%;
@@ -85,8 +93,8 @@ export default {
   right: 0;
   width: 100%;
   height: 100%;
-  position: absolute;    
-  z-index: 1;  
+  position: absolute;
+  z-index: 1;
   background: rgba(99, 110, 106, 0.5);
 }
 .background2 {
@@ -94,28 +102,18 @@ export default {
   height: 100vh !important;
   width: 100%;
   position: relative;
+  display: flex;
+  align-items: center;
   background-color: rgba(99, 110, 106, 0.5);
 }
-.imgpena {
+.img-pena {
   margin-top: -6%;
 }
- .img-fluid {
-    height: 71px !important;
-    max-width: 50px !important;
-    width: 50px !important;
-  }
-/* .background2::before {
-  content: '';
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: url('/assets/img/shutterstock_1919540552-2.png') center right
-    no-repeat;
-  background-size: cover;
-  z-index: -1;
-} */
+.img-fluid {
+  height: 71px !important;
+  max-width: 50px !important;
+  width: 50px !important;
+}
 .flexContainer {
   height: 100vh;
   display: flex;
@@ -132,23 +130,35 @@ export default {
     display: flex;
     align-items: flex-end;
   }
-  .text-padding {
-    padding: 0%;
-  }
-  .imgpena {
-    margin-top: -16% !important;
-    height: 30px;
+  .img-pena {
+    margin-top: -60px !important;
   }
   .img-fluid {
     height: 71px !important;
     max-width: 50px !important;
     width: 50px !important;
   }
-  .background{
-    height:50vh !important;
+  .background {
+    height: 50vh !important;
   }
-  .background2{
-    height:50vh !important;
+  /* .titleSize {
+    font-size: 17px !important;
+  } */
+  .background2 {
+    height: 50vh !important;
+    align-items: flex-end;
+  }
+  .title-size {
+    font-size: 1.5rem;
+  }
+  .text-body-size {
+    font-size: 0.8rem;
+  }
+  .text-padding {
+    padding: 0px !important;
+  }
+  .img-size {
+    padding: 4%;
   }
 }
 </style>
