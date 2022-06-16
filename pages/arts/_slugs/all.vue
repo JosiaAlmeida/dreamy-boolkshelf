@@ -34,11 +34,7 @@
   </div>
 </template>
 <script>
-import query from '~/graphQL/graphQL-dreamydb.gql'
-import queryFilmes from '~/graphQL/estante/queryFilmes.gql'
-import queryAlta from '~/graphQL/estante/queryAlta.gql'
-import queryMontando from '~/graphQL/estante/queryMontando.gql'
-import gqlImpressoes from '@/graphQL/queriesDreamyShelf.gql'
+import query from '~/graphQL/graphQl-dreamydb.gql'
 export default {
   asyncData({ params }) {
     const { slugs } = params
