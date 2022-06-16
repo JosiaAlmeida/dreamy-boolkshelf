@@ -1,6 +1,9 @@
 <template>
   <div>
-    <SharedNavbar />
+    <div>
+      <SharedNavbar />
+    </div>
+    
     <!-- <div class="container-fluid"> -->
 
     <div
@@ -51,7 +54,7 @@
                     }}
                   </h5>
                   <hr />
-                  <small> {{ getDate }} </small>
+                  <small>  </small>
                 </div>
               </nuxt-link>
             </div>
@@ -154,6 +157,11 @@ export default {
         title: this.$t('noInformation.title'),
       }
     },
+     getDate() {
+      const date = new Date(this.item.date)
+      const [, month, day, years] = date.toString().split(' ')
+      return `${day} ${month} ${years}`
+    },
   },
 }
 </script>
@@ -169,6 +177,9 @@ export default {
   background-color: rgba(99, 110, 106, 0.5);
   background-size: cover;
   z-index: 1;
+}
+.nav-bar-d{
+  position: relative !important;
 }
 .background {
   height: 100vh;

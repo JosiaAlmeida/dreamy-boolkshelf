@@ -1,7 +1,12 @@
 <template>
   <div
     class="footer"
-    :class="this.$root._route.path == '/dreamclub' && 'ocultFooter'"
+    :class="
+      this.$root._route.path == '/dreamclub' ||
+      this.$root._route.path == '/en/dreamclub'
+        ? 'ocultFooter'
+        : ''
+    "
   >
     <div
       v-if="this.$root._route.path != '/aboutdb'"
@@ -11,7 +16,7 @@
     >
       <div @click="scrollTop()" class="pointer text-center">
         <img src="/assets/img/svg1.svg" alt="seta para cima" />
-        <p>{{lang.title}}</p>
+        <p>{{ lang.title }}</p>
       </div>
     </div>
     <div class="container-fluid">
@@ -62,9 +67,7 @@
 <script>
 export default {
   props: {},
-  mounted() {
-    console.log(this.$root._route.path)
-  },
+  mounted() {},
   computed: {
     configStyle() {
       return { '--backgroundColor': 'rgba(99, 110, 106, 0.4)' }
@@ -105,8 +108,8 @@ export default {
     },
     lang() {
       return {
-        title: this.$t("top.title"),
-      };
+        title: this.$t('top.title'),
+      }
     },
   },
   methods: {
