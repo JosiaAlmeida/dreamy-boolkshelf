@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="">
-      <nuxt-link to="/dreamshelf" class="Link">Fechar</nuxt-link>
+      <nuxt-link to="/dreamshelf" class="Link">{{lang.title}}</nuxt-link>
     </div>
     <div class="my-5" v-if="dreamy && dreamy.length">
       <div class="">
@@ -51,10 +51,7 @@
 </template>
 
 <script>
-import query from '~/graphQL/graphQL-QueryDreamy.gql'
-import queryFilmes from '~/graphQL/graphQL-QueryFilmes.gql'
-import queryAlta from '~/graphQL/graphQL-QueryemAlta.gql'
-import queryMontando from '~/graphQL/graphQL-QueryMontando.gql'
+import query from '~/graphQL/graphQL-dreamydb.gql'
 export default {
   async asyncData({ params }) {
     const slug = params.slug // When calling /abc the slug will be "abc"
@@ -90,10 +87,9 @@ export default {
     },
   },
   mounted() {
-    // console.log(this.$route.query.url)
     this.id = this.$route.params.slugs
     this.url = this.$route.query.url
-    // console.log('Id', this.id)
+    console.log(this.id)
     this.getById(this.id)
   },
   beforeUpdate() {},
@@ -101,16 +97,7 @@ export default {
     getById(id) {
       this.$apollo
         .query({
-          query:
-            this.url == 'impressoes'
-              ? query
-              : this.url == 'emAlta'
-              ? queryAlta
-              : this.url == 'montando'
-              ? queryMontando
-              : this.url == 'filmes'
-              ? queryFilmes
-              : '',
+          query: query,
           variables: {
             filter: `id eq '${id}'`,
           },
@@ -122,34 +109,10 @@ export default {
           },
         })
         .then((response) => {
-          switch (this.url) {
-            case 'impressoes':
-              this.dreamy = this.$flattenData(
-                response.data.queryMinhasimpressoesContents,
-                'data'
-              )
-              break
-            case 'emAlta':
-              this.dreamy = this.$flattenData(
-                response.data.queryEmaltaContents,
-                'data'
-              )
-              break
-            case 'montando':
-              this.dreamy = this.$flattenData(
-                response.data.queryMontandoaestanteContents,
-                'data'
-              )
-              break
-            case 'filmes':
-              this.dreamy = this.$flattenData(
-                response.data.queryViroufilmeContents,
-                'data'
-              )
-              break
-          }
-
-          // console.log(this.dreamy)
+          this.dreamy = this.$flattenData(
+            response.data.queryDreamybdContents,
+            'data'
+          )
         })
         .catch((error) => error)
     },
@@ -159,6 +122,11 @@ export default {
       const date = new Date(this.dreamy[0].created)
       const [, month, day, years] = date.toString().split(' ')
       return `${day} ${month} ${years}`
+    },
+    lang() {
+      return {
+        title: this.$t("close.title"),
+      };
     },
   },
 }

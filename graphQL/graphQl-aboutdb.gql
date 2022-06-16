@@ -1,0 +1,16 @@
+
+    query Fetch{
+    queryAboutdbContents{
+      id
+      data: flatData{
+        title
+        description
+        description2
+        description3
+        src {
+          url
+        }
+      }
+     	
+    }
+  }

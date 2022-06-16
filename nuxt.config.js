@@ -1,5 +1,5 @@
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  // Global page headers: https://go.nuxtjs.dev/config-head 
   head: {
     title: 'dreamy-boolkshelf',
     htmlAttrs: {
@@ -50,30 +50,30 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/i18n',
   ],
-    // Axios module configuration: https://go.nuxtjs.dev/config-axios
-    publicRuntimeConfig: {
-      axios: {
-          baseURL: `${process.env.SQUIDEX_URL}/api/content/${process.env.SQUIDEX_APP_NAME}`
-      },
-      squidex: {
-          content: `${process.env.SQUIDEX_URL}/api/content/${process.env.SQUIDEX_APP_NAME}`,
-          assets: `${process.env.SQUIDEX_URL}/api/apps/${process.env.SQUIDEX_APP_NAME}/assets`,
-          url: process.env.SQUIDEX_URL,
-          appName: process.env.SQUIDEX_APP_NAME,
-          clientId: process.env.SQUIDEX_CLIENT_ID,
-          clientSecret: process.env.SQUIDEX_CLIENT_SECRET,
-      }
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  publicRuntimeConfig: {
+    axios: {
+      baseURL: `${process.env.SQUIDEX_URL}/api/content/${process.env.SQUIDEX_APP_NAME}`
+    },
+    squidex: {
+      content: `${process.env.SQUIDEX_URL}/api/content/${process.env.SQUIDEX_APP_NAME}`,
+      assets: `${process.env.SQUIDEX_URL}/api/apps/${process.env.SQUIDEX_APP_NAME}/assets`,
+      url: process.env.SQUIDEX_URL,
+      appName: process.env.SQUIDEX_APP_NAME,
+      clientId: process.env.SQUIDEX_CLIENT_ID,
+      clientSecret: process.env.SQUIDEX_CLIENT_SECRET,
+    }
   },
   axios: {
     baseURL: `${process.env.SQUIDEX_URL}/api/content/${process.env.SQUIDEX_APP_NAME}`
   },
   apollo: {
     clientConfigs: {
-        default: {
-            httpEndpoint: `${process.env.SQUIDEX_URL}/api/content/${process.env.SQUIDEX_APP_NAME}/graphql`,
-        }
+      default: {
+        httpEndpoint: `${process.env.SQUIDEX_URL}/api/content/${process.env.SQUIDEX_APP_NAME}/graphql`,
+      }
     }
-},
+  },
   i18n: {
     langDir: 'lang/',
     locales: [

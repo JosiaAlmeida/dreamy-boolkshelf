@@ -4,13 +4,14 @@
     :class="this.$root._route.path == '/dreamclub' && 'ocultFooter'"
   >
     <div
+      v-if="this.$root._route.path != '/aboutdb'"
       id="arrow"
       class="w-100 d-flex justify-content-center"
       :class="this.$root._route.path == '/' && 'backgroundColor'"
     >
-      <div @click="scrollTop()" class="pointer">
+      <div @click="scrollTop()" class="pointer text-center">
         <img src="/assets/img/svg1.svg" alt="seta para cima" />
-        <p>Voltar para cima</p>
+        <p>{{lang.title}}</p>
       </div>
     </div>
     <div class="container-fluid">
@@ -20,19 +21,15 @@
             <div class="row">
               <div class="col-md-6 col-sm-12 pt-5">
                 <div class="d-flex">
-                    <nuxt-link to="/">
-                      <img
-                        src="/assets/Logo.svg"
-                        class="img img-fluid"
-                        alt="icone da dreamy-boolkshelf"
-                      />
-                    </nuxt-link>
-                  <ul
-                    class="nav flex-column pl-5"
-                  >
-                    <li class="nav-item"
-                    v-for="item in menu"
-                    :key="item.id">
+                  <nuxt-link to="/">
+                    <img
+                      src="/assets/Logo.svg"
+                      class="img img-fluid"
+                      alt="icone da dreamy-boolkshelf"
+                    />
+                  </nuxt-link>
+                  <ul class="nav flex-column pl-5">
+                    <li class="nav-item" v-for="item in menu" :key="item.id">
                       <div class="d-flex algin-justify text-center">
                         <img
                           :src="item.src"
@@ -64,10 +61,10 @@
 
 <script>
 export default {
-  props: {
-   
+  props: {},
+  mounted() {
+    console.log(this.$root._route.path)
   },
-  mounted() {},
   computed: {
     configStyle() {
       return { '--backgroundColor': 'rgba(99, 110, 106, 0.4)' }
@@ -105,6 +102,11 @@ export default {
           src: '/assets/img/Caminho 636.svg',
         },
       ]
+    },
+    lang() {
+      return {
+        title: this.$t("top.title"),
+      };
     },
   },
   methods: {

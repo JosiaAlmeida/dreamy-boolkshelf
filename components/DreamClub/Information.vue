@@ -2,13 +2,21 @@
   <div class="container-fluid background">
     <div class="row">
       <div
-        class="col-12 p-5 d-flex align-items-end align-content-end text-white"
-        v-if="src != null && src.length" :style="{
-              'background-image': `url(${src[0].url}) `,
-            }"
+        class="
+          col-12
+          p-5
+          d-flex
+          align-items-end align-content-end
+          img-contain
+          text-white
+        "
+        v-if="src != null && src.length"
+        :style="{
+          background: `url(${src[0].url}) no-repeat`,
+        }"
       >
         <h1 class="w-50 text-white mobile-qr z-index-1">
-          Estamos a criar algo especial para ti, até já!
+          {{lang.title}}
         </h1>
       </div>
     </div>
@@ -18,11 +26,11 @@
 import query from '~/graphQL/clube.gql'
 export default {
   data() {
-    return{
-      src:'',
+    return {
+      src: '',
     }
   },
-   watch: {
+  watch: {
     '$i18n.locale': {
       handler() {
         this.getByData()
@@ -31,13 +39,13 @@ export default {
     },
   },
   created() {
-      this.getByData()
+    this.getByData()
   },
   methods: {
     getByData() {
       this.$apollo
         .query({
-          query:query,
+          query: query,
           fetchPolicy: 'no-cache',
           context: {
             headers: {
@@ -47,13 +55,20 @@ export default {
         })
         .then((response) => {
           let res = this.$flattenData(
-                response.data.queryDestaquesclubeContents,
-                'data'
-              )
-           this.src = res[0].src
-           console.log(this.src)
+            response.data.queryDestaquesclubeContents,
+            'data'
+          )
+          this.src = res[0].src
+          console.log(this.src)
         })
         .catch((error) => error)
+    },
+  },
+  computed: {
+      lang() {
+      return {
+        title: this.$t("dreamyClub.title"),
+      };
     },
   }
 }
@@ -65,7 +80,7 @@ export default {
   position: relative;
   align-items: flex-end;
   text-align: end;
-  z-index: 1;  
+  z-index: 1;
   background: rgba(99, 110, 106, 0.5);
 }
 .background::before {
@@ -77,15 +92,18 @@ export default {
   position: absolute;
   background-size: cover;
   filter: brightness(0.9) grayscale(0.5);
-  z-index: 1;  
+  z-index: 1;
   background: rgba(99, 110, 106, 0.5);
 }
 .col-12 {
   height: 100vh;
 }
-@media(max-width: 600px){
-  .mobile-qr{
-    width:100% !important;
+.img-contain {
+  background-size: cover !important;
+}
+@media (max-width: 600px) {
+  .mobile-qr {
+    width: 100% !important;
     text-align: center;
   }
 }

@@ -1,0 +1,19 @@
+  query Fetch($filter: String){
+    queryDreamybdContents(filter: $filter){
+    id
+    data:flatData{
+      content
+      title
+      datapublicacao
+      date
+      images{
+        url
+      }      
+    }
+    created
+     createdByUser {
+        id
+        displayName
+      } 
+    }
+  }

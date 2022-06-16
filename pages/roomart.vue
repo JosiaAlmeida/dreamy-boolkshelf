@@ -2,7 +2,7 @@
   <div class="">
     <SharedNavbar colorb="#28493C" />
     <div class="container-fluid pt-10">
-      <div class="row">
+      <div class="row justify-content-center">
         <RoomartTitleDescription />
         <SharedPainting
           :slideShow="4"

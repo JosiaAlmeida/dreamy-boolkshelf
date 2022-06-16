@@ -1,6 +1,6 @@
 <template>
-  <div class="row p-5">
-    <div class="col-md-4 col-sm-12 p-4" v-for="(i, idx) in arts" :key="idx">
+  <div class="row p-5 justify-content-center">
+    <div class="col-md-3 col-sm-12 p-4" v-for="(i, idx) in arts" :key="idx">
       <div
         @click="findItem(i)"
         :style="
@@ -82,6 +82,13 @@ export default {
   transform: var(--rotate);
   position: inherit;
   cursor: pointer;
+}
+@media(min-width: 1440px){
+  .paint{
+    width:80% !important;
+    height:320px !important;
+  }
+  
 }
 .paint::before {
   content: '';

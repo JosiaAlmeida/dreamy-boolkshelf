@@ -2,12 +2,8 @@
   <div class="container mt-5 mb-5">
     <div class="row flex">
       <div class="col-12 paddingLeft ocultWeb text-center">
-        <h3 class="title">Destaques Estante de Sonho</h3>
-        <p>
-          Saiba mais sobre o mundo dos livros, veja quais livros estão na
-          estante do sonhos e acompanhe o progresso de construção da biblioteca
-          particular
-        </p>
+        <h3 class="title">{{ lang.title }}</h3>
+        <p v-html="lang.description"></p>
       </div>
       <div class="col-md-7 col-sm-12">
         <img
@@ -18,13 +14,9 @@
         <SharedCardSimple paddingLeft="4%" paddingRight="4%" />
       </div>
       <div class="col-md-5 paddingLeft col-sm-12 text-center">
-        <h3 class="ocultMobile">Destaques Estante de Sonho</h3>
-        <p class="ocultMobile">
-          Saiba mais sobre o mundo dos livros, veja quais livros estão na
-          estante do sonhos e acompanhe o progresso de construção da biblioteca
-          particular
-        </p>
-        <div v-for="(item, i) in destaques" :key="i">
+        <h3 class="ocultMobile">{{ lang.title }}</h3>
+        <p class="ocultMobile" v-html="lang.description"></p>
+        <div v-for="(item, i) in destaques.slice(0, 4)" :key="i">
           <SharedCardWidthImgLeft v-bind="item" />
         </div>
       </div>
@@ -36,6 +28,14 @@
 export default {
   props: {
     ['destaques']: Array,
+  },
+  computed: {
+    lang() {
+      return {
+        title: this.$t('destaqueEstante.title'),
+        description: this.$t('arts.description'),
+      }
+    },
   },
 }
 </script>
@@ -70,11 +70,12 @@ export default {
     visibility: hidden;
     height: 0px;
   }
-  .title{
+  .title {
     width: 220px;
     margin: 0 auto;
     padding-top: 15px;
     padding-bottom: 23px;
+    font-size: 33px;
   }
 }
 </style>

@@ -1,61 +1,78 @@
 <template>
   <div>
-    <SharedNavbar />
+    <div>
+      <SharedNavbar />
+    </div>
+    
     <!-- <div class="container-fluid"> -->
-    <!-- <div class="row"> -->
-    <div class="col-12 background">
+
+    <div
+      class="col-12 background"
+      v-if="src != null && src.length"
+      :style="{
+        'background-image': `url(${src[0].url}) `,
+      }"
+    >
       <DreamshelfHero :destaques="destaques" />
     </div>
-    <div class="col-12">
-      <SharedSearchInput />
+    <div class="col-12 my-5">
+      <form v-on:submit.prevent="searchDB" class="w-100">
+        <input
+          v-model="searchVar"
+          type="text"
+          placeholder="Pesquisar"
+          class="form-control"
+        />
+      </form>
     </div>
-    <!-- <div class="col-12"> -->
-    <DreamshelfContainerElement
-      Theme="Minhas impressoes"
-      to="/"
-      nameLink="Ver todos"
-      :data="impressoes"
-      url="impressoes"
-      :navContainer="true"
-    />
-    <!-- </div> -->
-    <!-- <div class="col-12"> -->
-    <DreamshelfContainerElement
-      Theme="Virou filme/Série"
-      to="/"
-      nameLink="Ver todos"
-      :data="filmes"
-      url="filmes"
-      :centerMode="true"
-    />
-    <!-- </div> -->
-    <!-- <div class="col-12"> -->
-    <DreamshelfContainerElement
-      Theme="Em Alta/ top favoritos do momento"
-      to="/"
-      nameLink="Ver todos"
-      :data="emAlta"
-      url="emAlta"
-      :centerMode="true"
-    />
-    <!-- </div> -->
-    <!-- <div class="col-12"> -->
-    <DreamshelfContainerElement
-      Theme="Montando a estante dos sonhos"
-      to="/"
-      nameLink="Ver todos"
-      :data="montando"
-      url="montando"
-      :navContainer="true"
-    />
-    <!-- </div> -->
-    <!-- </div> -->
-    <!-- </div> -->
+    <div class="container-fluid">
+      <div class="row" v-if="destaques.length">
+        <div class="col-md-3" v-for="(item, id) in destaques" :key="id">
+          <div class="mb-3 card-container">
+            <div
+              style="box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px"
+              v-if="item"
+            >
+              <nuxt-link class="Link" :to="`arts/${item.id}`">
+                <img
+                  v-if="item.images && item.images.length"
+                  :src="item.images[0].url"
+                  class="card-img-top img-fluid img"
+                />
+                <img
+                  v-else
+                  src="/assets/img/armario.jpg"
+                  class="card-img-top img-fluid img"
+                  alt=""
+                />
+                <div class="p-3">
+                  <h5 class="card-title text-center">
+                    {{
+                      item.title != null
+                        ? item.title.substring(0, 25) + '...'
+                        : ''
+                    }}
+                  </h5>
+                  <hr />
+                  <small>  </small>
+                </div>
+              </nuxt-link>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-else>
+        <h4>{{ lang.title }}</h4>
+      </div>
+      <!-- <div class="row">
+      </div>-->
+    </div>
   </div>
 </template>
 
 <script>
-import gqlImpressoes from '../graphQL/queriesDreamyShelf.gql'
+import query from '../graphQL/graphQl-dreamydb.gql'
+import queryFilter from '../graphQL/graphQl-queryFilter.gql'
 export default {
   data() {
     return {
@@ -64,11 +81,14 @@ export default {
       filmes: [],
       montando: [],
       destaques: [],
+      src: '',
+      searchVar: '',
     }
   },
   mounted() {
     this.getData()
   },
+  beforeUpdate() {},
   watch: {
     '$i18n.locale': {
       handler() {
@@ -81,7 +101,7 @@ export default {
     getData() {
       this.$apollo
         .query({
-          query: gqlImpressoes,
+          query: query,
           fetchPolicy: 'no-cache',
           context: {
             headers: {
@@ -91,34 +111,62 @@ export default {
         })
         .then((response) => {
           const data = response.data
-          this.impressoes = this.$flattenData(
-            data.queryMinhasimpressoesContents,
-            'data'
-          )
-          this.emAlta = this.$flattenData(data.queryEmaltaContents, 'data')
-          this.montando = this.$flattenData(
-            data.queryMontandoaestanteContents,
-            'data'
-          )
-          this.filmes = this.$flattenData(data.queryViroufilmeContents, 'data')
-          this.destaques = this.$flattenData(
-            data.queryDestaquesContents,
-            'data'
-          )
+          this.destaques = this.$flattenData(data.queryDreamybdContents, 'data')
+          /*this.destaques.map((item) => {
+            if (item.identificador == 3) {
+              this.impressoes.push(item)
+            }
+            if (item.identificador == 2) {
+              this.emAlta.push(item)
+            }
+            if (item.identificador == 1) {
+              this.montando.push(item)
+            }
+            if (item.identificador == 4) {
+              this.filmes.push(item)
+            }
+          })*/
+          this.src = res[0].src
         })
         .catch((error) => error)
+    },
+    searchDB() {
+      this.$apollo
+        .query({
+          query: queryFilter,
+          variables: {
+            filter: `contains(data/title/${this.$i18n.locale}, '${this.searchVar}')`,
+          },
+          fetchPolicy: 'no-cache',
+          context: {
+            headers: {
+              'X-Languages': this.$i18n.locale,
+            },
+          },
+        })
+        .then((response) => {
+          const data = response.data
+          this.destaques = this.$flattenData(data.queryDreamybdContents, 'data')
+        })
+        .catch((error) => error)
+    },
+  },
+  computed: {
+    lang() {
+      return {
+        title: this.$t('noInformation.title'),
+      }
+    },
+     getDate() {
+      const date = new Date(this.item.date)
+      const [, month, day, years] = date.toString().split(' ')
+      return `${day} ${month} ${years}`
     },
   },
 }
 </script>
 
 <style scoped>
-.background {
-  height: 100vh;
-  width: 100%;
-  position: relative;
-  background-color: rgba(117, 124, 116, 0.4);
-}
 .background::before {
   content: '';
   top: 0;
@@ -126,15 +174,51 @@ export default {
   width: 100%;
   height: 100%;
   position: absolute;
-  background: url('/assets/img/shutterstock_1889758921@2x.png') no-repeat center
-    center;
+  background-color: rgba(99, 110, 106, 0.5);
   background-size: cover;
-  filter: brightness(0.9) grayscale(0.5);
-  z-index: -1;
+  z-index: 1;
 }
-@media(max-width:600px){
-.background{
-  height:45vh;
+.nav-bar-d{
+  position: relative !important;
 }
+.background {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: rgba(117, 124, 116, 0.4);
+}
+.card {
+  width: 100%;
+  /* height: 300px; */
+}
+.img {
+  height: 270px;
+  object-fit: cover;
+}
+.Link:hover {
+  text-decoration: none;
+}
+.Link {
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+}
+.form-control {
+  width: 40%;
+  border: 1px solid #000;
+  text-align: center;
+  margin: auto;
+}
+input::placeholder {
+  text-align: center;
+}
+@media only screen and (max-width: 600px) {
+  .form-control {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .background {
+    height: 45vh;
+  }
 }
 </style>

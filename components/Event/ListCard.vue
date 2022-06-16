@@ -1,25 +1,23 @@
 <template>
-  <div class="d-flex justify-content-center w-100">
-    <div class="d-flex flex-wrap justify-content-start">
-      <nuxt-link
-        class="Link p-3"
-        :to="'event/' + item.id"
-        v-for="(item, i) in carouselData"
-        :key="i"
+  <div class="d-flex flex-wrap justify-content-center">
+    <nuxt-link
+      class="Link p-3"
+      :to="'event/' + item.id"
+      v-for="(item, i) in carouselData"
+      :key="i"
+    >
+      <div
+        class="cardContainer d-flex align-items-end p-4"
+        :style="imageProps(item.images[0].url)"
       >
-        <div
-          class="cardContainer d-flex align-items-end p-4"
-          :style="imageProps(item.images[0].url)"
-        >
-          <div class="w-100">
-            <h6 class="text-white">{{ item.title }}</h6>
-            <small class="text-small-grey">
-              {{ getDate(item.date) }}
-            </small>
-          </div>
+        <div class="w-100">
+          <h6 class="text-white">{{ item.title }}</h6>
+          <small class="text-small-grey">
+            {{ getDate(item.date) }}
+          </small>
         </div>
-      </nuxt-link>
-    </div>
+      </div>
+    </nuxt-link>
   </div>
 </template>
 

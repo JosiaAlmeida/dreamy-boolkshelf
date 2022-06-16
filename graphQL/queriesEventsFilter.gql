@@ -1,0 +1,13 @@
+query Fetch($filter: String){
+	queryEventsContents(filter: $filter){
+		id
+		data: flatData {
+			title
+			date
+			description
+			images {
+				url
+			}
+		}
+	}
+}

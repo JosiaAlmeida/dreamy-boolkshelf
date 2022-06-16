@@ -1,7 +1,7 @@
 <template>
   <div class="mb-3 card-container">
     <div style="box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px" v-if="item">
-      <nuxt-link class="Link" :to="`arts/${item.id}?url=${propsurl}`">
+      <nuxt-link class="Link" :to="`arts/${item.id}`">
         <img
           v-if="item.images && item.images.length"
           :src="item.images[0].url"
@@ -14,7 +14,9 @@
           alt=""
         />
         <div class="p-3">
-          <h5 class="card-title text-center">{{ item.title.substring(0,25) }}...</h5>
+          <h5 class="card-title text-center">
+            {{ item.title != null ? item.title.substring(0, 25)+'...' : '' }}
+          </h5>
           <hr />
           <small> {{ getDate }} </small>
         </div>
@@ -27,10 +29,10 @@
 export default {
   props: {
     ['item']: Object,
-    propsurl:{
-      type:String,
-      default: 'impressoes'
-    }
+    propsurl: {
+      type: String,
+      default: 'impressoes',
+    },
   },
   computed: {
     getDate() {

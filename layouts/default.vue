@@ -3,7 +3,7 @@
     <div class="layouts">
       <Nuxt />
     </div>
-    <Footer />
+    <Footer class="footer" />
   </main>
 </template>
 <script>
@@ -18,5 +18,8 @@ export default {
 <style scoped>
 .layouts {
   height: 100%;
+  min-height: 70vh;
+}
+.footer {
 }
 </style>
