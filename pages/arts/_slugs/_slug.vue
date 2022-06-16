@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import query from '~/graphQL/graphQL-dreamydb.gql'
+import query from '~/graphQL/graphQl-dreamydb.gql'
 export default {
   async asyncData({ params }) {
     const slug = params.slug // When calling /abc the slug will be "abc"
