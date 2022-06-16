@@ -28,7 +28,7 @@
                 </div>
               </div>
               <div class="card-text" v-else>
-                <h5 class="text-white-title">{{lang.title}}</h5>
+                <h5 class="text-white-title">{{ lang.title }}</h5>
               </div>
             </div>
           </div>
@@ -45,11 +45,11 @@ export default {
   },
   mounted() {},
   computed: {
-     lang() {
-        return {
-          title: this.$t("noInformation.title"),
-        }
-      },
+    lang() {
+      return {
+        title: this.$t('noInformation.title'),
+      }
+    },
     getDate() {
       const date = new Date(this.lastEvent[this.lastEvent.length - 1].date)
       const [, month, day, years] = date.toString().split(' ')
@@ -60,7 +60,7 @@ export default {
       if (this.lastEvent.length) {
         const images = this.lastEvent[this.lastEvent.length - 1].images[0].url
         return {
-          '--image': `url(${images})`,
+          '--image': `url(${images}) no-repeat`,
         }
       }
       return {
@@ -91,7 +91,7 @@ p {
   position: absolute;
   border-radius: 5px;
   /* background: url('/assets/img/Grupo 412@2x.png') no-repeat; */
-  background: var(--image) no-repeat;
+  background: var(--image);
   background-size: cover;
   z-index: 1;
 }
@@ -151,7 +151,7 @@ p {
     width: 100%;
     position: absolute;
     border-radius: 5px;
-    background: url('/assets/img/armario.jpg') no-repeat;
+    background: var(--image);
     background-size: cover;
     z-index: 1;
   }
