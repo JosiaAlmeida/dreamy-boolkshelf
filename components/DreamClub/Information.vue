@@ -2,21 +2,14 @@
   <div class="container-fluid background">
     <div class="row">
       <div
-        class="
-          col-12
-          p-5
-          d-flex
-          align-items-end align-content-end
-          img-contain
-          text-white
-        "
+        class="col-12 p-5 d-flex align-items-end align-content-end img-contain text-white"
         v-if="src != null && src.length"
         :style="{
           background: `url(${src[0].url}) no-repeat`,
         }"
       >
         <h1 class="w-50 text-white mobile-qr z-index-1">
-          {{lang.title}}
+          {{ lang.title }}
         </h1>
       </div>
     </div>
@@ -59,18 +52,17 @@ export default {
             'data'
           )
           this.src = res[0].src
-          console.log(this.src)
         })
         .catch((error) => error)
     },
   },
   computed: {
-      lang() {
+    lang() {
       return {
-        title: this.$t("dreamyClub.title"),
-      };
+        title: this.$t('dreamyClub.title'),
+      }
     },
-  }
+  },
 }
 </script>
 <style scoped>

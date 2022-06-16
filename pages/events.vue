@@ -8,23 +8,29 @@
           <div class="col-12">
             <form v-on:submit.prevent="searchDB" class="w-100">
               <div class="form-group">
-                <input type="text" name="" placeholder="Pesquisar" v-model="pesquisar" class="form-control" id="">
+                <input
+                  type="text"
+                  name=""
+                  placeholder="Pesquisar"
+                  v-model="pesquisar"
+                  class="form-control"
+                  id=""
+                />
               </div>
             </form>
             <div v-if="events.length">
-                <EventListCard
-              :carouselData="events"
-              :rowmobile="3"
-              :vertical="false"
-              :row="events.length > 4 ? 3 : 1"
-              :verticalSwiping="false"
-            />
+              <EventListCard
+                :carouselData="events"
+                :rowmobile="3"
+                :vertical="false"
+                :row="events.length > 4 ? 3 : 1"
+                :verticalSwiping="false"
+              />
             </div>
             <div v-else>
-              <h4>{{lang.title}}</h4>
+              <h4>{{ lang.title }}</h4>
             </div>
           </div>
-         
         </div>
       </div>
     </div>
@@ -41,7 +47,7 @@ export default {
   data() {
     return {
       events: [],
-      pesquisar:''
+      pesquisar: '',
     }
   },
   mounted() {
@@ -66,32 +72,22 @@ export default {
         })
         .catch((error) => error)
     },
-     searchDB(){
-        this.$apollo
-        .query({
-          query: eventsFilter,
-           variables: {
-            filter: `contains(data/title/${this.$i18n.locale}, '${this.pesquisar}')`,
-          },
-          fetchPolicy: 'no-cache',
-          context: {
-            headers: {
-              'X-Languages': this.$i18n.locale,
-            },
-          },
-        })
-        .then((response) => {
-          const data = response.data
-          this.events = this.$flattenData(data.queryEventsContents, 'data')
-        })
-        .catch((error) => error)
-    }
+    searchDB() {
+      if (this.pesquisar) {
+        let searchFind = this.events.filter((item) =>
+          item.title.toLowerCase().includes(this.pesquisar.toLowerCase())
+        )
+        this.events = searchFind
+      } else {
+        this.getData()
+      }
+    },
   },
-   computed: {   
+  computed: {
     lang() {
       return {
-        title: this.$t("noInformation.title"),
-      };
+        title: this.$t('noInformation.title'),
+      }
     },
   },
 }
@@ -105,7 +101,7 @@ export default {
   width: 40%;
   border: 1px solid #000;
   text-align: center;
-  margin:auto;
+  margin: auto;
 }
 input::placeholder {
   text-align: center;
